@@ -2,7 +2,8 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
-@use "hacker";
-@use "base";
+// Use @import for compatibility with GitHub Pages (libsass)
+@import "hacker";
+@import "base";
 
-@include hacker.theme();
+@include theme();
