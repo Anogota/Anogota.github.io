@@ -12,16 +12,20 @@ RUN apt-get update \
     git \
     ca-certificates \
     libffi-dev \
+    libssl-dev \
+    zlib1g-dev \
+    pkg-config \
+    libxml2-dev \
+    libxslt1-dev \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /srv/jekyll
 
-# Install gems first for better layer caching
-COPY Gemfile jekyll-theme-console.gemspec ./
-RUN bundle install
-
-# Copy the rest of the source
+# Copy the source before installing to ensure the gemspec's file globs resolve
 COPY . /srv/jekyll
+
+# Install gems (after copying) so the local gemspec can be evaluated correctly
+RUN bundle install
 
 EXPOSE 4000 35729
 
