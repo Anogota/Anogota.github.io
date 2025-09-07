@@ -70,10 +70,10 @@ To update the theme run `bundle update`.
 In addition to jekyll's default configuration options, you can provide:
 - `header_pages`: list of pages displayed in the navbar
 - `footer`: HTML string inserted at the end of the page
-- `google_analytics`: tracking id (only loaded in production when set)
 - `listen_for_clients_preferred_style`: allow users to pick light/dark based on OS preference
 - `style`: predefined color style (`dark` default, or `light`, `hacker`)
 - `disable_google_fonts`: set `true` to avoid loading fonts from Google and use system fonts only
+- `tracking`: generic tracking config for any provider (Matomo, Plausible, etc.). See below.
 
 ```yaml
 header_pages:
@@ -84,9 +84,18 @@ style: dark # dark (default), light or hacker
 listen_for_clients_preferred_style: true # false (default) or true
 
 footer: 'follow us on <a href="https://twitter.com/xxx">twitter</a>'
-
-google_analytics: UA-NNNNNNNN-N
 disable_google_fonts: false
+
+# Generic tracking (optional; loads only in production)
+# tracking:
+#   script_src:
+#     - https://cdn.example.com/tracker.js
+#   async: true   # default true
+#   defer: false  # default false
+#   # Optional inline init snippet (requires CSP allowance if used)
+#   # init: |
+#   #   window.myTracker=window.myTracker||function(){(window.myTracker.q=window.myTracker.q||[]).push(arguments)};
+#   #   myTracker('init', { siteId: '12345' });
 ```
 
 ### front matter variables
@@ -122,13 +131,33 @@ If you want to customize this theme, follow this steps:
 This theme ships with a strict but practical CSP to improve security. By default it allows:
 - self-hosted content plus images from `https:` and `data:` URIs
 - Google Fonts (if not disabled)
-- Google Analytics (only when `google_analytics` is set, including inline init script)
 
-If you need additional sources (e.g., to embed iframes), extend the policy via `_config.yml`:
+If you need additional sources (e.g., analytics beacons, external scripts, iframes), extend the policy via `_config.yml`:
 
 ```yaml
 csp_extra: "frame-src https:;"
 ```
+
+Examples:
+
+- Allow a Matomo/PIWIK setup hosted at `https://analytics.example.com`:
+
+  ```yaml
+  tracking:
+    script_src:
+      - https://analytics.example.com/matomo.js
+  # If you add an inline init snippet via `tracking.init`, also include 'unsafe-inline' in script-src.
+  csp_extra: "script-src 'self' https://analytics.example.com 'unsafe-inline'; connect-src 'self' https://analytics.example.com; img-src 'self' https://analytics.example.com;"
+  ```
+
+- Allow Plausible (self-hosted at `https://plausible.example.com`):
+
+  ```yaml
+  tracking:
+    script_src:
+      - https://plausible.example.com/js/plausible.js
+  csp_extra: "script-src 'self' https://plausible.example.com; connect-src 'self' https://plausible.example.com;"
+  ```
 
 Tip: To remove the top border line in the menu, override CSS in your site (e.g., add a small stylesheet) with:
 

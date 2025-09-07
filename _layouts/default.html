@@ -2,8 +2,9 @@
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 {%- comment -%}
   Build a practical CSP. It remains strict by default while allowing
-  common use cases: external images and Google Fonts. If Google Analytics
-  is enabled, allow its domains and inline init script.
+  common use cases like external images and Google Fonts.
+  If you need to permit additional script/connect sources (e.g., analytics),
+  extend via `csp_extra` in your _config.yml.
 {%- endcomment -%}
 {%- capture csp -%}
 default-src 'none';
@@ -16,11 +17,7 @@ font-src 'self' https://fonts.gstatic.com data:;
 media-src 'self';
 object-src 'none';
 child-src 'self';
-{%- if jekyll.environment == 'production' and site.google_analytics -%}
-script-src 'self' https://www.googletagmanager.com 'unsafe-inline';
-{%- else -%}
 script-src 'self';
-{%- endif -%}
 {%- endcapture -%}
 {%- capture csp_final -%}{{ csp | strip | replace: '\n', ' ' }} {%- if site.csp_extra %} {{ site.csp_extra }}{%- endif -%}{%- endcapture -%}
 <meta http-equiv="Content-Security-Policy" content="{{ csp_final | strip }}" />
