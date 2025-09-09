@@ -1,86 +1,96 @@
 # jekyll-theme-console
 
-A jekyll theme with inspiration from linux consoles for hackers, developers and script kiddies.
+A minimal, console‑inspired Jekyll theme for hackers, developers and other cool kids.
 
-<img src="https://raw.githubusercontent.com/b2a3e8/jekyll-theme-console/master/screenrec-dark.gif" width="550" title="Screenshot">
+[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-console.svg?color=informational)](https://rubygems.org/gems/jekyll-theme-console)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.txt)
+
+<img src="https://raw.githubusercontent.com/b2a3e8/jekyll-theme-console/master/screenrec-dark.gif" width="550" alt="jekyll-theme-console demo animation">
 
 ## Demo
 
-[dark style](https://b2a3e8.github.io/jekyll-theme-console-demo-dark/) ([source code](https://github.com/b2a3e8/jekyll-theme-console-demo-dark)):
+- [dark style demo](https://b2a3e8.github.io/jekyll-theme-console-demo-dark/) ([source code / template](https://github.com/b2a3e8/jekyll-theme-console-demo-dark))
 
-[<img src="https://raw.githubusercontent.com/b2a3e8/jekyll-theme-console/master/screenshot-dark.png" width="350" title="Screenshot">](https://b2a3e8.github.io/jekyll-theme-console-demo-dark/)
+  [<img src="https://raw.githubusercontent.com/b2a3e8/jekyll-theme-console/master/screenshot-dark.png" width="350" alt="Dark style screenshot">](https://b2a3e8.github.io/jekyll-theme-console-demo-dark/)
+- [light style demo](https://b2a3e8.github.io/jekyll-theme-console-demo-light/) ([source code / template](https://github.com/b2a3e8/jekyll-theme-console-demo-light))
 
+  [<img src="https://raw.githubusercontent.com/b2a3e8/jekyll-theme-console/master/screenshot-light.png" width="350" alt="Light style screenshot">](https://b2a3e8.github.io/jekyll-theme-console-demo-light/)
+- [hacker style demo](https://b2a3e8.github.io/jekyll-theme-console-demo-hacker/) ([source code / template](https://github.com/b2a3e8/jekyll-theme-console-demo-hacker))
 
-[light style](https://b2a3e8.github.io/jekyll-theme-console-demo-light/) ([source code](https://github.com/b2a3e8/jekyll-theme-console-demo-light)):
+  [<img src="https://raw.githubusercontent.com/b2a3e8/jekyll-theme-console/master/screenshot-hacker.png" width="350" alt="Hacker style screenshot">](https://b2a3e8.github.io/jekyll-theme-console-demo-hacker/)
 
-[<img src="https://raw.githubusercontent.com/b2a3e8/jekyll-theme-console/master/screenshot-light.png" width="350" title="Screenshot">](https://b2a3e8.github.io/jekyll-theme-console-demo-light/)
+Note: The theme also includes a Nord variant (`style: nord`).
 
+## Features
 
-[hacker style](https://b2a3e8.github.io/jekyll-theme-console-demo-hacker/) ([source code](https://github.com/b2a3e8/jekyll-theme-console-demo-hacker)):
+- Four styles: `dark` (default), `light`, `hacker`, `nord`
+- Optional auto light/dark via `prefers-color-scheme`
+- Strict, extendable Content Security Policy
+- Optional Google Fonts (disable for full self‑hosting)
+- Generic analytics/tracker include (Matomo, Plausible, etc.)
+- Simple header navigation via `header_pages`
+- Works as a RubyGem theme or GitHub Pages remote theme
 
-[<img src="https://raw.githubusercontent.com/b2a3e8/jekyll-theme-console/master/screenshot-hacker.png" width="350" title="Screenshot">](https://b2a3e8.github.io/jekyll-theme-console-demo-hacker/)
+## Quickstart
 
+If you are new to Jekyll, skim the official docs: https://jekyllrb.com/docs/
 
-## Installation
+### GitHub Pages (remote_theme)
 
-First, follow the steps in [this Quickstart Guide](https://jekyllrb.com/docs/) if you're starting with Jekyll from scratch. Skip this if you already have an existing jekyll project.
+Add to your site's `_config.yml`:
 
-**_You can also use the [demo site's source code](https://b2a3e8.github.io/jekyll-theme-console-demo-dark/) as template for an easy start._**
+```yaml
+remote_theme: b2a3e8/jekyll-theme-console
+# Optional but recommended
+plugins:
+  - jekyll-seo-tag
+```
 
-### Remote theme method for GitHub Pages
+Tip: For full local builds with a remote theme, you may need the `jekyll-remote-theme` plugin.
 
-Use this method for sites hosted with GitHub Pages only. To install:
+### Gem-based installation
 
-1. Set `remote_theme` in your project's Jekyll `_config.yml` file:
+1) Add to your `Gemfile`:
 
-   ```yaml
-   remote_theme: b2a3e8/jekyll-theme-console
-   ```
+```ruby
+gem "jekyll-theme-console"
+```
 
-### Gem-based method
+2) Install and enable the theme:
 
-With Gem-based themes, directories such as the `assets`, `_layouts`, `_includes`, and `_sass` are stored in the theme’s gem, hidden from your immediate view. Yet all of the necessary directories will be read and processed during Jekyll’s build process.
+```bash
+bundle
+```
 
-This allows for easier installation and updating as you don't have to manage any of the theme files. To install:
+```yaml
+# _config.yml
+theme: jekyll-theme-console
+plugins:
+  - jekyll-seo-tag
+```
 
-1. Add this line to your Jekyll site's `Gemfile`:
+To update later: `bundle update`.
 
-   ```ruby
-   gem "jekyll-theme-console"
-   ```
+## Configuration
 
-2. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+Add these to `_config.yml` as needed:
 
-   ```bash
-   bundle
-   ```
+- `header_pages`: list of page paths to show in the top menu
+- `footer`: HTML string rendered in the footer
+- `style`: `dark` (default), `light`, `hacker`, or `nord`
+- `listen_for_clients_preferred_style`: `true` to auto‑switch using the OS preference
+- `disable_google_fonts`: `true` to avoid requests to Google Fonts
+- `tracking`: generic tracker configuration (see Security & CSP below)
+- `csp_extra`: extra CSP directives to append to the built‑in policy
 
-3. Set `theme` in your project's Jekyll `_config.yml` file:
-
-   ```yaml
-   theme: jekyll-theme-console
-   ```
-
-To update the theme run `bundle update`.
-
-## Usage
-
-### _config.yml
-
-In addition to jekyll's default configuration options, you can provide:
-- `header_pages`: list of pages displayed in the navbar
-- `footer`: HTML string inserted at the end of the page
-- `listen_for_clients_preferred_style`: allow users to pick light/dark based on OS preference
-- `style`: predefined color style (`dark` default, or `light`, `hacker`)
-- `disable_google_fonts`: set `true` to avoid loading fonts from Google and use system fonts only
-- `tracking`: generic tracking config for any provider (Matomo, Plausible, etc.). See below.
+Example:
 
 ```yaml
 header_pages:
   - index.md
   - about.md
 
-style: dark # dark (default), light or hacker
+style: dark # dark (default), light, hacker, or nord
 listen_for_clients_preferred_style: true # false (default) or true
 
 footer: 'follow us on <a href="https://twitter.com/xxx">twitter</a>'
@@ -98,41 +108,44 @@ disable_google_fonts: false
 #   #   myTracker('init', { siteId: '12345' });
 ```
 
-### front matter variables
+### Front matter
 
-Besides the predefined [front matter](https://jekyllrb.com/docs/front-matter/) variables from jekyll this theme also supports following variables:
-- `title` to set a title for the page
-- `lang` to specify the language, defaults to 'en'
-- `robots` to control the robot meta tag ([details](http://longqian.me/2017/02/12/jekyll-robots-configuration/)) - this may be useful for example to set `NOINDEX` to tag pages
+Additional page variables supported by the theme:
+
+- `title`: page title
+- `lang`: page language (defaults to `en`)
+- `robots`: value for the robots meta tag (e.g., `NOINDEX`)
 
 ## Customization
 
-If you want to customize this theme, follow this steps:
-1. Fork this repository (you can use the fork as your own theme or directly as your website)
-2. Create or modify files in `_layouts` directory for html-based changes
-3. Create or modify files in `_sass` and `assets` for css-based changes
-   - You can change things which are used in all styles (like font-size) in `_sass/base.scss`. You'll find style variables at the top.
-   - Style-specific definitions are in `_sass/_dark.scss`, `_sass/_light.scss`, `_sass/_hacker.scss`.
-   - Fonts are loaded via `<link>` tags for better performance. Set `disable_google_fonts: true` to avoid external font requests.
+Follow these steps to customize:
 
-### Performance tips
+1. Fork this repository (use as a theme or directly as your site)
+2. Edit templates in `_layouts` for HTML changes
+3. Edit styles in `_sass` and `assets`
+   - Global variables (font size, container width) live in `_sass/base.scss`
+   - Style‑specific variables are in `_sass/_dark.scss`, `_sass/_light.scss`, `_sass/_hacker.scss`, `_sass/_nord.scss`
+   - Fonts are loaded with `<link>` tags; set `disable_google_fonts: true` to avoid external font requests
 
-- Enable Sass compression in your site by adding to `_config.yml`:
+Optional tweaks:
+
+- Enable Sass compression in `_config.yml`:
 
   ```yaml
   sass:
     style: compressed
   ```
 
-- Consider adding `jekyll-feed` to your site's plugins for an RSS/Atom feed.
+- Add `jekyll-feed` to generate an Atom/RSS feed.
 
-### Content Security Policy
+### Security & CSP
 
-This theme ships with a strict but practical CSP to improve security. By default it allows:
-- self-hosted content plus images from `https:` and `data:` URIs
-- Google Fonts (if not disabled)
+The theme ships with a strict, practical Content Security Policy. By default it allows:
 
-If you need additional sources (e.g., analytics beacons, external scripts, iframes), extend the policy via `_config.yml`:
+- self‑hosted content, plus images from `https:` and `data:` URIs
+- Google Fonts (unless disabled)
+
+Extend the policy as needed via `_config.yml`:
 
 ```yaml
 csp_extra: "frame-src https:;"
@@ -140,7 +153,7 @@ csp_extra: "frame-src https:;"
 
 Examples:
 
-- Allow a Matomo/PIWIK setup hosted at `https://analytics.example.com`:
+- Matomo at `https://analytics.example.com`:
 
   ```yaml
   tracking:
@@ -150,7 +163,7 @@ Examples:
   csp_extra: "script-src 'self' https://analytics.example.com 'unsafe-inline'; connect-src 'self' https://analytics.example.com; img-src 'self' https://analytics.example.com;"
   ```
 
-- Allow Plausible (self-hosted at `https://plausible.example.com`):
+- Plausible at `https://plausible.example.com`:
 
   ```yaml
   tracking:
@@ -159,7 +172,7 @@ Examples:
   csp_extra: "script-src 'self' https://plausible.example.com; connect-src 'self' https://plausible.example.com;"
   ```
 
-Tip: To remove the top border line in the menu, override CSS in your site (e.g., add a small stylesheet) with:
+Tip: To remove the top border in the menu:
 
 ```css
 .menu { border-top: none; }
@@ -167,24 +180,27 @@ Tip: To remove the top border line in the menu, override CSS in your site (e.g.,
 
 ## Development
 
-Your theme is setup just like a normal Jekyll site. You can run it either natively or in Docker.
+This repository is a standard Jekyll site for local development of the theme.
 
-### Run in Docker (recommended)
+### Docker (recommended)
 
+```bash
+docker compose up --build
+```
 
-`docker compose up --build`
+Open `http://localhost:4000`.
 
-Then open `http://localhost:4000`.
+### Local (Ruby/Bundler)
 
-### Run locally (without Docker)
+```bash
+bundle install
+bundle exec jekyll serve
+```
 
-1. `bundle install`
-2. `bundle exec jekyll serve`
-3. Open `http://localhost:4000`
+Open `http://localhost:4000`.
 
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `jekyll-theme-console.gemspec` accordingly.
+When the theme is released, only files in `_layouts`, `_includes`, `_sass`, and `assets` tracked by Git are bundled. To include additional paths, edit the regexp in `jekyll-theme-console.gemspec`.
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+Open source under the [MIT License](https://opensource.org/licenses/MIT).
