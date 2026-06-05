@@ -4,6 +4,23 @@ layout: home
 permalink: /
 ---
 
-# Lorem ipsum
+## Welcome to my terminal.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```text
+               _   _   U _____ u  ____      U  ___u  _____    _      
+      U  ___u | \ | |  \| ___"|/ / __"| u    \/"_ \/|_ " _|  U" \    
+       \/"_ \/|  \| |   |  _|"  <\___ \/     | / \ |  | |     \| |   
+       | / \ || |\  |   | |___   u___) | U   | \_/ |  | |      | |   
+       |_/ \_||_| \_|   |_____|  |____/   \   \___/   |_|      |_|   
+       \\ ._// ||  \\,-.<<   >>  _// \\  _//  _//   _//|_    //_//   
+      (__)___)(_")  (_/(__)___)(__)___)(__)(___)   (__)__)  (__)_)
+
+```
+
+My name is Daniel. I am a passionate cybersecurity enthusiast, actively diving into the offensive security world since 2019.
+
+This space is my personal notebook where I document my journey and share technical breakdowns. Over the years, I have spent countless hours hunting for bugs in Bug Bounty programs and pwning boxes on platforms like Hack The Box (HTB) and TryHackMe (THM).
+
+I created this blog to share my experience, post step-by-step write-ups of various machines, and connect with other tech-minded people.
+
+Feel free to look around. Stay ethical. Happy hacking.
