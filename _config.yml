@@ -10,7 +10,7 @@ plugins:
   - jekyll-seo-tag
 
 # Theme options
-# style: dark # dark (default) or light or hacker
+style: hacker
 # listen_for_clients_preferred_style: true # true or false (default)
 
 # Fonts
