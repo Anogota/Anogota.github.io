@@ -21,4 +21,4 @@ Task 4:At what level is it recommended to log sensitive resources (like secrets)
 2.Runtime Security & K8s
 Task 1:What percentage of containers live less than 5 minutes in 2024 according to the annual report provided in this task? When check by annual report below, the answer will be: 70
 
-<img width="1479" height="672" alt="image" src="https://github.com/user-attachments/assets/eaba7e7d-be5a-4c77-ba96-54ef5bc00c7e" />
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/eaba7e7d-be5a-4c77-ba96-54ef5bc00c7e" />
