@@ -7,7 +7,7 @@ body {
   color: #24292e !important;
 }
 
-/* Bordowy inline code (jak u 0xdf) */
+/* Bordowy inline code w tekście */
 code {
   color: #b91c1c !important;
   background-color: #f6f8fa !important;
@@ -16,49 +16,58 @@ code {
   font-size: 85% !important;
 }
 
-/* --- CYBER TERMINAL W STYLU 0XDF --- */
+/* --- CYBER TERMINAL W STYLU 0XDF (FIXED) --- */
 
-/* Wrapper dla bloku kodu - dodaje margines i zaokrąglenia */
-div.highlighter-rouge, pre.highlight {
+/* Główny kontener terminala */
+div.highlighter-rouge, pre.highlight, figure.highlight {
   position: relative;
-  background-color: #300a24 !important; /* Charakterystyczny bordowy kolor terminala Ubuntu 0xdf */
+  background-color: #300a24 !important; /* Bordowe tło Ubuntu */
   border-radius: 8px !important;
   padding: 0 !important;
   margin: 30px 0 !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border: 1px solid #4f1f42 !important;
   overflow: hidden !important;
 }
 
-/* Automatyczny górny pasek z kropkami Mac/Ubuntu */
-div.highlighter-rouge::before {
+/* Pasek z kropkami */
+div.highlighter-rouge::before, figure.highlight::before {
   content: "● ● ●";
   display: block;
-  height: 24px;
-  background-color: #3d1230 !important; /* Nieco jaśniejszy pasek górny */
-  color: #ff5f56; /* Kolor pierwszej kropki */
+  height: 26px;
+  background-color: #240219 !important; /* Ciemniejszy pasek */
+  color: #ff5f56;
   font-size: 11px;
   letter-spacing: 2px;
-  padding: 4px 0 0 14px;
+  padding: 6px 0 0 14px;
   font-family: sans-serif !important;
-  text-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #27c93f; /* Druga i trzecia kropka */
-  opacity: 0.8;
-  border-bottom: 1px solid #2c0520;
+  text-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #27c93f;
+  border-bottom: 1px solid #1a0111;
 }
 
-/* Właściwy tekst wewnątrz terminala */
-div.highlighter-rouge pre, pre.highlight pre, code {
+/* Wymuszenie kolorów tekstu wewnątrz całego bloku i wszystkich jego podelementów */
+div.highlighter-rouge pre, 
+div.highlighter-rouge code, 
+div.highlighter-rouge span,
+figure.highlight pre,
+figure.highlight code,
+figure.highlight span {
   background-color: transparent !important;
-  color: #ffffff !important; /* Biały tekst logów */
+  color: #f8f8f2 !important; /* Jasny, bardzo czytelny tekst */
   font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
-  padding: 15px !important;
-  margin: 0 !important;
-  overflow-x: auto;
-  display: block;
 }
 
-/* Kolorowanie tekstu dla poleceń wpisywanych przez Ciebie (opcjonalnie, jeśli używasz promptów) */
-.highlight .gp { color: #8ae234 !important; font-weight: bold; } /* Zielony prompt np. oxdf@hacky$ */
-.highlight .go { color: #ffffff !important; } /* Standardowy output */
+/* Podstawowe dopasowanie marginesów dla tekstu wewnątrz */
+div.highlighter-rouge pre, figure.highlight pre {
+  padding: 18px !important;
+  margin: 0 !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+/* Szybkie, czytelne kolory dla najważniejszych elementów składni, żeby nie było szaro */
+div.highlighter-rouge .gp { color: #8ae234 !important; font-weight: bold; } /* Prompty typu root@kali */
+div.highlighter-rouge .s, div.highlighter-rouge .s2 { color: #e6db74 !important; } /* Tekst w cudzysłowach */
+div.highlighter-rouge .m, div.highlighter-rouge .mi { color: #ae81ff !important; } /* Liczby */
