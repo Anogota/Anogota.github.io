@@ -56,9 +56,9 @@ div.highlighter-rouge {
   display: block !important;
 }
 
-/* 1. PADDING DLA ZWYKŁEGO BLOKU TEKSTU / KODU (np. Nginx config, Python itp.) */
+/* PADDING DLA ZWYKŁEGO BLOKU TEKSTU / KODU (np. text, nginx, python) */
 div.highlighter-rouge pre {
-  padding: 25px 30px !important;          /* Komfortowa przestrzeń z każdej strony textu */
+  padding: 25px 30px !important;          /* Komfortowa przestrzeń z każdej strony tekstu */
   overflow-x: auto !important;
   display: block !important;
 }
@@ -76,14 +76,15 @@ div.highlighter-rouge code {
 /* --- SPECJALNY WYJĄTEK DLA CZARNEGO TERMINALA Z KROPKAMI --- */
 /* Aktywuje się tylko wtedy, gdy w markdownie użyjesz języka jako "terminal" */
 div.language-terminal {
-  background-color: #000000 !important;   /* Zamiana tła na czarne */
-  border: 2px solid #252525 !important;   /* Ciemna, niewidoczna ramka */
-  padding-top: 45px !important;           /* Miejsce od góry, aby tekst nie wchodził pod pasek macOS */
+  background-color: #000000 !important;   /* Zamiana kontenera na czarny */
+  border: 2px solid #252525 !important;   /* Ciemna ramka */
+  padding-top: 45px !important;           /* Miejsce od góry pod pasek systemowy */
 }
 
-/* 2. PADDING DLA TEKSTU WEWNĄTRZ CZARNEGO TERMINALA */
+/* PADDING DLA TEKSTU WEWNĄTRZ CZARNEGO TERMINALA + NAPRAWA ZNIKAJĄCEGO TŁA */
 div.language-terminal pre {
-  padding: 25px 30px !important;          /* Duży, czysty odstęp wokół komend terminala */
+  padding: 25px 30px !important;          /* Duży, czysty odstęp wokół komend */
+  background-color: #000000 !important;   /* WYMUSZANIE CZARNEGO TŁA POD TEKSTEM */
 }
 
 /* Pasek górny terminala */
