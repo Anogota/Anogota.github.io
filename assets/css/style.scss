@@ -36,7 +36,7 @@ code {
   font-size: 85% !important;
 }
 
-/* --- BRUTALNE CZYSZCZENIE TŁA (Usuwa białe i podwójne ramki) --- */
+/* --- TOTALNY RESET DLA ELEMENTÓW WEWNĘTRZNYCH --- */
 div.highlighter-rouge pre, 
 div.highlighter-rouge code, 
 div.highlighter-rouge .highlight,
@@ -50,26 +50,24 @@ figure.highlight,
   padding: 0 !important;
 }
 
-/* --- GŁÓWNE CZARNE PUDEŁKO (Domyślnie dla skryptów jak cmd) --- */
+/* --- DOMYŚLNY STYL: ELEGANCKIE PUDEŁKO Z RAMKĄ (np. dla cmd, skryptów) --- */
 div.highlighter-rouge {
   position: relative !important;
-  background: #000000 !important;
-  background-color: #000000 !important;
-  border-radius: 8px !important;
-  border: 1px solid #1a1a1a !important;
+  background-color: #1e222b !important; /* Grafitowo-granatowe tło jak na screenie */
+  border: 1px solid #d1d5db !important;  /* Cienka, jasna, elegancka ramka */
+  border-radius: 6px !important;
   margin: 25px 0 !important;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5) !important;
   overflow: hidden !important;
 }
 
-/* Odstępy dla tekstu wewnątrz ramki */
+/* Marginesy i suwak dla tekstu wewnątrz ramki */
 div.highlighter-rouge pre {
-  padding: 18px !important;
+  padding: 20px !important;
   overflow-x: auto !important;
   display: block !important;
 }
 
-/* Kolor czcionki w kodzie */
+/* Czcionka i kolory w kodzie */
 div.highlighter-rouge pre code, 
 div.highlighter-rouge pre span {
   color: #ffffff !important; 
@@ -78,13 +76,15 @@ div.highlighter-rouge pre span {
   line-height: 1.5 !important;
 }
 
-/* --- GENEROWANIE PASKA TERMINALA (Dla bash, text i plaintext) --- */
+/* --- WYJĄTEK DLA TERMINALA (Dla bash, text i plaintext) --- */
+/* Nadpisujemy domyślny styl, żeby terminal był czarny i miał pasek z kropkami */
 div.language-bash, div.language-text, div.language-plaintext {
-  /* Robimy miejsce na górny pasek */
-  padding-top: 28px !important;
+  background-color: #000000 !important; /* Klasyczna czerń dla konsoli */
+  border: 1px solid #1a1a1a !important;   /* Ciemna obwódka dla konsoli */
+  padding-top: 28px !important;           /* Miejsce na górny pasek */
 }
 
-/* Szary pasek u góry */
+/* Szary pasek terminala */
 div.language-bash::before, div.language-text::before, div.language-plaintext::before {
   content: "" !important;
   position: absolute !important;
@@ -97,7 +97,7 @@ div.language-bash::before, div.language-text::before, div.language-plaintext::be
   display: block !important;
 }
 
-/* Trzy kolorowe kropki systemowe */
+/* Trzy kolorowe kropki Maca */
 div.language-bash::after, div.language-text::after, div.language-plaintext::after {
   content: "" !important;
   position: absolute !important;
