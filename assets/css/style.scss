@@ -16,10 +16,10 @@ code {
   font-size: 85% !important;
 }
 
-/* --- NOWOCZESNY TERMINAL A'LA 0XDF --- */
+/* --- JEDNYM SŁOWEM: TERMINAL IDEALNY --- */
 
-/* Pudełko terminala */
-div.highlighter-rouge, pre.highlight, figure.highlight, .highlight {
+/* 1. GŁÓWNE PUDEŁKO (Tylko ono dostaje czarne tło i paski) */
+div.highlighter-rouge {
   position: relative !important;
   background-color: #000000 !important; /* Głęboka czerń */
   border-radius: 8px !important;
@@ -30,17 +30,17 @@ div.highlighter-rouge, pre.highlight, figure.highlight, .highlight {
   overflow: hidden !important;
 }
 
-/* JEDEN czysty, nowoczesny pasek u góry */
-div.highlighter-rouge::before, figure.highlight::before, .highlight::before {
+/* 2. JEDEN pasek u góry dodany TYLKO do głównego kontenera */
+div.highlighter-rouge::before {
   content: "" !important;
   display: block !important;
   height: 28px !important;
-  background-color: #1a1a1a !important; /* Ciemnoszary, jednolity pasek */
+  background-color: #1a1a1a !important; /* Ciemnoszary pasek okna */
   border-bottom: 1px solid #111111 !important;
 }
 
-/* PRAWDZIWE IKONY OKNA (Kropki rysowane przez CSS) */
-div.highlighter-rouge::after, figure.highlight::after, .highlight::after {
+/* 3. JEDEN zestaw kropek dodany TYLKO do głównego kontenera */
+div.highlighter-rouge::after {
   content: "" !important;
   position: absolute !important;
   top: 9px !important;
@@ -49,24 +49,37 @@ div.highlighter-rouge::after, figure.highlight::after, .highlight::after {
   height: 10px !important;
   border-radius: 50% !important;
   background-color: #ff5f56 !important; /* Czerwona kropka */
-  box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; /* Żółta i zielona kropka idealnie obok */
+  box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; /* Żółta i zielona */
 }
 
-/* TOTALNE WYMUSZENIE: Wszystko w środku ma być białe, bez wyjątków */
-div.highlighter-rouge *, 
-figure.highlight *, 
-.highlight * {
+/* 4. RESET DLA WEWNĘTRZNYCH ELEMENTÓW (Żeby nie generowały własnych pasków ani tła) */
+figure.highlight, pre.highlight, .highlight, pre, code {
+  background: transparent !important;
   background-color: transparent !important;
-  color: #ffffff !important; /* Czysty biały tekst logów */
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+figure.highlight::before, pre.highlight::before, .highlight::before,
+figure.highlight::after, pre.highlight::after, .highlight::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 5. TEKST W ŚRODKU (Biały, czysty font) */
+div.highlighter-rouge pre code, 
+div.highlighter-rouge pre span, 
+div.highlighter-rouge code {
+  color: #ffffff !important; 
   font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
 }
 
-/* Właściwe odstępy dla tekstu w konsoli */
-div.highlighter-rouge pre, figure.highlight pre, .highlight pre {
+/* Margines wewnętrzny dla samego tekstu, żeby nie dotykał krawędzi */
+div.highlighter-rouge pre {
   padding: 18px !important;
-  margin: 0 !important;
   overflow-x: auto !important;
   display: block !important;
 }
