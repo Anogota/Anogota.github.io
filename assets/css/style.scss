@@ -78,8 +78,8 @@ div.highlighter-rouge code {
 /* --- SPECJALNY WYJĄTEK DLA CZARNEGO TERMINALA Z KROPKAMI --- */
 /* Aktywuje się tylko wtedy, gdy w markdownie użyjesz języka jako "terminal" */
 div.language-terminal {
-  background-color: #000000 !important; /* Zamiana tła na czarne */
-  border: 1px solid #252525 !important;   /* Ciemna, niewidoczna ramka */
+  background-color: #1e222b !important; /* Zamiana tła na czarne */
+  border: 1px solid #d1d5db !important;   /* Ciemna, niewidoczna ramka */
   padding-top: 30px !important;           /* Miejsce na górny pasek macOS */
 }
 
