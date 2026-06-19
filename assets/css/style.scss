@@ -132,36 +132,33 @@ div.language-terminal::after {
 /* --- W razie w do usunięcia ---*/
 
 
-/* --- SYSTEMOWY SIDEBAR + KARTA MASZYNY (DLA DUŻYCH EKRANÓW) --- */
+/* --- NAPRAWIONY UKŁAD SIDEBAR + TREŚĆ --- */
 @media (min-width: 1200px) {
-  /* Kontener Jekylla/Primera dostaje flexa, żeby elementy były obok siebie */
-  body .container-lg {
+  /* Nowy kontener nadrzędny, który trzyma tylko DWIE kolumny (sidebar i tekst) */
+  .blog-layout-wrapper {
     display: flex !important;
-    max-width: 1200px !important;
+    width: 100% !important;
     gap: 40px !important;
-    position: relative !important;
+    align-items: flex-start !important;
+    margin-top: 30px !important;
   }
 
-  /* Właściwa treść bloga po prawej */
-  body .markdown-body {
+  /* Kolumna z właściwym tekstem artykułu */
+  .main-article-content {
     flex: 1 !important;
     min-width: 0 !important;
   }
 
-  /* Konstrukcja paska bocznego po lewej */
+  /* Pasek boczny po lewej */
   .dynamic-sidebar {
     position: sticky !important;
     top: 40px !important;
     width: 230px !important;
-    max-height: calc(100vh - 80px) !important;
-    overflow-y: auto !important;
-    order: -1 !important; /* Przerzuca pasek na lewą stronę tekstu */
     flex-shrink: 0 !important;
     display: block !important;
   }
 }
 
-/* Ukrywamy pasek boczny na telefonach, żeby tekst się nie gniótł */
 @media (max-width: 1199px) {
   .dynamic-sidebar { display: none !important; }
 }
@@ -197,7 +194,6 @@ div.language-terminal::after {
   color: #00adb5 !important;
 }
 
-/* Aktywny artykuł (z turkusowym akcentem) */
 .sidebar-item.active {
   border-left: 2px solid #00adb5 !important;
   padding-left: 8px !important;
@@ -208,10 +204,10 @@ div.language-terminal::after {
   font-weight: bold !important;
 }
 
-/* --- STYLIZACJA KARTY Z PARAMETRAMI --- */
+/* --- KARTA Z PARAMETRAMI MASZYNY --- */
 .sidebar-card {
-  background-color: #1a1a1a !important; /* Ciemne tło okienka */
-  border: 1px solid #333333 !important;   /* Delikatna ramka */
+  background-color: #1a1a1a !important;
+  border: 1px solid #333333 !important;
   border-radius: 6px !important;
   padding: 15px !important;
   margin-top: 20px !important;
@@ -244,10 +240,9 @@ div.language-terminal::after {
 
 .ip-highlight {
   font-family: "Ubuntu Mono", monospace !important;
-  color: #00adb5 !important; /* Turkusowy adres IP */
+  color: #00adb5 !important;
 }
 
-/* Kolory poziomów trudności */
 .diff-easy { color: #27c93f !important; }
 .diff-medium { color: #ffbd2e !important; }
 .diff-hard { color: #ff5f56 !important; }
