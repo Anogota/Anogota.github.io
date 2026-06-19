@@ -4,7 +4,7 @@ layout: home
 permalink: /
 ---
 
-## Welcome to my terminal.
+## Welcome to my blog.
 
 ```text
 ⠉⠉⠉⠉⠁⠀⠀⠀⠀⠒⠂⠰⠤⢤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
