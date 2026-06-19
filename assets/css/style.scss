@@ -2,40 +2,63 @@
 ---
 @import "{{ site.theme }}";
 
-/* --- ROZSZERZENIE STYLU PRIMER O ELEMENTY 0XDF --- */
-
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   color: #24292e !important;
-  line-height: 1.65 !important;
 }
 
-/* Śródtekstowe wyróżnienia poleceń (inline code) - bordowy odcień */
+/* Bordowy inline code (jak u 0xdf) */
 code {
   color: #b91c1c !important;
   background-color: #f6f8fa !important;
   padding: 0.2em 0.4em !important;
   border-radius: 6px !important;
   font-size: 85% !important;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace !important;
-  border: 1px solid #eaecef !important;
 }
 
-/* Duże bloki kodu i logi z terminala (Nmap, Metasploit) - głęboka czerń */
-div.highlighter-rouge, pre.highlight, pre {
-  background-color: #1a1c23 !important;
-  border-left: 4px solid #10b981 !important; /* Charakterystyczny zielony akcent */
-  padding: 16px !important;
+/* --- CYBER TERMINAL W STYLU 0XDF --- */
+
+/* Wrapper dla bloku kodu - dodaje margines i zaokrąglenia */
+div.highlighter-rouge, pre.highlight {
+  position: relative;
+  background-color: #300a24 !important; /* Charakterystyczny bordowy kolor terminala Ubuntu 0xdf */
   border-radius: 8px !important;
-  overflow: auto !important;
-  margin: 20px 0 !important;
+  padding: 0 !important;
+  margin: 30px 0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid #4f1f42 !important;
+  overflow: hidden !important;
 }
 
-/* Kolor tekstu wewnątrz dużych bloków terminala */
-div.highlighter-rouge pre code, pre code, pre span {
-  color: #e9ecef !important;
-  background-color: transparent !important;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
-  font-size: 14px !important;
-  border: none !important;
+/* Automatyczny górny pasek z kropkami Mac/Ubuntu */
+div.highlighter-rouge::before {
+  content: "● ● ●";
+  display: block;
+  height: 24px;
+  background-color: #3d1230 !important; /* Nieco jaśniejszy pasek górny */
+  color: #ff5f56; /* Kolor pierwszej kropki */
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 4px 0 0 14px;
+  font-family: sans-serif !important;
+  text-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #27c93f; /* Druga i trzecia kropka */
+  opacity: 0.8;
+  border-bottom: 1px solid #2c0520;
 }
+
+/* Właściwy tekst wewnątrz terminala */
+div.highlighter-rouge pre, pre.highlight pre, code {
+  background-color: transparent !important;
+  color: #ffffff !important; /* Biały tekst logów */
+  font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
+  font-size: 14.5px !important;
+  line-height: 1.5 !important;
+  padding: 15px !important;
+  margin: 0 !important;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Kolorowanie tekstu dla poleceń wpisywanych przez Ciebie (opcjonalnie, jeśli używasz promptów) */
+.highlight .gp { color: #8ae234 !important; font-weight: bold; } /* Zielony prompt np. oxdf@hacky$ */
+.highlight .go { color: #ffffff !important; } /* Standardowy output */
