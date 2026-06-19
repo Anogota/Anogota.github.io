@@ -2,7 +2,7 @@
 ---
 @import "{{ site.theme }}";
 
-/* --- GLOBALNY DARK MODE --- */
+/* --- GLOBAL DARK MODE --- */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   background-color: #222222 !important; 
@@ -36,7 +36,7 @@ code {
   font-size: 85% !important;
 }
 
-/* --- TOTALNY RESET DLA ELEMENTÓW WEWNĘTRZNYCH --- */
+/* --- CAŁKOWITE WYCZYSZCZENIE BRUDNYCH STYLÓW TEMATU --- */
 div.highlighter-rouge pre, 
 div.highlighter-rouge code, 
 div.highlighter-rouge .highlight,
@@ -50,24 +50,23 @@ figure.highlight,
   padding: 0 !important;
 }
 
-/* --- DOMYŚLNY STYL: ELEGANCKIE PUDEŁKO Z RAMKĄ (np. dla cmd, skryptów) --- */
+/* --- ELEGANCKIE GRAFITOWE PUDEŁKO (Domyślne dla cmd i kodu) --- */
 div.highlighter-rouge {
   position: relative !important;
-  background-color: #1e222b !important; /* Grafitowo-granatowe tło jak na screenie */
-  border: 1px solid #d1d5db !important;  /* Cienka, jasna, elegancka ramka */
+  background-color: #1e222b !important; /* Grafitowe tło */
+  border: 1px solid #d1d5db !important;  /* Jasna obwódka */
   border-radius: 6px !important;
   margin: 25px 0 !important;
   overflow: hidden !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Marginesy i suwak dla tekstu wewnątrz ramki */
 div.highlighter-rouge pre {
   padding: 20px !important;
   overflow-x: auto !important;
   display: block !important;
 }
 
-/* Czcionka i kolory w kodzie */
 div.highlighter-rouge pre code, 
 div.highlighter-rouge pre span {
   color: #ffffff !important; 
@@ -76,15 +75,15 @@ div.highlighter-rouge pre span {
   line-height: 1.5 !important;
 }
 
-/* --- WYJĄTEK DLA TERMINALA (Dla bash, text i plaintext) --- */
-/* Nadpisujemy domyślny styl, żeby terminal był czarny i miał pasek z kropkami */
+/* --- KLASYCZNY CZARNY TERMINAL Z KROPKAMI (Dla logów systemowych) --- */
+/* Stosowane tylko wtedy, gdy jawnie użyjesz klas text, bash lub plaintext */
 div.language-bash, div.language-text, div.language-plaintext {
-  background-color: #000000 !important; /* Klasyczna czerń dla konsoli */
-  border: 1px solid #1a1a1a !important;   /* Ciemna obwódka dla konsoli */
-  padding-top: 28px !important;           /* Miejsce na górny pasek */
+  background-color: #000000 !important; /* Głęboka czerń */
+  border: 1px solid #1a1a1a !important;   /* Ciemna obwódka */
+  padding-top: 28px !important;           /* Przestrzeń pod pasek macos */
 }
 
-/* Szary pasek terminala */
+/* Szary pasek okna */
 div.language-bash::before, div.language-text::before, div.language-plaintext::before {
   content: "" !important;
   position: absolute !important;
@@ -97,7 +96,7 @@ div.language-bash::before, div.language-text::before, div.language-plaintext::be
   display: block !important;
 }
 
-/* Trzy kolorowe kropki Maca */
+/* Trzy kolorowe kropki */
 div.language-bash::after, div.language-text::after, div.language-plaintext::after {
   content: "" !important;
   position: absolute !important;
