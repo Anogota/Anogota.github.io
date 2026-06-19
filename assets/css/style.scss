@@ -58,7 +58,7 @@ div.highlighter-rouge {
 
 /* PADDING DLA ZWYKŁEGO BLOKU TEKSTU / KODU */
 div.highlighter-rouge pre {
-  padding: 10px 16px !important;          /* Duża przestrzeń z każdej strony tekstu */
+  padding: 12px 12px !important;          /* Duża przestrzeń z każdej strony tekstu */
   overflow-x: auto !important;
   display: block !important;
 }
@@ -96,7 +96,7 @@ div.language-terminal {
 
 /* PADDING DLA TEKSTU WEWNĄTRZ CZARNEGO TERMINALA */
 div.language-terminal pre {
-  padding: 25px 30px !important;          /* Duży, czysty odstęp wokół komend terminala */
+  padding: 15px 15px !important;          /* Duży, czysty odstęp wokół komend terminala */
   display: block !important;
 }
 
