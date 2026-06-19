@@ -128,3 +128,126 @@ div.language-terminal::after {
   display: block !important;
   z-index: 20;
 }
+
+/* --- W razie w do usunięcia ---*/
+
+
+/* --- SYSTEMOWY SIDEBAR + KARTA MASZYNY (DLA DUŻYCH EKRANÓW) --- */
+@media (min-width: 1200px) {
+  /* Kontener Jekylla/Primera dostaje flexa, żeby elementy były obok siebie */
+  body .container-lg {
+    display: flex !important;
+    max-width: 1200px !important;
+    gap: 40px !important;
+    position: relative !important;
+  }
+
+  /* Właściwa treść bloga po prawej */
+  body .markdown-body {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  /* Konstrukcja paska bocznego po lewej */
+  .dynamic-sidebar {
+    position: sticky !important;
+    top: 40px !important;
+    width: 230px !important;
+    max-height: calc(100vh - 80px) !important;
+    overflow-y: auto !important;
+    order: -1 !important; /* Przerzuca pasek na lewą stronę tekstu */
+    flex-shrink: 0 !important;
+    display: block !important;
+  }
+}
+
+/* Ukrywamy pasek boczny na telefonach, żeby tekst się nie gniótł */
+@media (max-width: 1199px) {
+  .dynamic-sidebar { display: none !important; }
+}
+
+/* --- STYLIZACJA ELEMENTÓW SIDEBARU --- */
+.sidebar-box-title {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  color: #ffffff !important;
+  margin: 0 0 15px 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  border-bottom: none !important;
+}
+
+.sidebar-menu {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 25px 0 !important;
+}
+
+.sidebar-item {
+  margin-bottom: 8px !important;
+  font-size: 13.5px !important;
+}
+
+.sidebar-item a {
+  color: #888888 !important;
+  text-decoration: none !important;
+}
+
+.sidebar-item a:hover {
+  color: #00adb5 !important;
+}
+
+/* Aktywny artykuł (z turkusowym akcentem) */
+.sidebar-item.active {
+  border-left: 2px solid #00adb5 !important;
+  padding-left: 8px !important;
+}
+
+.sidebar-item.active a {
+  color: #00adb5 !important;
+  font-weight: bold !important;
+}
+
+/* --- STYLIZACJA KARTY Z PARAMETRAMI --- */
+.sidebar-card {
+  background-color: #1a1a1a !important; /* Ciemne tło okienka */
+  border: 1px solid #333333 !important;   /* Delikatna ramka */
+  border-radius: 6px !important;
+  padding: 15px !important;
+  margin-top: 20px !important;
+}
+
+.card-info-row {
+  display: block !important;
+  margin-bottom: 12px !important;
+}
+
+.card-info-row:last-child {
+  margin-bottom: 0 !important;
+}
+
+.info-label {
+  display: block !important;
+  font-size: 11px !important;
+  color: #777777 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 2px !important;
+}
+
+.info-value {
+  display: block !important;
+  font-size: 13.5px !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+.ip-highlight {
+  font-family: "Ubuntu Mono", monospace !important;
+  color: #00adb5 !important; /* Turkusowy adres IP */
+}
+
+/* Kolory poziomów trudności */
+.diff-easy { color: #27c93f !important; }
+.diff-medium { color: #ffbd2e !important; }
+.diff-hard { color: #ff5f56 !important; }
