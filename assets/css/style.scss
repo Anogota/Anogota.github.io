@@ -132,22 +132,23 @@ div.language-terminal::after {
 /* --- W razie w do usunięcia ---*/
 
 
-/* --- NAPRAWIONY I WYŚRODKOWANY UKŁAD SIDEBAR + TREŚĆ --- */
+/* --- NAPRAWIONY I POSZERZONY UKŁAD SIDEBAR + TREŚĆ --- */
 @media (min-width: 1200px) {
-  /* Kontener trzymający dwie kolumny (sidebar i tekst) idealnie na środku strony */
+  /* Zwiększamy max-width, żeby zmieścić i sidebar, i pełnowymiarowy tekst */
   .blog-layout-wrapper {
     display: flex !important;
     width: 100% !important;
-    max-width: 1012px !important;  /* Maksymalna szerokość zgodna z motywem GitHub/Primer */
-    margin: 30px auto 0 auto !important; /* Auto centruje cały layout na ekranie */
+    max-width: 1280px !important;  /* Zwiększone z 1012px, aby tekst się nie gniótł */
+    margin: 30px auto 0 auto !important; /* Idealne centrowanie całego układu na ekranie */
     padding: 0 32px !important;    /* Bezpieczny odstęp od brzegów monitora */
-    gap: 40px !important;
+    gap: 45px !important;          /* Komfortowa przestrzeń między menu a tekstem */
     align-items: flex-start !important;
   }
 
-  /* Kolumna z właściwym tekstem artykułu */
+  /* Kolumna z tekstem artykułu - odzyskuje właściwą, szeroką strukturę */
   .main-article-content {
     flex: 1 !important;
+    max-width: 1012px !important;  /* Dajemy tekstowi dokładnie tyle, ile przewidział motyw */
     min-width: 0 !important;
   }
 
@@ -155,7 +156,7 @@ div.language-terminal::after {
   .dynamic-sidebar {
     position: sticky !important;
     top: 40px !important;
-    width: 220px !important;       /* Szerokość dopasowana do wyśrodkowanego układu */
+    width: 220px !important;       
     flex-shrink: 0 !important;
     display: block !important;
   }
