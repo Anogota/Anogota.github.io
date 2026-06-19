@@ -28,6 +28,7 @@ hr {
   border: none !important;
 }
 
+/* Kod inline (wewnątrz zdań) */
 code {
   color: #ff5f56 !important; 
   background-color: #2d2d2d !important; 
@@ -36,23 +37,27 @@ code {
   font-size: 85% !important;
 }
 
-/* --- PO PROSTU BLOK KODU (Skrypty, bat, cmd - czysta czarna ramka) --- */
-div.highlighter-rouge {
-  position: relative !important;
-  background-color: #000000 !important; 
+/* --- BAZA DLA WSZYSTKICH BLOKÓW (Wymuszenie czarnego tła) --- */
+div.highlighter-rouge, figure.highlight, pre.highlight, pre, .highlight {
+  background-color: #000000 !important; /* Wymuszenie czarnego tła */
+  background: #000000 !important;
   border-radius: 8px !important;
-  padding: 0 !important;
-  margin: 25px 0 !important;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5); 
   border: 1px solid #1a1a1a !important;
-  overflow: hidden !important;
+  margin: 25px 0 !important;
 }
 
-/* --- WYMUSZENIE KOLORÓW I TEXTU --- */
-div.highlighter-rouge pre, div.highlighter-rouge code, div.highlighter-rouge span {
+div.highlighter-rouge {
+  position: relative !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* --- TEXT I CZCIONKA --- */
+div.highlighter-rouge pre code, 
+div.highlighter-rouge pre span, 
+div.highlighter-rouge code {
+  color: #ffffff !important; 
   background: transparent !important;
   background-color: transparent !important;
-  color: #ffffff !important;
   font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
@@ -62,12 +67,14 @@ div.highlighter-rouge pre {
   padding: 18px !important;
   overflow-x: auto !important;
   display: block !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
-/* --- SPECJALNA KLASA DLA TERMINALA (Tylko gdy użyjesz ```terminal) --- */
+/* --- OPCJA Z PASKIEM TERMINALA (Gdy użyjesz języka text lub bash) --- */
 
-/* Pasek u góry */
-div.language-terminal::before {
+/* Dodanie paska */
+div.language-text::before, div.language-bash::before, div.language-plaintext::before {
   content: "" !important;
   display: block !important;
   height: 28px !important;
@@ -75,8 +82,8 @@ div.language-terminal::before {
   border-bottom: 1px solid #111111 !important;
 }
 
-/* Kropki */
-div.language-terminal::after {
+/* Dodanie trzech kropek Maca */
+div.language-text::after, div.language-bash::after, div.language-plaintext::after {
   content: "" !important;
   position: absolute !important;
   top: 9px !important;
@@ -88,7 +95,7 @@ div.language-terminal::after {
   box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; 
 }
 
-/* Padding dla tekstu w terminalu */
-div.language-terminal pre {
+/* Margines górny dla tekstu w terminalu, żeby nie wchodził pod pasek */
+div.language-text pre, div.language-bash pre, div.language-plaintext pre {
   padding-top: 15px !important;
 }
