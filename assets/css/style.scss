@@ -132,15 +132,17 @@ div.language-terminal::after {
 /* --- W razie w do usunięcia ---*/
 
 
-/* --- NAPRAWIONY UKŁAD SIDEBAR + TREŚĆ --- */
+/* --- NAPRAWIONY I WYŚRODKOWANY UKŁAD SIDEBAR + TREŚĆ --- */
 @media (min-width: 1200px) {
-  /* Nowy kontener nadrzędny, który trzyma tylko DWIE kolumny (sidebar i tekst) */
+  /* Kontener trzymający dwie kolumny (sidebar i tekst) idealnie na środku strony */
   .blog-layout-wrapper {
     display: flex !important;
     width: 100% !important;
+    max-width: 1012px !important;  /* Maksymalna szerokość zgodna z motywem GitHub/Primer */
+    margin: 30px auto 0 auto !important; /* Auto centruje cały layout na ekranie */
+    padding: 0 32px !important;    /* Bezpieczny odstęp od brzegów monitora */
     gap: 40px !important;
     align-items: flex-start !important;
-    margin-top: 30px !important;
   }
 
   /* Kolumna z właściwym tekstem artykułu */
@@ -153,7 +155,7 @@ div.language-terminal::after {
   .dynamic-sidebar {
     position: sticky !important;
     top: 40px !important;
-    width: 230px !important;
+    width: 220px !important;       /* Szerokość dopasowana do wyśrodkowanego układu */
     flex-shrink: 0 !important;
     display: block !important;
   }
