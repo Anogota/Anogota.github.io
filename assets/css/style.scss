@@ -2,7 +2,7 @@
 ---
 @import "{{ site.theme }}";
 
-/* --- GLOBAL DARK MODE --- */
+/* --- GLOBALNY DARK MODE --- */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   background-color: #222222 !important; 
@@ -36,12 +36,15 @@ code {
   font-size: 85% !important;
 }
 
-/* --- CAŁKOWITE WYCZYSZCZENIE BRUDNYCH STYLÓW TEMATU --- */
-div.highlighter-rouge pre, 
-div.highlighter-rouge code, 
+/* --- SCORCHED EARTH: CAŁKOWITE WYKASOWANIE BIAŁYCHSTYLÓW MOTYWU --- */
+/* Te selektory czyszczą ukryte style tła z każdego możliwego elementu w środku bloku */
+div.highlighter-rouge pre,
+div.highlighter-rouge code,
 div.highlighter-rouge .highlight,
+div.highlighter-rouge .highlight pre,
 figure.highlight,
-.highlight pre {
+pre.highlight,
+.highlight {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
@@ -50,23 +53,25 @@ figure.highlight,
   padding: 0 !important;
 }
 
-/* --- ELEGANCKIE GRAFITOWE PUDEŁKO (Domyślne dla cmd i kodu) --- */
+/* --- DOMYŚLNY STYL: GRAFITOWE PUDEŁKO Z JASNA RAMKĄ (Dla cmd, powershell i kodu) --- */
 div.highlighter-rouge {
   position: relative !important;
-  background-color: #1e222b !important; /* Grafitowe tło */
-  border: 1px solid #d1d5db !important;  /* Jasna obwódka */
+  background-color: #1e222b !important; /* Dokładnie grafitowe tło */
+  border: 1px solid #ffffff !important;  /* Wyrazista, jasna ramka jak na screenie */
   border-radius: 6px !important;
   margin: 25px 0 !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  display: block !important;
 }
 
+/* Padding i suwak boczny dla tekstu kodu */
 div.highlighter-rouge pre {
-  padding: 20px !important;
+  padding: 18px !important;
   overflow-x: auto !important;
   display: block !important;
 }
 
+/* Czcionka i kolory tekstu kodu */
 div.highlighter-rouge pre code, 
 div.highlighter-rouge pre span {
   color: #ffffff !important; 
@@ -75,37 +80,37 @@ div.highlighter-rouge pre span {
   line-height: 1.5 !important;
 }
 
-/* --- KLASYCZNY CZARNY TERMINAL Z KROPKAMI (Dla logów systemowych) --- */
-/* Stosowane tylko wtedy, gdy jawnie użyjesz klas text, bash lub plaintext */
-div.language-bash, div.language-text, div.language-plaintext {
-  background-color: #000000 !important; /* Głęboka czerń */
-  border: 1px solid #1a1a1a !important;   /* Ciemna obwódka */
-  padding-top: 28px !important;           /* Przestrzeń pod pasek macos */
+/* --- WYJĄTEK DLA LOGÓW (Gdy użyjesz text, bash lub plaintext) --- */
+/* Nadpisujemy domyślny styl ramki, żeby logi wyglądały jak rasowy terminal */
+div.language-text, div.language-bash, div.language-plaintext {
+  background-color: #000000 !important; /* Głęboka czerń terminala */
+  border: 1px solid #252525 !important;   /* Ciemna obwódka */
+  padding-top: 30px !important;           /* Miejsce na górny pasek macos */
 }
 
-/* Szary pasek okna */
-div.language-bash::before, div.language-text::before, div.language-plaintext::before {
+/* Szary pasek okna terminala */
+div.language-text::before, div.language-bash::before, div.language-plaintext::before {
   content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 28px !important;
+  height: 30px !important;
   background-color: #1a1a1a !important; 
   border-bottom: 1px solid #111111 !important;
   display: block !important;
 }
 
-/* Trzy kolorowe kropki */
-div.language-bash::after, div.language-text::after, div.language-plaintext::after {
+/* Trzy kropki systemowe na pasku */
+div.language-text::after, div.language-bash::after, div.language-plaintext::after {
   content: "" !important;
   position: absolute !important;
-  top: 9px !important;
+  top: 10px !important;
   left: 14px !important;
   width: 10px !important;
   height: 10px !important;
   border-radius: 50% !important;
   background-color: #ff5f56 !important; 
-  box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; 
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f !important; 
   display: block !important;
 }
