@@ -2,7 +2,7 @@
 ---
 @import "{{ site.theme }}";
 
-/* --- GLOBALNY DARK MODE --- */
+/* --- GLOBAL DARK MODE --- */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   background-color: #222222 !important; 
@@ -28,23 +28,16 @@ hr {
   border: none !important;
 }
 
-code {
-  color: #ff5f56 !important; 
-  background-color: #2d2d2d !important; 
-  padding: 0.2em 0.4em !important;
-  border-radius: 6px !important;
-  font-size: 85% !important;
-}
-
-/* --- SCORCHED EARTH: CAŁKOWITE WYKASOWANIE BIAŁYCHSTYLÓW MOTYWU --- */
-/* Te selektory czyszczą ukryte style tła z każdego możliwego elementu w środku bloku */
+/* --- USUNIĘCIE WSZELKICH BIAŁYCH TŁÓW I RAMEK PRIMERA --- */
 div.highlighter-rouge pre,
 div.highlighter-rouge code,
 div.highlighter-rouge .highlight,
 div.highlighter-rouge .highlight pre,
 figure.highlight,
 pre.highlight,
-.highlight {
+.highlight,
+.highlight pre,
+.highlight code {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
@@ -53,43 +46,45 @@ pre.highlight,
   padding: 0 !important;
 }
 
-/* --- DOMYŚLNY STYL: GRAFITOWE PUDEŁKO Z JASNA RAMKĄ (Dla cmd, powershell i kodu) --- */
+/* --- EMULACJA STYLU 0xDF / GRAFITOWE OKNO Z JASNA RAMKĄ --- */
+/* Domyślnie aplikowane do KAŻDEGO bloku kodu, niezależnie czy napiszesz cmd, bash czy python */
 div.highlighter-rouge {
   position: relative !important;
-  background-color: #1e222b !important; /* Dokładnie grafitowe tło */
-  border: 1px solid #ffffff !important;  /* Wyrazista, jasna ramka jak na screenie */
+  background-color: #1e222b !important; /* Dokładnie to głębokie grafitowe tło */
+  border: 1px solid #d1d5db !important;  /* Cienka, jasna, elegancka obwódka */
   border-radius: 6px !important;
   margin: 25px 0 !important;
   overflow: hidden !important;
   display: block !important;
 }
 
-/* Padding i suwak boczny dla tekstu kodu */
+/* Marginesy wewnętrzne dla czystego tekstu */
 div.highlighter-rouge pre {
-  padding: 18px !important;
+  padding: 20px !important;
   overflow-x: auto !important;
   display: block !important;
 }
 
-/* Czcionka i kolory tekstu kodu */
+/* Formatowanie i kolor tekstu wewnątrz okna */
 div.highlighter-rouge pre code, 
-div.highlighter-rouge pre span {
+div.highlighter-rouge pre span,
+div.highlighter-rouge code {
   color: #ffffff !important; 
   font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
 }
 
-/* --- WYJĄTEK DLA LOGÓW (Gdy użyjesz text, bash lub plaintext) --- */
-/* Nadpisujemy domyślny styl ramki, żeby logi wyglądały jak rasowy terminal */
-div.language-text, div.language-bash, div.language-plaintext {
-  background-color: #000000 !important; /* Głęboka czerń terminala */
-  border: 1px solid #252525 !important;   /* Ciemna obwódka */
-  padding-top: 30px !important;           /* Miejsce na górny pasek macos */
+/* --- SPECJALNY WYJĄTEK DLA CZARNEGO TERMINALA Z KROPKAMI --- */
+/* Aktywuje się tylko wtedy, gdy w markdownie użyjesz języka jako "terminal" */
+div.language-terminal {
+  background-color: #000000 !important; /* Zamiana tła na czarne */
+  border: 1px solid #252525 !important;   /* Ciemna, niewidoczna ramka */
+  padding-top: 30px !important;           /* Miejsce na górny pasek macOS */
 }
 
-/* Szary pasek okna terminala */
-div.language-text::before, div.language-bash::before, div.language-plaintext::before {
+/* Pasek górny terminala */
+div.language-terminal::before {
   content: "" !important;
   position: absolute !important;
   top: 0 !important;
@@ -101,8 +96,8 @@ div.language-text::before, div.language-bash::before, div.language-plaintext::be
   display: block !important;
 }
 
-/* Trzy kropki systemowe na pasku */
-div.language-text::after, div.language-bash::after, div.language-plaintext::after {
+/* Trzy kolorowe kropki macOS */
+div.language-terminal::after {
   content: "" !important;
   position: absolute !important;
   top: 10px !important;
