@@ -1,3 +1,5 @@
+---
+---
 @import "{{ site.theme }}";
 
 /* --- GLOBAL DARK MODE --- */
@@ -26,39 +28,37 @@ hr {
   border: none !important;
 }
 
-/* --- USUNIĘCIE WSZELKICH BIAŁYCH TŁÓW I RAMEK PRIMERA --- */
-div.highlighter-rouge pre,
-div.highlighter-rouge code,
-div.highlighter-rouge .highlight,
-div.highlighter-rouge .highlight pre,
+/* --- TOTALNY RESET UNIKAJĄCY BIAŁYCH TŁÓW W TRANSPARENT --- */
+/* Zamiast transparentu, domyślnie wymuszamy na wszystkim głęboki grafit */
+div.highlighter-rouge,
 figure.highlight,
 pre.highlight,
 .highlight,
 .highlight pre,
-.highlight code {
-  background: transparent !important;
-  background-color: transparent !important;
+.highlight code,
+div.highlighter-rouge pre,
+div.highlighter-rouge code,
+div.highlighter-rouge .highlight,
+div.highlighter-rouge .highlight pre {
+  background: #1e222b !important;
+  background-color: #1e222b !important;
   border: none !important;
   box-shadow: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 /* --- EMULACJA STYLU 0xDF / GRAFITOWE OKNO Z JASNA RAMKĄ --- */
-/* Domyślnie aplikowane do KAŻDEGO bloku kodu, niezależnie czy napiszesz cmd, bash czy python */
 div.highlighter-rouge {
   position: relative !important;
-  background-color: #1e222b !important; /* Dokładnie to głębokie grafitowe tło */
-  border: 1px solid #d1d5db !important;  /* Cienka, jasna, elegancka obwódka */
+  border: 1px solid #d1d5db !important;  /* Jasna, elegancka obwódka */
   border-radius: 6px !important;
   margin: 25px 0 !important;
   overflow: hidden !important;
   display: block !important;
 }
 
-/* PADDING DLA ZWYKŁEGO BLOKU TEKSTU / KODU (np. text, nginx, python) */
+/* PADDING DLA ZWYKŁEGO BLOKU TEKSTU / KODU */
 div.highlighter-rouge pre {
-  padding: 25px 30px !important;          /* Komfortowa przestrzeń z każdej strony tekstu */
+  padding: 25px 30px !important;          /* Duża przestrzeń z każdej strony tekstu */
   overflow-x: auto !important;
   display: block !important;
 }
@@ -71,20 +71,33 @@ div.highlighter-rouge code {
   font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
+  background: transparent !important;      /* Zapobiega podświetlaniu pojedynczych słów */
+  background-color: transparent !important;
 }
 
-/* --- SPECJALNY WYJĄTEK DLA CZARNEGO TERMINALA Z KROPKAMI --- */
-/* Aktywuje się tylko wtedy, gdy w markdownie użyjesz języka jako "terminal" */
+/* --- PANCERNY WYJĄTEK DLA CZARNEGO TERMINALA Z KROPKAMI --- */
+/* Blokujemy czarne tło na KAŻDYM poziomie (kontener, pre, code), żeby motyw nic nie nadpisał */
+div.language-terminal,
+div.language-terminal pre,
+div.language-terminal code,
+div.language-terminal .highlight,
+div.language-terminal .highlight pre {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
 div.language-terminal {
-  background-color: #000000 !important;   /* Zamiana kontenera na czarny */
+  position: relative !important;
   border: 2px solid #252525 !important;   /* Ciemna ramka */
   padding-top: 45px !important;           /* Miejsce od góry pod pasek systemowy */
+  border-radius: 6px !important;
+  overflow: hidden !important;
 }
 
-/* PADDING DLA TEKSTU WEWNĄTRZ CZARNEGO TERMINALA + NAPRAWA ZNIKAJĄCEGO TŁA */
+/* PADDING DLA TEKSTU WEWNĄTRZ CZARNEGO TERMINALA */
 div.language-terminal pre {
-  padding: 25px 30px !important;          /* Duży, czysty odstęp wokół komend */
-  background-color: #000000 !important;   /* WYMUSZANIE CZARNEGO TŁA POD TEKSTEM */
+  padding: 25px 30px !important;          /* Duży, czysty odstęp wokół komend terminala */
+  display: block !important;
 }
 
 /* Pasek górny terminala */
@@ -98,6 +111,7 @@ div.language-terminal::before {
   background-color: #1a1a1a !important; 
   border-bottom: 1px solid #111111 !important;
   display: block !important;
+  z-index: 10;
 }
 
 /* Trzy kolorowe kropki macOS */
@@ -112,4 +126,5 @@ div.language-terminal::after {
   background-color: #ff5f56 !important; 
   box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f !important; 
   display: block !important;
+  z-index: 20;
 }
