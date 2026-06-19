@@ -36,24 +36,24 @@ code {
   font-size: 85% !important;
 }
 
-/* --- BRUTALNY RESET DLA ELEMENTÓW KODU --- */
-/* Zerujemy absolutnie wszystkie domyślne tła, obramowania i cienie motywu */
-div.highlighter-rouge, 
+/* --- BRUTALNE CZYSZCZENIE TŁA (Usuwa białe i podwójne ramki) --- */
 div.highlighter-rouge pre, 
 div.highlighter-rouge code, 
 div.highlighter-rouge .highlight,
-figure.highlight {
-  background: #000000 !important;
-  background-color: #000000 !important;
+figure.highlight,
+.highlight pre {
+  background: transparent !important;
+  background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
-/* --- JEDEN GŁÓWNY KONTENER (Czarne pudełko dla wszystkiego) --- */
+/* --- GŁÓWNE CZARNE PUDEŁKO (Domyślnie dla skryptów jak cmd) --- */
 div.highlighter-rouge {
   position: relative !important;
+  background: #000000 !important;
   background-color: #000000 !important;
   border-radius: 8px !important;
   border: 1px solid #1a1a1a !important;
@@ -62,14 +62,14 @@ div.highlighter-rouge {
   overflow: hidden !important;
 }
 
-/* Margines dla samego tekstu, żeby nie dotykał ścianek */
+/* Odstępy dla tekstu wewnątrz ramki */
 div.highlighter-rouge pre {
   padding: 18px !important;
   overflow-x: auto !important;
   display: block !important;
 }
 
-/* --- FORMATOWANIE TEKSTU W KODZIE --- */
+/* Kolor czcionki w kodzie */
 div.highlighter-rouge pre code, 
 div.highlighter-rouge pre span {
   color: #ffffff !important; 
@@ -78,28 +78,27 @@ div.highlighter-rouge pre span {
   line-height: 1.5 !important;
 }
 
-/* --- UKRYWANIE PODWÓJNYCH PASKÓW I KROPEK --- */
-div.highlighter-rouge::before, 
-div.highlighter-rouge::after,
-pre::before, pre::after,
-code::before, code::after {
-  content: none !important;
-  display: none !important;
+/* --- GENEROWANIE PASKA TERMINALA (Dla bash, text i plaintext) --- */
+div.language-bash, div.language-text, div.language-plaintext {
+  /* Robimy miejsce na górny pasek */
+  padding-top: 28px !important;
 }
 
-/* --- OPCJA: TERMINAL (Tylko gdy użyjesz text, bash, plaintext) --- */
-
-/* Jeden pasek u góry */
-div.language-text::before, div.language-bash::before, div.language-plaintext::before {
+/* Szary pasek u góry */
+div.language-bash::before, div.language-text::before, div.language-plaintext::before {
   content: "" !important;
-  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
   height: 28px !important;
   background-color: #1a1a1a !important; 
   border-bottom: 1px solid #111111 !important;
+  display: block !important;
 }
 
-/* Jedne kropki Maca */
-div.language-text::after, div.language-bash::after, div.language-plaintext::after {
+/* Trzy kolorowe kropki systemowe */
+div.language-bash::after, div.language-text::after, div.language-plaintext::after {
   content: "" !important;
   position: absolute !important;
   top: 9px !important;
@@ -109,9 +108,5 @@ div.language-text::after, div.language-bash::after, div.language-plaintext::afte
   border-radius: 50% !important;
   background-color: #ff5f56 !important; 
   box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; 
-}
-
-/* Dodatkowy padding z góry dla tekstu w terminalu (żeby nie był pod paskiem) */
-div.language-text pre, div.language-bash pre, div.language-plaintext pre {
-  padding-top: 15px !important;
+  display: block !important;
 }
