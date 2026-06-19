@@ -28,7 +28,6 @@ hr {
   border: none !important;
 }
 
-/* Kod inline (wewnątrz zdań) */
 code {
   color: #ff5f56 !important; 
   background-color: #2d2d2d !important; 
@@ -37,43 +36,60 @@ code {
   font-size: 85% !important;
 }
 
-/* --- BAZA DLA WSZYSTKICH BLOKÓW (Wymuszenie czarnego tła) --- */
-div.highlighter-rouge, figure.highlight, pre.highlight, pre, .highlight {
-  background-color: #000000 !important; /* Wymuszenie czarnego tła */
+/* --- BRUTALNY RESET DLA ELEMENTÓW KODU --- */
+/* Zerujemy absolutnie wszystkie domyślne tła, obramowania i cienie motywu */
+div.highlighter-rouge, 
+div.highlighter-rouge pre, 
+div.highlighter-rouge code, 
+div.highlighter-rouge .highlight,
+figure.highlight {
   background: #000000 !important;
+  background-color: #000000 !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* --- JEDEN GŁÓWNY KONTENER (Czarne pudełko dla wszystkiego) --- */
+div.highlighter-rouge {
+  position: relative !important;
+  background-color: #000000 !important;
   border-radius: 8px !important;
   border: 1px solid #1a1a1a !important;
   margin: 25px 0 !important;
-}
-
-div.highlighter-rouge {
-  position: relative !important;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
 }
 
-/* --- TEXT I CZCIONKA --- */
+/* Margines dla samego tekstu, żeby nie dotykał ścianek */
+div.highlighter-rouge pre {
+  padding: 18px !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+/* --- FORMATOWANIE TEKSTU W KODZIE --- */
 div.highlighter-rouge pre code, 
-div.highlighter-rouge pre span, 
-div.highlighter-rouge code {
+div.highlighter-rouge pre span {
   color: #ffffff !important; 
-  background: transparent !important;
-  background-color: transparent !important;
   font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
 }
 
-div.highlighter-rouge pre {
-  padding: 18px !important;
-  overflow-x: auto !important;
-  display: block !important;
-  background: transparent !important;
-  background-color: transparent !important;
+/* --- UKRYWANIE PODWÓJNYCH PASKÓW I KROPEK --- */
+div.highlighter-rouge::before, 
+div.highlighter-rouge::after,
+pre::before, pre::after,
+code::before, code::after {
+  content: none !important;
+  display: none !important;
 }
 
-/* --- OPCJA Z PASKIEM TERMINALA (Gdy użyjesz języka text lub bash) --- */
+/* --- OPCJA: TERMINAL (Tylko gdy użyjesz text, bash, plaintext) --- */
 
-/* Dodanie paska */
+/* Jeden pasek u góry */
 div.language-text::before, div.language-bash::before, div.language-plaintext::before {
   content: "" !important;
   display: block !important;
@@ -82,7 +98,7 @@ div.language-text::before, div.language-bash::before, div.language-plaintext::be
   border-bottom: 1px solid #111111 !important;
 }
 
-/* Dodanie trzech kropek Maca */
+/* Jedne kropki Maca */
 div.language-text::after, div.language-bash::after, div.language-plaintext::after {
   content: "" !important;
   position: absolute !important;
@@ -95,7 +111,7 @@ div.language-text::after, div.language-bash::after, div.language-plaintext::afte
   box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; 
 }
 
-/* Margines górny dla tekstu w terminalu, żeby nie wchodził pod pasek */
+/* Dodatkowy padding z góry dla tekstu w terminalu (żeby nie był pod paskiem) */
 div.language-text pre, div.language-bash pre, div.language-plaintext pre {
   padding-top: 15px !important;
 }
