@@ -1,34 +1,72 @@
-/**
- * Light theme variables
- */
+/* --- STYLE INSPiROWANE ELEGANCJĄ 0XDF --- */
 
-@mixin theme() {
-  :root {
-    --base-color: #000;
-    --border: dashed 1px rgba(0, 0, 0, 1);
-    --selection-background: rgba(0, 0, 0, 0.99);
-    --selection-text: #FFF;
-    --background-color: #FFF;
-    --text-color: var(--base-color);
-    --placeholder-color: var(--base-color);
-    --link-color: var(--base-color);
-    --code-color-1: #aaaaaa;
-    --code-color-2: #ffffcc;
-    --code-color-3: #F00000;
-    --code-color-4: #F0A0A0;
-    --code-color-5: #0000aa;
-    --code-color-6: #4c8317;
-    --code-color-7: #aa0000;
-    --code-color-8: #000080;
-    --code-color-9: #00aa00;
-    --code-color-10: #888888;
-    --code-color-11: #555555;
-    --code-color-12: #800080;
-    --code-color-13: #00aaaa;
-    --code-color-14: #009999;
-    --code-color-15: #aa5500;
-    --code-color-16: #1e90ff;
-    --code-color-17: #800000;
-    --code-color-18: #bbbbbb;
-  }
+html, body {
+  background-color: #ffffff !important; /* Czyste białe tło dla całej strony */
+  color: #222222 !important;            /* Bardzo czytelny, ciemnoszary tekst */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+
+/* Nadpisanie struktury kontenera strony */
+.container {
+  max-width: 850px !important;
+  background-color: #ffffff !important;
+}
+
+/* Nagłówki sekcji - ostre, ciemne i czytelne */
+h1, h2, h3, h4, h5, h6 {
+  color: #111111 !important;
+  font-weight: 700 !important;
+  font-family: inherit !important;
+  border-bottom: 1px solid #eaecef !important;
+  padding-bottom: 0.3em !important;
+  margin-top: 28px !important;
+  margin-bottom: 16px !important;
+}
+
+/* Śródtekstowe wyróżnienia poleceń (inline code) - styl 0xdf */
+code {
+  background-color: #f6f8fa !important;
+  color: #b91c1c !important; /* Dyskretny czerwony kolor dla komend */
+  padding: .2em .4em !important;
+  border-radius: 6px !important;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace !important;
+  font-size: 85% !important;
+  border: 1px solid #d1d5db !important;
+}
+
+/* Duże bloki kodu (Nmap, Metasploit, terminale) */
+div.highlighter-rouge, pre.highlight, pre {
+  background-color: #1e293b !important; /* Ciemnografitowe tło bloku */
+  border-left: 4px solid #10b981 !important; /* Zielony pasek boczny terminala */
+  padding: 16px !important;
+  border-radius: 8px !important;
+  overflow: auto !important;
+  margin: 20px 0 !important;
+}
+
+/* Tekst wewnątrz dużych bloków konsoli */
+div.highlighter-rouge pre code, pre code, pre span {
+  background-color: transparent !important;
+  color: #e2e8f0 !important; /* Jasny tekst wyjściowy z Nmapa/Metasploita */
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
+  font-size: 14px !important;
+  border: none !important;
+}
+
+/* Linki i nawigacja na stronie */
+a {
+  color: #2563eb !important; /* Przyjemny niebieski dla odnośników */
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: underline !important;
+}
+
+/* Poprawka dla menu i stopek w motywie */
+.footer, .header, .nav, footer, header {
+  background-color: #ffffff !important;
+  color: #555555 !important;
+  border-color: #eaecef !important;
 }
