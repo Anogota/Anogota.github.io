@@ -16,33 +16,40 @@ code {
   font-size: 85% !important;
 }
 
-/* --- KLASYCZNY CZARNY TERMINAL --- */
+/* --- NOWOCZESNY TERMINAL A'LA 0XDF --- */
 
-/* Pudełko terminala - wymuszenie głębokiej czerni */
+/* Pudełko terminala */
 div.highlighter-rouge, pre.highlight, figure.highlight, .highlight {
   position: relative !important;
-  background-color: #000000 !important; /* Idealna czerń */
+  background-color: #000000 !important; /* Głęboka czerń */
   border-radius: 8px !important;
   padding: 0 !important;
   margin: 30px 0 !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 1px solid #222222 !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  border: 1px solid #1a1a1a !important;
   overflow: hidden !important;
 }
 
-/* Górny pasek z kropkami Mac/Ubuntu */
+/* JEDEN czysty, nowoczesny pasek u góry */
 div.highlighter-rouge::before, figure.highlight::before, .highlight::before {
-  content: "● ● ●" !important;
+  content: "" !important;
   display: block !important;
-  height: 26px !important;
-  background-color: #1a1a1a !important; /* Ciemnoszary pasek okna */
-  color: #ff5f56 !important;
-  font-size: 11px !important;
-  letter-spacing: 2px !important;
-  padding: 6px 0 0 14px !important;
-  font-family: sans-serif !important;
-  text-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #27c93f !important;
+  height: 28px !important;
+  background-color: #1a1a1a !important; /* Ciemnoszary, jednolity pasek */
   border-bottom: 1px solid #111111 !important;
+}
+
+/* PRAWDZIWE IKONY OKNA (Kropki rysowane przez CSS) */
+div.highlighter-rouge::after, figure.highlight::after, .highlight::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 9px !important;
+  left: 14px !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #ff5f56 !important; /* Czerwona kropka */
+  box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; /* Żółta i zielona kropka idealnie obok */
 }
 
 /* TOTALNE WYMUSZENIE: Wszystko w środku ma być białe, bez wyjątków */
@@ -50,13 +57,13 @@ div.highlighter-rouge *,
 figure.highlight *, 
 .highlight * {
   background-color: transparent !important;
-  color: #ffffff !important; /* Czysty biały tekst */
+  color: #ffffff !important; /* Czysty biały tekst logów */
   font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
 }
 
-/* Właściwe odstępy dla tekstu */
+/* Właściwe odstępy dla tekstu w konsoli */
 div.highlighter-rouge pre, figure.highlight pre, .highlight pre {
   padding: 18px !important;
   margin: 0 !important;
