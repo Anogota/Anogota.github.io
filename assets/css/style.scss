@@ -7,7 +7,7 @@ body {
   color: #24292e !important;
 }
 
-/* Bordowy inline code w tekście */
+/* Bordowy kod wewnątrz zwykłych zdań */
 code {
   color: #b91c1c !important;
   background-color: #f6f8fa !important;
@@ -16,58 +16,50 @@ code {
   font-size: 85% !important;
 }
 
-/* --- CYBER TERMINAL W STYLU 0XDF (FIXED) --- */
+/* --- KLASYCZNY CZARNY TERMINAL --- */
 
-/* Główny kontener terminala */
-div.highlighter-rouge, pre.highlight, figure.highlight {
-  position: relative;
-  background-color: #300a24 !important; /* Bordowe tło Ubuntu */
+/* Pudełko terminala - wymuszenie głębokiej czerni */
+div.highlighter-rouge, pre.highlight, figure.highlight, .highlight {
+  position: relative !important;
+  background-color: #000000 !important; /* Idealna czerń */
   border-radius: 8px !important;
   padding: 0 !important;
   margin: 30px 0 !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 1px solid #4f1f42 !important;
+  border: 1px solid #222222 !important;
   overflow: hidden !important;
 }
 
-/* Pasek z kropkami */
-div.highlighter-rouge::before, figure.highlight::before {
-  content: "● ● ●";
-  display: block;
-  height: 26px;
-  background-color: #240219 !important; /* Ciemniejszy pasek */
-  color: #ff5f56;
-  font-size: 11px;
-  letter-spacing: 2px;
-  padding: 6px 0 0 14px;
+/* Górny pasek z kropkami Mac/Ubuntu */
+div.highlighter-rouge::before, figure.highlight::before, .highlight::before {
+  content: "● ● ●" !important;
+  display: block !important;
+  height: 26px !important;
+  background-color: #1a1a1a !important; /* Ciemnoszary pasek okna */
+  color: #ff5f56 !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  padding: 6px 0 0 14px !important;
   font-family: sans-serif !important;
-  text-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #27c93f;
-  border-bottom: 1px solid #1a0111;
+  text-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #27c93f !important;
+  border-bottom: 1px solid #111111 !important;
 }
 
-/* Wymuszenie kolorów tekstu wewnątrz całego bloku i wszystkich jego podelementów */
-div.highlighter-rouge pre, 
-div.highlighter-rouge code, 
-div.highlighter-rouge span,
-figure.highlight pre,
-figure.highlight code,
-figure.highlight span {
+/* TOTALNE WYMUSZENIE: Wszystko w środku ma być białe, bez wyjątków */
+div.highlighter-rouge *, 
+figure.highlight *, 
+.highlight * {
   background-color: transparent !important;
-  color: #f8f8f2 !important; /* Jasny, bardzo czytelny tekst */
+  color: #ffffff !important; /* Czysty biały tekst */
   font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
 }
 
-/* Podstawowe dopasowanie marginesów dla tekstu wewnątrz */
-div.highlighter-rouge pre, figure.highlight pre {
+/* Właściwe odstępy dla tekstu */
+div.highlighter-rouge pre, figure.highlight pre, .highlight pre {
   padding: 18px !important;
   margin: 0 !important;
   overflow-x: auto !important;
   display: block !important;
 }
-
-/* Szybkie, czytelne kolory dla najważniejszych elementów składni, żeby nie było szaro */
-div.highlighter-rouge .gp { color: #8ae234 !important; font-weight: bold; } /* Prompty typu root@kali */
-div.highlighter-rouge .s, div.highlighter-rouge .s2 { color: #e6db74 !important; } /* Tekst w cudzysłowach */
-div.highlighter-rouge .m, div.highlighter-rouge .mi { color: #ae81ff !important; } /* Liczby */
