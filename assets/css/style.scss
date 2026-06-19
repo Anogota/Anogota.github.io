@@ -113,3 +113,16 @@ div.highlighter-rouge pre {
   overflow-x: auto !important;
   display: block !important;
 }
+
+/* --- STYLIZACJA BLOKÓW CYTATÓW (BLOCKQUOTES) --- */
+blockquote {
+  padding: 10px 20px !important;
+  margin: 15px 0 !important;
+  background-color: #2d2d2d !important; /* Ciemniejszy szary odcinający się od tła strony */
+  border-left: 4px solid #00adb5 !important; /* Cyanowy pasek z boku */
+  color: #cccccc !important;
+  font-size: 0.95em !important;
+}
+blockquote code {
+  background-color: #222222 !important; /* Żeby inline code wewnątrz cytatu wyglądał spójnie */
+}
