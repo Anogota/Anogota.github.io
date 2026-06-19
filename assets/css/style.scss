@@ -132,27 +132,24 @@ div.language-terminal::after {
 /* --- W razie w do usunięcia ---*/
 
 
-/* --- NAPRAWIONY I POSZERZONY UKŁAD SIDEBAR + TREŚĆ --- */
+/* --- POSZERZONY UKŁAD SIDEBAR + TREŚĆ --- */
 @media (min-width: 1200px) {
-  /* Zwiększamy max-width, żeby zmieścić i sidebar, i pełnowymiarowy tekst */
   .blog-layout-wrapper {
     display: flex !important;
     width: 100% !important;
-    max-width: 1280px !important;  /* Zwiększone z 1012px, aby tekst się nie gniótł */
-    margin: 30px auto 0 auto !important; /* Idealne centrowanie całego układu na ekranie */
-    padding: 0 32px !important;    /* Bezpieczny odstęp od brzegów monitora */
-    gap: 45px !important;          /* Komfortowa przestrzeń między menu a tekstem */
+    max-width: 1280px !important;  
+    margin: 30px auto 0 auto !important; 
+    padding: 0 32px !important;    
+    gap: 45px !important;          
     align-items: flex-start !important;
   }
 
-  /* Kolumna z tekstem artykułu - odzyskuje właściwą, szeroką strukturę */
   .main-article-content {
     flex: 1 !important;
-    max-width: 1012px !important;  /* Dajemy tekstowi dokładnie tyle, ile przewidział motyw */
+    max-width: 1012px !important;  
     min-width: 0 !important;
   }
 
-  /* Pasek boczny po lewej */
   .dynamic-sidebar {
     position: sticky !important;
     top: 40px !important;
@@ -166,7 +163,7 @@ div.language-terminal::after {
   .dynamic-sidebar { display: none !important; }
 }
 
-/* --- STYLIZACJA ELEMENTÓW SIDEBARU --- */
+/* --- MENU W SIDEBARZE --- */
 .sidebar-box-title {
   font-size: 13px !important;
   font-weight: bold !important;
@@ -180,7 +177,7 @@ div.language-terminal::after {
 .sidebar-menu {
   list-style: none !important;
   padding: 0 !important;
-  margin: 0 0 25px 0 !important;
+  margin: 0 !important;
 }
 
 .sidebar-item {
@@ -207,45 +204,43 @@ div.language-terminal::after {
   font-weight: bold !important;
 }
 
-/* --- KARTA Z PARAMETRAMI MASZYNY --- */
-.sidebar-card {
-  background-color: #1a1a1a !important;
-  border: 1px solid #333333 !important;
-  border-radius: 6px !important;
-  padding: 15px !important;
-  margin-top: 20px !important;
+/* --- NOWOCZESNY POZIOMY PASEK METADANYCH POD TYTUŁEM --- */
+.post-htb-metadata-bar {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 30px !important;
+  padding: 12px 0 !important;
+  margin-bottom: 25px !important;
+  border-bottom: 1px solid #2d3139 !important; /* Subtelna linia oddzielająca od tekstu */
 }
 
-.card-info-row {
-  display: block !important;
-  margin-bottom: 12px !important;
+.meta-bar-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 13px !important;
 }
 
-.card-info-row:last-child {
-  margin-bottom: 0 !important;
-}
-
-.info-label {
-  display: block !important;
-  font-size: 11px !important;
-  color: #777777 !important;
-  text-transform: uppercase !important;
+.meta-bar-label {
+  color: #57606a !important; /* Stonowany szary opis */
+  font-weight: bold !important;
   letter-spacing: 0.5px !important;
-  margin-bottom: 2px !important;
 }
 
-.info-value {
-  display: block !important;
-  font-size: 13.5px !important;
-  color: #ffffff !important;
+.meta-bar-value {
+  color: #adbac7 !important; /* Jasny tekst wartości */
   font-weight: 500 !important;
 }
 
-.ip-highlight {
+.meta-bar-value.target-ip {
   font-family: "Ubuntu Mono", monospace !important;
-  color: #00adb5 !important;
+  color: #00adb5 !important; /* Turkusowe wyróżnienie IP */
+  background: rgba(0, 173, 181, 0.08) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
 }
 
-.diff-easy { color: #27c93f !important; }
-.diff-medium { color: #ffbd2e !important; }
-.diff-hard { color: #ff5f56 !important; }
+/* Kolory trudności dopasowane do tekstu */
+.diff-text.easy { color: #27c93f !important; font-weight: bold !important; }
+.diff-text.medium { color: #ffbd2e !important; font-weight: bold !important; }
+.diff-text.hard { color: #ff5f56 !important; font-weight: bold !important; }
