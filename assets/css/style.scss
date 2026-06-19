@@ -28,7 +28,6 @@ hr {
   border: none !important;
 }
 
-/* Kod wewnątrz zdań (inline) */
 code {
   color: #ff5f56 !important; 
   background-color: #2d2d2d !important; 
@@ -37,7 +36,7 @@ code {
   font-size: 85% !important;
 }
 
-/* --- BAZA DLA WSZYSTKICH BLOKÓW (Czarne pudełko z cieniem) --- */
+/* --- PO PROSTU BLOK KODU (Skrypty, bat, cmd - czysta czarna ramka) --- */
 div.highlighter-rouge {
   position: relative !important;
   background-color: #000000 !important; 
@@ -49,10 +48,26 @@ div.highlighter-rouge {
   overflow: hidden !important;
 }
 
-/* --- OPCJA 1: OKNO TERMINALA (Tylko gdy użyjesz text lub bash) --- */
+/* --- WYMUSZENIE KOLORÓW I TEXTU --- */
+div.highlighter-rouge pre, div.highlighter-rouge code, div.highlighter-rouge span {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #ffffff !important;
+  font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
+  font-size: 14.5px !important;
+  line-height: 1.5 !important;
+}
+
+div.highlighter-rouge pre {
+  padding: 18px !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+/* --- SPECJALNA KLASA DLA TERMINALA (Tylko gdy użyjesz ```terminal) --- */
 
 /* Pasek u góry */
-div.language-text::before, div.language-bash::before {
+div.language-terminal::before {
   content: "" !important;
   display: block !important;
   height: 28px !important;
@@ -60,8 +75,8 @@ div.language-text::before, div.language-bash::before {
   border-bottom: 1px solid #111111 !important;
 }
 
-/* Trzy kolorowe kropki */
-div.language-text::after, div.language-bash::after {
+/* Kropki */
+div.language-terminal::after {
   content: "" !important;
   position: absolute !important;
   top: 9px !important;
@@ -73,34 +88,7 @@ div.language-text::after, div.language-bash::after {
   box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; 
 }
 
-/* --- RESET DLA CZYSTEGO FORMATOWANIA --- */
-figure.highlight, pre.highlight, .highlight, pre, code {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
-
-/* --- TEKST I CZCIONKA --- */
-div.highlighter-rouge pre code, 
-div.highlighter-rouge pre span, 
-div.highlighter-rouge code {
-  color: #ffffff !important; 
-  font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
-  font-size: 14.5px !important;
-  line-height: 1.5 !important;
-}
-
-/* Odstępy dla OPCJI 2 (Czyste pudełko - np. cmd, powershell, python) */
-div.highlighter-rouge pre {
-  padding: 18px !important;
-  overflow-x: auto !important;
-  display: block !important;
-}
-
-/* Odstępy dla OPCJI 1 (Terminal - dodajemy padding z góry, żeby tekst nie wszedł pod pasek) */
-div.language-text pre, div.language-bash pre {
+/* Padding dla tekstu w terminalu */
+div.language-terminal pre {
   padding-top: 15px !important;
 }
