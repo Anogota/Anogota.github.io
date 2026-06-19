@@ -114,15 +114,34 @@ div.highlighter-rouge pre {
   display: block !important;
 }
 
-/* --- STYLIZACJA BLOKÓW CYTATÓW (BLOCKQUOTES) --- */
-blockquote {
-  padding: 10px 20px !important;
-  margin: 15px 0 !important;
-  background-color: #2d2d2d !important; /* Ciemniejszy szary odcinający się od tła strony */
-  border-left: 4px solid #00adb5 !important; /* Cyanowy pasek z boku */
-  color: #cccccc !important;
-  font-size: 0.95em !important;
+/* 2. JEDEN pasek u góry - TYLKO dla logów tekstowych i basha */
+div.language-text::before, div.language-bash::before {
+  content: "" !important;
+  display: block !important;
+  height: 28px !important;
+  background-color: #1a1a1a !important; 
+  border-bottom: 1px solid #111111 !important;
 }
-blockquote code {
-  background-color: #222222 !important; /* Żeby inline code wewnątrz cytatu wyglądał spójnie */
+
+/* 3. JEDEN zestaw kropek - TYLKO dla logów tekstowych i basha */
+div.language-text::after, div.language-bash::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 9px !important;
+  left: 14px !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #ff5f56 !important; 
+  box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f !important; 
+}
+
+/* Poprawka paddingu: jeśli to czysty kod (bez paska), tekst nie może być przyklejony do góry */
+div.highlighter-rouge pre {
+  padding: 18px !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+div.language-text pre, div.language-bash pre {
+  padding-top: 18px !important; /* Logi mają już pasek, więc standardowy padding */
 }
