@@ -1,8 +1,13 @@
-My name is Daniel. I am a passionate cybersecurity enthusiast, actively diving into the offensive security world since 2019.
+---
+layout: default
+title: Home
+---
 
-This space is my personal notebook where I document my journey and share technical breakdowns. Over the years, I have spent countless hours hunting for bugs in Bug Bounty programs and powning boxes on platforms like Hack The Box (HTB) and TryHackMe (THM).
+## Welcome to my blog.
 
-I created this blog to share my experience, post step-by-step write-ups of various machines, and connect with other tech-minded people.
+This space serves as my personal cyber security notebook where I document my journey, share technical breakdowns, and post step-by-step writeups of various machines. 
+
+Over the years, I have spent countless hours hunting for bugs in Bug Bounty programs and powning boxes on platforms like Hack The Box (HTB) and TryHackMe (THM). Active in the offensive security world since 2019.
 
 Feel free to look around. Stay ethical. Happy hacking.
 
@@ -10,11 +15,22 @@ Feel free to look around. Stay ethical. Happy hacking.
 
 ### Recent Writeups
 
-<ul>
+<div class="posts-list" style="margin-top: 25px;">
   {% for post in site.posts %}
-    <li>
-      <strong><a href="{{ post.url | relative_url }}">{{ post.title }}</a></strong> 
-      <span style="color: #586069; font-size: 0.85em; margin-left: 10px;">— {{ post.date | date: "%B %d, %Y" }}</span>
-    </li>
+    <div class="post-item" style="margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 20px;">
+      <h4 style="margin-bottom: 5px; font-size: 1.3em;">
+        <a href="{{ post.url | relative_url }}" style="color: #00adb5; font-weight: 600;">{{ post.title }}</a>
+      </h4>
+      <div class="post-meta" style="color: #888; font-size: 0.85em; margin-bottom: 10px;">
+        <span>Published on {{ post.date | date: "%B %d, %Y" }}</span>
+      </div>
+      <div class="post-excerpt" style="color: #ccc; line-height: 1.6; font-size: 0.95em;">
+        {% if post.excerpt %}
+          {{ post.excerpt | strip_html | truncatewords: 30 }}
+        {% else %}
+          Open this writeup to read the full walkthrough, initial access strategy, and privilege escalation steps for this machine.
+        {% endif %}
+      </div>
+    </div>
   {% endfor %}
-</ul>
+</div>
