@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Home
+title: PortSwigger Writeups
+permalink: /tryhackme/
 ---
 
 ## Welcome to my blog.
