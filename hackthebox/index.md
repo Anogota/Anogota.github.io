@@ -1,7 +1,7 @@
 ---
 layout: default
 title: PortSwigger Writeups
-permalink: /portswigger/
+permalink: /hackthebox/
 ---
 
 ## Welcome to my blog.
