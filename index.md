@@ -75,27 +75,149 @@ Feel free to look around. Stay ethical. Happy hacking.
   </a>
 </div>
 
+<!-- Tutaj zaczyna się sekcja ostatnich wpisów -->
+
+<style>
+/* Główna sekcja */
+.latest-posts-section {
+  margin-top: 40px;
+  width: 100%;
+}
+
+/* Lista wpisów - układ w pionie */
+.custom-posts-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  margin-top: 20px !important;
+}
+
+/* Pojedynczy kafelek wpisu */
+.custom-post-card {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background: rgba(20, 20, 20, 0.8) !important;
+  border: 1px solid rgba(0, 242, 255, 0.2) !important;
+  border-radius: 10px !important;
+  padding: 14px 20px !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+/* Hover - rozświetlenie i delikatne uniesienie */
+.custom-post-card:hover {
+  border-color: #00f2ff !important;
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.3) !important;
+  transform: translateY(-2px) !important;
+  background: rgba(30, 30, 30, 0.9) !important;
+}
+
+/* Lewa strona kafelka (Tag + Tytuł) */
+.custom-post-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px !important;
+}
+
+/* Tytuł wpisu */
+.custom-post-title {
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+/* Tagi kategorii */
+.custom-post-tag {
+  font-size: 0.7rem !important;
+  font-weight: bold !important;
+  padding: 3px 8px !important;
+  border-radius: 5px !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+
+.tag-portswigger {
+  background: rgba(139, 92, 246, 0.15) !important;
+  color: #a78bfa !important;
+  border: 1px solid #8b5cf6 !important;
+}
+
+.tag-htb {
+  background: rgba(159, 239, 0, 0.15) !important;
+  color: #9fef00 !important;
+  border: 1px solid #9fef00 !important;
+}
+
+.tag-thm {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+}
+
+/* Prawa strona kafelka (Data + Strzałka) */
+.custom-post-meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.custom-post-date {
+  color: #888888 !important;
+  font-size: 0.85rem !important;
+}
+
+.custom-post-arrow {
+  color: #00f2ff !important;
+  font-size: 1.1rem !important;
+  transition: transform 0.2s ease !important;
+}
+
+.custom-post-card:hover .custom-post-arrow {
+  transform: translateX(4px) !important;
+}
+
+/* Responsywność dla ekranów mobilnych */
+@media (max-width: 600px) {
+  .custom-post-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .custom-post-info {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  .custom-post-meta {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+}
+</style>
+
 <section class="latest-posts-section">
-  <h2 class="section-title">Ostatnie wpisy</h2>
+  <h2 style="color: #fff; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 16px;">Ostatnie wpisy</h2>
   
-  <div class="posts-list">
+  <div class="custom-posts-list">
     {% for post in site.posts limit:5 %}
-      <a href="{{ post.url | relative_url }}" class="post-card">
-        <div class="post-info">
+      <a href="{{ post.url | relative_url }}" class="custom-post-card">
+        <div class="custom-post-info">
           {% if post.categories contains 'portswigger' %}
-            <span class="post-tag tag-portswigger">PortSwigger</span>
+            <span class="custom-post-tag tag-portswigger">PortSwigger</span>
           {% elsif post.categories contains 'hackthebox' %}
-            <span class="post-tag tag-htb">Hack The Box</span>
+            <span class="custom-post-tag tag-htb">Hack The Box</span>
           {% elsif post.categories contains 'tryhackme' %}
-            <span class="post-tag tag-thm">TryHackMe</span>
+            <span class="custom-post-tag tag-thm">TryHackMe</span>
           {% else %}
-            <span class="post-tag">Writeup</span>
+            <span class="custom-post-tag tag-thm">Writeup</span>
           {% endif %}
-          <h3 class="post-title">{{ post.title }}</h3>
+          <h3 class="custom-post-title">{{ post.title }}</h3>
         </div>
-        <div class="post-meta">
-          <span class="post-date">{{ post.date | date: "%d.%m.%Y" }}</span>
-          <span class="post-arrow">&rarr;</span>
+        <div class="custom-post-meta">
+          <span class="custom-post-date">{{ post.date | date: "%d.%m.%Y" }}</span>
+          <span class="custom-post-arrow">&rarr;</span>
         </div>
       </a>
     {% endfor %}
