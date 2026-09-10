@@ -1,0 +1,246 @@
+---
+---
+@import "{{ site.theme }}";
+
+/* --- GLOBAL DARK MODE --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  background-color: #222222 !important; 
+  color: #dddddd !important; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important; 
+  border-bottom-color: #333333 !important; 
+}
+
+a {
+  color: #00adb5 !important; 
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  background-color: #333333 !important;
+  height: 1px !important;
+  border: none !important;
+}
+
+/* --- TOTALNY RESET UNIKAJĄCY BIAŁYCH TŁÓW W TRANSPARENT --- */
+/* Zamiast transparentu, domyślnie wymuszamy na wszystkim głęboki grafit */
+div.highlighter-rouge,
+figure.highlight,
+pre.highlight,
+.highlight,
+.highlight pre,
+.highlight code,
+div.highlighter-rouge pre,
+div.highlighter-rouge code,
+div.highlighter-rouge .highlight,
+div.highlighter-rouge .highlight pre {
+  background: #1e222b !important;
+  background-color: #1e222b !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* --- EMULACJA STYLU 0xDF / GRAFITOWE OKNO Z JASNA RAMKĄ --- */
+div.highlighter-rouge {
+  position: relative !important;
+  border: 1px solid #d1d5db !important;  /* Jasna, elegancka obwódka */
+  border-radius: 6px !important;
+  margin: 25px 0 !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+/* PADDING DLA ZWYKŁEGO BLOKU TEKSTU / KODU */
+div.highlighter-rouge pre {
+  padding: 5px 5px !important;          /* Duża przestrzeń z każdej strony tekstu */
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+/* Formatowanie i kolor tekstu wewnątrz okna */
+div.highlighter-rouge pre code, 
+div.highlighter-rouge pre span,
+div.highlighter-rouge code {
+  color: #ffffff !important; 
+  font-family: "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
+  font-size: 14.5px !important;
+  line-height: 1.5 !important;
+  background: transparent !important;      /* Zapobiega podświetlaniu pojedynczych słów */
+  background-color: transparent !important;
+}
+
+/* --- PANCERNY WYJĄTEK DLA CZARNEGO TERMINALA Z KROPKAMI --- */
+/* Blokujemy czarne tło na KAŻDYM poziomie (kontener, pre, code), żeby motyw nic nie nadpisał */
+div.language-terminal,
+div.language-terminal pre,
+div.language-terminal code,
+div.language-terminal .highlight,
+div.language-terminal .highlight pre {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+div.language-terminal {
+  position: relative !important;
+  border: 2px solid #252525 !important;   /* Ciemna ramka */
+  padding-top: 45px !important;           /* Miejsce od góry pod pasek systemowy */
+  border-radius: 6px !important;
+  overflow: hidden !important;
+}
+
+/* PADDING DLA TEKSTU WEWNĄTRZ CZARNEGO TERMINALA */
+div.language-terminal pre {
+  padding: 15px 15px !important;          /* Duży, czysty odstęp wokół komend terminala */
+  display: block !important;
+}
+
+/* Pasek górny terminala */
+div.language-terminal::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 35px !important;
+  background-color: #1a1a1a !important; 
+  border-bottom: 1px solid #111111 !important;
+  display: block !important;
+  z-index: 10;
+}
+
+/* Trzy kolorowe kropki macOS */
+div.language-terminal::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 13px !important;
+  left: 18px !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #ff5f56 !important; 
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f !important; 
+  display: block !important;
+  z-index: 20;
+}
+
+/* --- W razie w do usunięcia ---*/
+
+
+/* --- POSZERZONY UKŁAD SIDEBAR + TREŚĆ --- */
+@media (min-width: 1200px) {
+  .blog-layout-wrapper {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 1280px !important;  
+    margin: 30px auto 0 auto !important; 
+    padding: 0 32px !important;    
+    gap: 45px !important;          
+    align-items: flex-start !important;
+  }
+
+  .main-article-content {
+    flex: 1 !important;
+    max-width: 1012px !important;  
+    min-width: 0 !important;
+  }
+
+  .dynamic-sidebar {
+    position: sticky !important;
+    top: 40px !important;
+    width: 220px !important;       
+    flex-shrink: 0 !important;
+    display: block !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .dynamic-sidebar { display: none !important; }
+}
+
+/* --- MENU W SIDEBARZE --- */
+.sidebar-box-title {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  color: #ffffff !important;
+  margin: 0 0 15px 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  border-bottom: none !important;
+}
+
+.sidebar-menu {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.sidebar-item {
+  margin-bottom: 8px !important;
+  font-size: 13.5px !important;
+}
+
+.sidebar-item a {
+  color: #888888 !important;
+  text-decoration: none !important;
+}
+
+.sidebar-item a:hover {
+  color: #00adb5 !important;
+}
+
+.sidebar-item.active {
+  border-left: 2px solid #00adb5 !important;
+  padding-left: 8px !important;
+}
+
+.sidebar-item.active a {
+  color: #00adb5 !important;
+  font-weight: bold !important;
+}
+
+/* --- NOWOCZESNY POZIOMY PASEK METADANYCH POD TYTUŁEM --- */
+.post-htb-metadata-bar {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 30px !important;
+  padding: 12px 0 !important;
+  margin-bottom: 25px !important;
+  border-bottom: 1px solid #2d3139 !important; /* Subtelna linia oddzielająca od tekstu */
+}
+
+.meta-bar-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 13px !important;
+}
+
+.meta-bar-label {
+  color: #57606a !important; /* Stonowany szary opis */
+  font-weight: bold !important;
+  letter-spacing: 0.5px !important;
+}
+
+.meta-bar-value {
+  color: #adbac7 !important; /* Jasny tekst wartości */
+  font-weight: 500 !important;
+}
+
+.meta-bar-value.target-ip {
+  font-family: "Ubuntu Mono", monospace !important;
+  color: #00adb5 !important; /* Turkusowe wyróżnienie IP */
+  background: rgba(0, 173, 181, 0.08) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+}
+
+/* Kolory trudności dopasowane do tekstu */
+.diff-text.easy { color: #27c93f !important; font-weight: bold !important; }
+.diff-text.medium { color: #ffbd2e !important; font-weight: bold !important; }
+.diff-text.hard { color: #ff5f56 !important; font-weight: bold !important; }
