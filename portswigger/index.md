@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Home
+title: PortSwigger Writeups
+permalink: /portswigger/
 ---
 
 ## Welcome to my blog.
