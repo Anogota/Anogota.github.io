@@ -97,7 +97,7 @@ Feel free to look around. Stay ethical. Happy hacking.
     <span style="color: #fff;">{{ thm_count }}</span>
   </div>
   <div style="margin-left: auto;">
-    <strong style="color: #fff;">Łącznie:</strong> {{ site.posts.size }}
+    <strong style="color: #fff;">Total:</strong> {{ site.posts.size }}
   </div>
 </div>
 
