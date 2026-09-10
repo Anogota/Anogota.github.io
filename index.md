@@ -13,6 +13,64 @@ Feel free to look around. Stay ethical. Happy hacking.
 
 ---
 
+<style>
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+  }
+
+  .platform-card {
+    background-color: #181818;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .platform-card:hover {
+    transform: translateY(-3px);
+    border-color: #17a2b8;
+  }
+
+  .platform-card img {
+    max-height: 50px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+  .platform-card span {
+    color: #17a2b8;
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+</style>
+
+<div class="platform-grid">
+  <a href="#" class="platform-card">
+    <img src="/assets/images/images.png" alt="PortSwigger">
+    <span>PortSwigger</span>
+  </a>
+
+  <a href="#" class="platform-card">
+    <img src="/assets/images/0x0.png" alt="Hack The Box">
+    <span>Hack The Box</span>
+  </a>
+
+  <a href="#" class="platform-card">
+    <img src="/assets/images/1747133102751.png" alt="TryHackMe">
+    <span>TryHackMe</span>
+  </a>
+</div>
+
 ### Recent Writeups
 
 <div class="posts-list" style="margin-top: 25px;">
