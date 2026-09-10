@@ -16,62 +16,62 @@ Feel free to look around. Stay ethical. Happy hacking.
 <style>
   .platform-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    margin: 25px 0;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
   }
 
   .platform-card {
-    background-color: #181818;
-    border: 1px solid #333;
-    border-radius: 6px;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    aspect-ratio: 1 / 1; /* Wymusza idealny kwadrat */
+    background-color: #121212;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .platform-card:hover {
-    transform: translateY(-3px);
-    border-color: #17a2b8;
-  }
-
+  /* Obrazki wypełniające kwadrat */
   .platform-card img {
-    max-height: 50px;
-    width: auto;
-    object-fit: contain;
-    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Dopasowuje i przycina grafikę, wypełniając cały kwadrat */
+    transition: transform 0.3s ease, filter 0.3s ease;
   }
 
-  .platform-card span {
-    color: #17a2b8;
-    font-weight: bold;
-    font-size: 0.95rem;
+  /* Efekt Hover dla karty */
+  .platform-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: #17a2b8;
+    box-shadow: 0 0 20px rgba(23, 162, 184, 0.4), 
+                inset 0 0 10px rgba(23, 162, 184, 0.2);
+  }
+
+  /* Lekki efekt powiększenia obrazka wewnątrz po najechaniu */
+  .platform-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
   }
 </style>
 
 <div class="platform-grid">
-  <!-- Link do folderu PortSwigger -->
-  <a href="/portswigger/" class="platform-card">
+  <!-- PortSwigger -->
+  <a href="/portswigger/" class="platform-card" title="PortSwigger Writeups">
     <img src="/assets/images/images.png" alt="PortSwigger">
-    <span>PortSwigger</span>
   </a>
 
-  <!-- Link do folderu Hack The Box -->
-  <a href="/hackthebox/" class="platform-card">
+  <!-- Hack The Box -->
+  <a href="/hackthebox/" class="platform-card" title="Hack The Box Writeups">
     <img src="/assets/images/0x0.png" alt="Hack The Box">
-    <span>Hack The Box</span>
   </a>
 
-  <!-- Link do folderu TryHackMe -->
-  <a href="/tryhackme/" class="platform-card">
+  <!-- TryHackMe -->
+  <a href="/tryhackme/" class="platform-card" title="TryHackMe Writeups">
     <img src="/assets/images/1747133102751.png" alt="TryHackMe">
-    <span>TryHackMe</span>
   </a>
 </div>
 
