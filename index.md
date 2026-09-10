@@ -77,39 +77,27 @@ Feel free to look around. Stay ethical. Happy hacking.
 
 <section class="latest-posts-section">
   <h2 class="section-title">Ostatnie wpisy</h2>
-  <div id="posts-container" class="posts-list">
-    <!-- Wpisy wstrzykną się tutaj automatycznie -->
-  </div>
-</section>
-
-<script>
-async function loadLatestPosts() {
-  // Pobieramy listę plików z repozytorium GitHub
-  const response = await fetch('[https://api.github.com/repos/Anogota/Anogota.github.io/contents/_posts]');
-  const files = await response.json();
   
-  // Sortujemy po dacie/nazwie i bierzemy 5 najnowszych
-  const latestFiles = files.slice(-5).reverse();
-  
-  const container = document.getElementById('posts-container');
-  container.innerHTML = '';
-
-  latestFiles.forEach(file => {
-    // Generujemy strukturę dla każdego posta
-    const postHTML = `
-      <a href="${file.html_url}" class="post-card">
+  <div class="posts-list">
+    {% for post in site.posts limit:5 %}
+      <a href="{{ post.url | relative_url }}" class="post-card">
         <div class="post-info">
-          <span class="post-tag tag-htb">Writeup</span>
-          <h3 class="post-title">${file.name.replace('.md', '')}</h3>
+          {% if post.categories contains 'portswigger' %}
+            <span class="post-tag tag-portswigger">PortSwigger</span>
+          {% elsif post.categories contains 'hackthebox' %}
+            <span class="post-tag tag-htb">Hack The Box</span>
+          {% elsif post.categories contains 'tryhackme' %}
+            <span class="post-tag tag-thm">TryHackMe</span>
+          {% else %}
+            <span class="post-tag">Writeup</span>
+          {% endif %}
+          <h3 class="post-title">{{ post.title }}</h3>
         </div>
         <div class="post-meta">
+          <span class="post-date">{{ post.date | date: "%d.%m.%Y" }}</span>
           <span class="post-arrow">&rarr;</span>
         </div>
       </a>
-    `;
-    container.innerHTML += postHTML;
-  });
-}
-
-loadLatestPosts();
-</script>
+    {% endfor %}
+  </div>
+</section>
