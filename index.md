@@ -85,7 +85,7 @@ Feel free to look around. Stay ethical. Happy hacking.
 <script>
 async function loadLatestPosts() {
   // Pobieramy listę plików z repozytorium GitHub
-  const response = await fetch('https://api.github.com/repos/TWOJ_USER/TWOJE_REPO/contents/posts');
+  const response = await fetch('[https://api.github.com/repos/Anogota/Anogota.github.io/contents/_posts]');
   const files = await response.json();
   
   // Sortujemy po dacie/nazwie i bierzemy 5 najnowszych
