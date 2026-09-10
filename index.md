@@ -71,6 +71,26 @@ Feel free to look around. Stay ethical. Happy hacking.
   </a>
 </div>
 
+<div class="platform-grid">
+  <!-- Link do folderu PortSwigger -->
+  <a href="/portswigger/" class="platform-card">
+    <img src="/assets/images/images.png" alt="PortSwigger">
+    <span>PortSwigger</span>
+  </a>
+
+  <!-- Link do folderu Hack The Box -->
+  <a href="/hackthebox/" class="platform-card">
+    <img src="/assets/images/0x0.png" alt="Hack The Box">
+    <span>Hack The Box</span>
+  </a>
+
+  <!-- Link do folderu TryHackMe -->
+  <a href="/tryhackme/" class="platform-card">
+    <img src="/assets/images/1747133102751.png" alt="TryHackMe">
+    <span>TryHackMe</span>
+  </a>
+</div>
+
 ### Recent Writeups
 
 <div class="posts-list" style="margin-top: 25px;">
