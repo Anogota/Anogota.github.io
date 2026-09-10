@@ -61,16 +61,16 @@ Feel free to look around. Stay ethical. Happy hacking.
 <div class="platform-grid">
   <!-- PortSwigger -->
   <a href="/portswigger/" class="platform-card" title="PortSwigger Writeups">
-    <img src="/assets/images/images.png" alt="PortSwigger">
+    <img src="/assets/images/PortSwigger.jpg" alt="PortSwigger">
   </a>
 
   <!-- Hack The Box -->
   <a href="/hackthebox/" class="platform-card" title="Hack The Box Writeups">
-    <img src="/assets/images/0x0.png" alt="Hack The Box">
+    <img src="/assets/images/HackTheBox.jpg" alt="Hack The Box">
   </a>
 
   <!-- TryHackMe -->
   <a href="/tryhackme/" class="platform-card" title="TryHackMe Writeups">
-    <img src="/assets/images/1747133102751.png" alt="TryHackMe">
+    <img src="/assets/images/TryHackMe.jpg" alt="TryHackMe">
   </a>
 </div>
