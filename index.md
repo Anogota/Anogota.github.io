@@ -165,9 +165,9 @@ Feel free to look around. Stay ethical. Happy hacking.
 }
 
 .tag-portswigger {
-  background: rgba(139, 92, 246, 0.15) !important;
-  color: #a78bfa !important;
-  border: 1px solid #8b5cf6 !important;
+  background: rgba(251, 146, 60, 0.15) !important;
+  color: #fb923c !important;
+  border: 1px solid #f97316 !important;
 }
 
 .tag-htb {
