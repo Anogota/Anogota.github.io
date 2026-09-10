@@ -61,7 +61,7 @@ Feel free to look around. Stay ethical. Happy hacking.
 <div class="platform-grid">
   <!-- PortSwigger -->
   <a href="/portswigger/" class="platform-card" title="PortSwigger Writeups">
-    <img src="/assets/images/PortSwigger.jpg" alt="PortSwigger">
+    <img src="/assets/images/PortSwigger.png" alt="PortSwigger">
   </a>
 
   <!-- Hack The Box -->
