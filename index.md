@@ -28,6 +28,7 @@ Feel free to look around. Stay ethical. Happy hacking.
     padding: 15px;
     text-align: center;
     text-decoration: none;
+    color: inherit;
     transition: transform 0.2s ease, border-color 0.2s ease;
     display: flex;
     flex-direction: column;
@@ -53,23 +54,6 @@ Feel free to look around. Stay ethical. Happy hacking.
     font-size: 0.95rem;
   }
 </style>
-
-<div class="platform-grid">
-  <a href="#" class="platform-card">
-    <img src="/assets/images/images.png" alt="PortSwigger">
-    <span>PortSwigger</span>
-  </a>
-
-  <a href="#" class="platform-card">
-    <img src="/assets/images/0x0.png" alt="Hack The Box">
-    <span>Hack The Box</span>
-  </a>
-
-  <a href="#" class="platform-card">
-    <img src="/assets/images/1747133102751.png" alt="TryHackMe">
-    <span>TryHackMe</span>
-  </a>
-</div>
 
 <div class="platform-grid">
   <!-- Link do folderu PortSwigger -->
