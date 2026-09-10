@@ -74,3 +74,42 @@ Feel free to look around. Stay ethical. Happy hacking.
     <img src="/assets/images/TryHackMe.jpg" alt="TryHackMe">
   </a>
 </div>
+
+<section class="latest-posts-section">
+  <h2 class="section-title">Ostatnie wpisy</h2>
+  <div id="posts-container" class="posts-list">
+    <!-- Wpisy wstrzykną się tutaj automatycznie -->
+  </div>
+</section>
+
+<script>
+async function loadLatestPosts() {
+  // Pobieramy listę plików z repozytorium GitHub
+  const response = await fetch('https://api.github.com/repos/TWOJ_USER/TWOJE_REPO/contents/posts');
+  const files = await response.json();
+  
+  // Sortujemy po dacie/nazwie i bierzemy 5 najnowszych
+  const latestFiles = files.slice(-5).reverse();
+  
+  const container = document.getElementById('posts-container');
+  container.innerHTML = '';
+
+  latestFiles.forEach(file => {
+    // Generujemy strukturę dla każdego posta
+    const postHTML = `
+      <a href="${file.html_url}" class="post-card">
+        <div class="post-info">
+          <span class="post-tag tag-htb">Writeup</span>
+          <h3 class="post-title">${file.name.replace('.md', '')}</h3>
+        </div>
+        <div class="post-meta">
+          <span class="post-arrow">&rarr;</span>
+        </div>
+      </a>
+    `;
+    container.innerHTML += postHTML;
+  });
+}
+
+loadLatestPosts();
+</script>
