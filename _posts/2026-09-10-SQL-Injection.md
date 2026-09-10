@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hack The Box: Lame Writeup"
+title: "SQL-Injection"
 box: "Lame"
 box_ip: "10.129.18.214"
 box_os: "Linux"
