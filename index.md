@@ -75,6 +75,32 @@ Feel free to look around. Stay ethical. Happy hacking.
   </a>
 </div>
 
+<!-- Tutaj jest sekcja, ile maszyn rozwiązałem (licznik) -->
+
+<div style="display: flex; gap: 20px; margin: 15px 0 25px 0; padding: 10px 15px; background: rgba(15, 15, 15, 0.6); border-left: 3px solid #00f2ff; border-radius: 4px; font-size: 0.85rem; color: #aaa;">
+  <div>
+    <strong style="color: #fff;">Powned Machines:</strong>
+  </div>
+  <div>
+    <span style="color: #9fef00; font-weight: bold;">HTB:</span> 
+    {% assign htb_count = site.categories.hackthebox | size %}
+    <span style="color: #fff;">{{ htb_count }}</span>
+  </div>
+  <div>
+    <span style="color: #00f2ff; font-weight: bold;">PortSwigger:</span> 
+    {% assign ps_count = site.categories.portswigger | size %}
+    <span style="color: #fff;">{{ ps_count }}</span>
+  </div>
+  <div>
+    <span style="color: #ff4757; font-weight: bold;">THM:</span> 
+    {% assign thm_count = site.categories.tryhackme | size %}
+    <span style="color: #fff;">{{ thm_count }}</span>
+  </div>
+  <div style="margin-left: auto;">
+    <strong style="color: #fff;">Łącznie:</strong> {{ site.posts.size }}
+  </div>
+</div>
+
 <!-- Tutaj zaczyna się sekcja ostatnich wpisów -->
 
 <style>
