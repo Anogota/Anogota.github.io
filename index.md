@@ -87,7 +87,7 @@ Feel free to look around. Stay ethical. Happy hacking.
     <span style="color: #fff;">{{ htb_count }}</span>
   </div>
   <div>
-    <span style="color: #00f2ff; font-weight: bold;">PortSwigger:</span> 
+    <span style="color: #fb923c; font-weight: bold;">PortSwigger:</span> 
     {% assign ps_count = site.categories.portswigger | size %}
     <span style="color: #fff;">{{ ps_count }}</span>
   </div>
