@@ -198,7 +198,7 @@ Feel free to look around. Stay ethical. Happy hacking.
 </style>
 
 <section class="latest-posts-section">
-  <h2 style="color: #fff; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 16px;">Ostatnie wpisy</h2>
+  <h2 style="color: #fff; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 16px;">Recent posts</h2>
   
   <div class="custom-posts-list">
     {% for post in site.posts limit:5 %}
