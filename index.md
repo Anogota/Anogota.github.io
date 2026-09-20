@@ -3,16 +3,16 @@ layout: default
 title: Home
 ---
 
-<!-- Górny pasek nawigacyjny w stylu 0xdf -->
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; margin-bottom: 30px; border-bottom: 1px solid #333; font-family: monospace;">
-    <div style="font-size: 1.25rem; font-weight: bold; color: #00f2ff; letter-spacing: 1px;">
-        Anogota9 <span style="color: #666; font-weight: normal;">hacks stuff</span>
+<!-- Górny pasek nawigacyjny - powiększony -->
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 25px 0; margin-bottom: 35px; border-bottom: 1px solid #333; font-family: monospace;">
+    <div style="font-size: 1.6rem; font-weight: bold; color: #00f2ff; letter-spacing: 1px;">
+        Anogota9 <span style="color: #888; font-weight: normal; font-size: 1.2rem;">hacks stuff</span>
     </div>
-    <nav style="display: flex; gap: 20px; font-size: 0.95rem;">
+    <nav style="display: flex; gap: 25px; font-size: 1.1rem; font-weight: 500;">
         <a href="/" style="color: #00f2ff; text-decoration: none;">Home</a>
-        <a href="/about/" style="color: #aaa; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#aaa'">About Me</a>
-        <a href="/cheatsheets/" style="color: #aaa; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#aaa'">Cheatsheets</a>
-        <a href="https://linkedin.com" target="_blank" style="color: #aaa; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#aaa'">Linkedin</a>
+        <a href="/about/" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">About Me</a>
+        <a href="/cheatsheets/" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">Cheatsheets</a>
+        <a href="https://linkedin.com" target="_blank" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">Linkedin</a>
     </nav>
 </header>
 
