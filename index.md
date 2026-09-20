@@ -1,7 +1,20 @@
-[---
+---
 layout: default
 title: Home
 ---
+
+<!-- Górny pasek nawigacyjny w stylu 0xdf -->
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; margin-bottom: 30px; border-bottom: 1px solid #333; font-family: monospace;">
+    <div style="font-size: 1.25rem; font-weight: bold; color: #00f2ff; letter-spacing: 1px;">
+        Anogota9 <span style="color: #666; font-weight: normal;">hacks stuff</span>
+    </div>
+    <nav style="display: flex; gap: 20px; font-size: 0.95rem;">
+        <a href="/" style="color: #00f2ff; text-decoration: none;">Home</a>
+        <a href="/about/" style="color: #aaa; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#aaa'">About Me</a>
+        <a href="/cheatsheets/" style="color: #aaa; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#aaa'">Cheatsheets</a>
+        <a href="https://linkedin.com" target="_blank" style="color: #aaa; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#aaa'">Linkedin</a>
+    </nav>
+</header>
 
 ## Welcome to my blog.
 
@@ -23,7 +36,7 @@ Feel free to look around. Stay ethical. Happy hacking.
 
   .platform-card {
     position: relative;
-    aspect-ratio: 1 / 1; /* Wymusza idealny kwadrat */
+    aspect-ratio: 1 / 1;
     background-color: #121212;
     border: 1px solid #2a2a2a;
     border-radius: 12px;
@@ -35,15 +48,13 @@ Feel free to look around. Stay ethical. Happy hacking.
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Obrazki wypełniające kwadrat */
   .platform-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Dopasowuje i przycina grafikę, wypełniając cały kwadrat */
+    object-fit: cover;
     transition: transform 0.3s ease, filter 0.3s ease;
   }
 
-  /* Efekt Hover dla karty */
   .platform-card:hover {
     transform: translateY(-5px) scale(1.02);
     border-color: #17a2b8;
@@ -51,7 +62,6 @@ Feel free to look around. Stay ethical. Happy hacking.
                 inset 0 0 10px rgba(23, 162, 184, 0.2);
   }
 
-  /* Lekki efekt powiększenia obrazka wewnątrz po najechaniu */
   .platform-card:hover img {
     transform: scale(1.05);
     filter: brightness(1.1);
@@ -75,8 +85,7 @@ Feel free to look around. Stay ethical. Happy hacking.
   </a>
 </div>
 
-<!-- Tutaj jest sekcja, ile maszyn rozwiązałem (licznik) -->
-
+<!-- Licznik maszyn -->
 <div style="display: flex; gap: 20px; margin: 15px 0 25px 0; padding: 10px 15px; background: rgba(15, 15, 15, 0.6); border-left: 3px solid #00f2ff; border-radius: 4px; font-size: 0.85rem; color: #aaa;">
   <div>
     <strong style="color: #fff;">Powned Machines:</strong>
@@ -101,16 +110,12 @@ Feel free to look around. Stay ethical. Happy hacking.
   </div>
 </div>
 
-<!-- Tutaj zaczyna się sekcja ostatnich wpisów -->
-
 <style>
-/* Główna sekcja */
 .latest-posts-section {
   margin-top: 40px;
   width: 100%;
 }
 
-/* Lista wpisów - układ w pionie */
 .custom-posts-list {
   display: flex !important;
   flex-direction: column !important;
@@ -118,7 +123,6 @@ Feel free to look around. Stay ethical. Happy hacking.
   margin-top: 20px !important;
 }
 
-/* Pojedynczy kafelek wpisu */
 .custom-post-card {
   display: flex !important;
   justify-content: space-between !important;
@@ -131,7 +135,6 @@ Feel free to look around. Stay ethical. Happy hacking.
   transition: all 0.25s ease-in-out !important;
 }
 
-/* Hover - rozświetlenie i delikatne uniesienie */
 .custom-post-card:hover {
   border-color: #00f2ff !important;
   box-shadow: 0 0 15px rgba(0, 242, 255, 0.3) !important;
@@ -139,14 +142,12 @@ Feel free to look around. Stay ethical. Happy hacking.
   background: rgba(30, 30, 30, 0.9) !important;
 }
 
-/* Lewa strona kafelka (Tag + Tytuł) */
 .custom-post-info {
   display: flex !important;
   align-items: center !important;
   gap: 15px !important;
 }
 
-/* Tytuł wpisu */
 .custom-post-title {
   color: #ffffff !important;
   font-size: 1rem !important;
@@ -154,7 +155,6 @@ Feel free to look around. Stay ethical. Happy hacking.
   margin: 0 !important;
 }
 
-/* Tagi kategorii */
 .custom-post-tag {
   font-size: 0.7rem !important;
   font-weight: bold !important;
@@ -182,7 +182,6 @@ Feel free to look around. Stay ethical. Happy hacking.
   border: 1px solid #ffffff !important;
 }
 
-/* Prawa strona kafelka (Data + Strzałka) */
 .custom-post-meta {
   display: flex !important;
   align-items: center !important;
@@ -204,7 +203,6 @@ Feel free to look around. Stay ethical. Happy hacking.
   transform: translateX(4px) !important;
 }
 
-/* Responsywność dla ekranów mobilnych */
 @media (max-width: 600px) {
   .custom-post-card {
     flex-direction: column !important;
@@ -249,4 +247,3 @@ Feel free to look around. Stay ethical. Happy hacking.
     {% endfor %}
   </div>
 </section>
-](https://0xdf.gitlab.io/2018/07/15/htb-bart.html#)
