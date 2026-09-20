@@ -1,4 +1,4 @@
----
+[---
 layout: default
 title: Home
 ---
@@ -249,3 +249,4 @@ Feel free to look around. Stay ethical. Happy hacking.
     {% endfor %}
   </div>
 </section>
+](https://0xdf.gitlab.io/2018/07/15/htb-bart.html#)
