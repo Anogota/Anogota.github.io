@@ -1,0 +1,89 @@
+---
+---
+/* Base site chrome — terminal aesthetic, standalone (no theme dependency).
+ * Complements ad-metodology.scss which handles vectors/topbar/cmd blocks. */
+@import "ad-metodology";
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #0d1117; color: #c9d1d9; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+
+::selection { background: #7ee78733; color: #7ee787; }
+
+a { color: #7ee787; }
+a:hover { color: #a5f3af; }
+
+pre, code { font-family: "JetBrains Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace; }
+
+/* Nav */
+.site-nav {
+  background: #010409;
+  border-bottom: 1px solid #30363d;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+}
+.site-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 12px;
+}
+.site-nav-brand {
+  text-decoration: none;
+  color: #c9d1d9;
+  display: inline-flex;
+  gap: 0;
+}
+.brand-prompt { color: #7ee787; }
+.brand-sep    { color: #8b949e; }
+.brand-path   { color: #c084fc; }
+.brand-caret  { color: #7ee787; margin: 0 6px 0 4px; }
+
+.site-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 16px;
+}
+.site-nav-links a {
+  color: #c9d1d9;
+  text-decoration: none;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  transition: border-color 120ms, color 120ms;
+}
+.site-nav-links a:hover { color: #7ee787; border-color: #30363d; }
+
+.site-main { flex: 1; padding-bottom: 40px; }
+
+.site-footer {
+  border-top: 1px solid #30363d;
+  background: #010409;
+  color: #8b949e;
+  font-size: 11px;
+  padding: 12px 0;
+  margin-top: auto;
+}
+.site-footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.footer-hint { color: #4d7c5a; }
+
+/* Rouge highlight tokens tuned for dark bg */
+.highlight, pre.highlight { background: #0d1117 !important; color: #c9d1d9; }
+.highlight .k, .highlight .kd { color: #ff7b72; }
+.highlight .s, .highlight .s1, .highlight .s2 { color: #a5d6ff; }
+.highlight .nb { color: #d2a8ff; }
+.highlight .nf { color: #d2a8ff; }
+.highlight .c, .highlight .c1 { color: #8b949e; font-style: italic; }
+.highlight .mi, .highlight .m { color: #79c0ff; }
