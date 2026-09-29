@@ -1,0 +1,18 @@
+{%- assign env = include.env | default: "kali" -%}
+{%- assign cmd = include.cmd -%}
+{%- assign lang = include.lang | default: "bash" -%}
+{%- case env -%}
+  {%- when "kali" -%}{%- assign badge = "🐧 kali" -%}{%- assign cls = "env-kali" -%}
+  {%- when "pwnbox" -%}{%- assign badge = "📦 pwnbox" -%}{%- assign cls = "env-pwnbox" -%}
+  {%- when "windows" -%}{%- assign badge = "🪟 windows" -%}{%- assign cls = "env-windows" -%}
+  {%- when "target" -%}{%- assign badge = "🎯 target" -%}{%- assign cls = "env-target" -%}
+  {%- else -%}{%- assign badge = env -%}{%- assign cls = "env-other" -%}
+{%- endcase -%}
+<div class="cmd-block {{ cls }}" data-testid="cmd-block">
+  <div class="cmd-header">
+    <span class="cmd-badge">{{ badge }}</span>
+    {% if include.note %}<span class="cmd-note">{{ include.note }}</span>{% endif %}
+    <button type="button" class="cmd-copy" data-cmd="{{ cmd | escape }}" data-testid="cmd-copy-btn" aria-label="copy command">copy</button>
+  </div>
+<pre class="cmd-pre"><code class="language-{{ lang }}" data-cmd-raw="{{ cmd | escape }}">{{ cmd }}</code></pre>
+</div>
