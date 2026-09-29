@@ -677,6 +677,7 @@ div.language-terminal pre code, div.language-terminal pre span {
 .wu-tagchip.active { background: rgba(159,239,0,0.14) !important; border-color: #9fef00 !important; color: #9fef00 !important; }
 .wu-count { font-family: "JetBrains Mono", monospace !important; font-size: 12px !important; color: #6b7688 !important; margin: 8px 2px !important; }
 .wu-empty { color: #6b7688 !important; font-style: italic !important; padding: 20px 4px !important; }
+.writeup-card.wu-hidden { display: none !important; }
 
 /* ---------- Tags page (cloud + sections) ---------- */
 .tags-cloud { display: flex !important; flex-wrap: wrap !important; gap: 10px !important; margin: 22px 0 !important; }

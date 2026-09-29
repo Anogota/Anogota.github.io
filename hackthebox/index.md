@@ -84,7 +84,7 @@ Step-by-step walkthroughs of retired HTB machines: enumeration, exploitation and
       let matchTags = true;
       activeTags.forEach(t => { if (!tags.split(' ').includes(t)) matchTags = false; });
       const ok = matchText && matchDiff && matchTags;
-      card.style.display = ok ? '' : 'none';
+      card.classList.toggle('wu-hidden', !ok);
       if (ok) shown++;
     });
     countEl.textContent = 'Showing ' + shown + ' of ' + cards.length + ' machines';
