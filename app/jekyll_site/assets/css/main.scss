@@ -1,8 +1,7 @@
 ---
 ---
 /* Base site chrome — terminal aesthetic, standalone (no theme dependency).
- * Complements ad-metodology.scss which handles vectors/topbar/cmd blocks. */
-@import "ad-metodology";
+ * ad-metodology.css is loaded separately in default.html. */
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: #0d1117; color: #c9d1d9; }
