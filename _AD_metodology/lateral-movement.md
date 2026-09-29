@@ -29,7 +29,24 @@ Windows authentication lets you present **secondary credential material** withou
 
 The goal is to reuse harvested material to execute code on new hosts, dump their secrets, and repeat until you reach a Domain Admin session or the DC.
 
-## Step 0 — Validate access & find where you're admin
+<div class="attack-diagram">
+  <div class="diag-title">Lateral Movement — reuse material, hunt DA sessions, reach the DC</div>
+  <div class="diag-flow">
+    <div class="diag-node start"><span class="n-step">STEP 1</span><span class="n-title">Cred / hash / ticket</span><span class="n-tool">from roast / dump</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 2</span><span class="n-title">Find (Pwn3d!) host</span><span class="n-tool">nxc sweep</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 3</span><span class="n-title">PtH / OverPtH</span><span class="n-tool">wmiexec / getTGT</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 4</span><span class="n-title">Dump LSASS</span><span class="n-tool">secretsdump / mimikatz</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 5</span><span class="n-title">Steal DA ticket</span><span class="n-tool">sekurlsa::tickets</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node win"><span class="n-step">STEP 6</span><span class="n-title">PtT to DC</span><span class="n-tool">SYSTEM on DC</span></div>
+  </div>
+</div>
+
+## Step 0 — Validate access &amp; find where you're admin
 
 ```bash
 export DC=10.10.10.100 ; export DOMAIN=corp.local

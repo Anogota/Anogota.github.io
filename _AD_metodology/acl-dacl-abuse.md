@@ -41,6 +41,23 @@ Every AD object has a **Security Descriptor** containing a **DACL** — an order
 | **AllExtendedRights** | All extended rights incl. DCSync | Password reset, DS-Replication (DCSync) |
 | **AddKeyCredentialLink** | Write msDS-KeyCredentialLink | Shadow Credentials (PKINIT) |
 
+<div class="attack-diagram">
+  <div class="diag-title">ACL / DACL abuse — collapse to GenericAll, then take over</div>
+  <div class="diag-flow">
+    <div class="diag-node start"><span class="n-step">STEP 1</span><span class="n-title">Owned principal</span><span class="n-tool">BloodHound edge</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 2</span><span class="n-title">WriteOwner / WriteDacl</span><span class="n-tool">owneredit / dacledit</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 3</span><span class="n-title">Grant GenericAll</span><span class="n-tool">FullControl ACE</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 4</span><span class="n-title">Abuse control</span><span class="n-tool">reset pw / RBCD / shadow</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 5</span><span class="n-title">Control target</span><span class="n-tool">user / group / computer</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node win"><span class="n-step">STEP 6</span><span class="n-title">Domain Admin</span><span class="n-tool">DCSync</span></div>
+  </div>
+</div>
+
 ## Step-by-step by edge
 
 ### A) ForceChangePassword — reset a user's password

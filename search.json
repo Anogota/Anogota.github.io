@@ -1,0 +1,16 @@
+---
+layout: null
+permalink: /search.json
+---
+{% assign items = site.posts | concat: site.AD_metodology %}
+[
+{% for item in items %}
+  {
+    "title": {{ item.title | jsonify }},
+    "url": {{ item.url | relative_url | jsonify }},
+    "type": {% if item.categories and item.categories.size > 0 %}"writeup"{% else %}"ad"{% endif %},
+    "tags": {{ item.tags | jsonify }},
+    "content": {{ item.content | strip_html | normalize_whitespace | truncatewords: 400 | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

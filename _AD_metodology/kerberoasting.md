@@ -40,6 +40,23 @@ Hash format: `$krb5tgs$23$*user$REALM$SPN*$<checksum>$<cipher>` (23 = RC4). AES 
   Service accounts are often provisioned once with a human-chosen password and never rotated. Combined with RC4 tickets, a single GPU rips through them quickly.
 </div>
 
+<div class="attack-diagram">
+  <div class="diag-title">Kerberoasting — credential access chain</div>
+  <div class="diag-flow">
+    <div class="diag-node start"><span class="n-step">STEP 1</span><span class="n-title">Any domain cred</span><span class="n-tool">low-priv user</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 2</span><span class="n-title">Request TGS for SPNs</span><span class="n-tool">GetUserSPNs -request</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 3</span><span class="n-title">TGS-REP hashes</span><span class="n-tool">$krb5tgs$23$</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 4</span><span class="n-title">Crack offline</span><span class="n-tool">hashcat -m 13100</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 5</span><span class="n-title">Service account pw</span><span class="n-tool">svc_sql</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node win"><span class="n-step">STEP 6</span><span class="n-title">Escalate</span><span class="n-tool">privesc / lateral</span></div>
+  </div>
+</div>
+
 ## Step-by-step
 
 ### 1. Enumerate SPNs & request tickets (Impacket)
