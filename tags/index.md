@@ -6,7 +6,7 @@ permalink: /tags/
 
 # Tags
 
-Browse writeups by tag — 0xdf-style. Click a tag in the cloud to jump to its section, or filter the cloud below.
+Browse writeups by tag. Click a tag in the cloud to jump to its section, or filter the cloud below.
 
 <input type="text" id="tag-filter" class="search-box" placeholder="Filter tags…" autocomplete="off">
 
