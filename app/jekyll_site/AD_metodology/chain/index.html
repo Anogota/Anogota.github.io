@@ -1,0 +1,27 @@
+---
+layout: default
+title: Attack Chain
+permalink: /AD_metodology/chain/
+chain_page: true
+---
+<div class="chain-page" data-testid="chain-page">
+  <div class="chain-toolbar">
+    <h1>attack chain</h1>
+    <span style="color:#8b949e">— węzły podświetlają się gdy zmienna w top-barze jest wypełniona. kliknij krawędź żeby przejść do wektora.</span>
+    <span style="margin-left:auto"></span>
+    <button type="button" id="chain-view-graph" class="ad-btn" data-testid="chain-view-graph">graph</button>
+    <button type="button" id="chain-view-timeline" class="ad-btn" data-testid="chain-view-timeline">timeline</button>
+    <button type="button" id="chain-fit" class="ad-btn" data-testid="chain-fit">fit</button>
+  </div>
+  <div class="chain-layout">
+    <div id="chain-graph" data-testid="chain-graph"></div>
+    <aside class="chain-timeline" data-testid="chain-sidebar">
+      <h3>next step suggestions</h3>
+      <ul class="suggest-list" id="chain-suggestions" data-testid="chain-suggestions">
+        <li class="suggest-item"><span style="color:#8b949e">wypełnij kontekst żeby zobaczyć sugestie…</span></li>
+      </ul>
+      <h3 style="margin-top:20px">timeline</h3>
+      <ol class="suggest-list" id="chain-timeline-list" data-testid="chain-timeline-list"></ol>
+    </aside>
+  </div>
+</div>
