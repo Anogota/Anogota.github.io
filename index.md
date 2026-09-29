@@ -3,20 +3,6 @@ layout: default
 title: Home
 ---
 
-<!-- Górny pasek nawigacyjny - powiększony -->
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 25px 0; margin-bottom: 35px; border-bottom: 1px solid #333; font-family: monospace;">
-    <div style="font-size: 1.6rem; font-weight: bold; color: #00f2ff; letter-spacing: 1px;">
-        Anogota9 <span style="color: #888; font-weight: normal; font-size: 1.2rem;">hacks stuff</span>
-    </div>
-    <nav style="display: flex; gap: 25px; font-size: 1.1rem; font-weight: 500;">
-        <a href="/" style="color: #00f2ff; text-decoration: none;">Home</a>
-        <a href="/about/" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">About Me</a>
-        <a href="/cheatsheets/" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">Cheatsheets</a>
-        <a href="/AD_metodology/" style="color: #9fef00; text-decoration: none; font-weight:700;" onmouseover="this.style.color='#c6ff4a'" onmouseout="this.style.color='#9fef00'">AD Methodology</a>
-        <a href="https://linkedin.com" target="_blank" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">Linkedin</a>
-    </nav>
-</header>
-
 ## Welcome to my blog.
 
 This space serves as my personal cyber security notebook where I document my journey, share technical breakdowns, and post step-by-step writeups of various machines. 
@@ -225,26 +211,24 @@ Feel free to look around. Stay ethical. Happy hacking.
 <section class="latest-posts-section">
   <h2 style="color: #fff; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 16px;">Recent posts</h2>
   
-  <div class="custom-posts-list">
+  <div class="writeups-list">
     {% for post in site.posts limit:5 %}
-      <a href="{{ post.url | relative_url }}" class="custom-post-card">
-        <div class="custom-post-info">
-          {% if post.categories contains 'portswigger' %}
-            <span class="custom-post-tag tag-portswigger">PortSwigger</span>
-          {% elsif post.categories contains 'hackthebox' %}
-            <span class="custom-post-tag tag-htb">Hack The Box</span>
-          {% elsif post.categories contains 'tryhackme' %}
-            <span class="custom-post-tag tag-thm">TryHackMe</span>
-          {% else %}
-            <span class="custom-post-tag tag-thm">Writeup</span>
-          {% endif %}
-          <h3 class="custom-post-title">{{ post.title }}</h3>
+      {% assign os = post.box_os | downcase %}
+      {% assign diff = post.box_difficulty | downcase %}
+      <article class="writeup-card">
+        <div class="wc-body">
+          <h3 class="wc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <div class="wc-meta">
+            <span class="wc-chip date">{{ post.date | date: "%b %d, %Y" }}</span>
+            {% if post.box_os %}<span class="wc-chip os-{{ os }}">{{ post.box_os }}</span>{% endif %}
+            {% if post.box_difficulty %}<span class="wc-chip diff-{{ diff }}">{{ post.box_difficulty }}</span>{% endif %}
+          </div>
+          <div class="wc-excerpt">
+            {% if post.excerpt %}{{ post.excerpt | strip_html | truncatewords: 40 }}{% else %}Open this writeup to read the full walkthrough.{% endif %}
+          </div>
         </div>
-        <div class="custom-post-meta">
-          <span class="custom-post-date">{{ post.date | date: "%d.%m.%Y" }}</span>
-          <span class="custom-post-arrow">&rarr;</span>
-        </div>
-      </a>
+        <img class="wc-thumb" src="{{ post.box_image | default: '/assets/images/machines/default.png' | relative_url }}" alt="{{ post.box | default: post.title }} icon" loading="lazy">
+      </article>
     {% endfor %}
   </div>
 </section>

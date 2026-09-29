@@ -4,28 +4,28 @@ title: PortSwigger Writeups
 permalink: /portswigger/
 ---
 
-## Welcome to my blog.
+# PortSwigger — Web Security Academy
 
-### Recent Writeups
+Writeups and notes from the PortSwigger Web Security Academy labs.
 
-<div class="posts-list" style="margin-top: 25px;">
+<div class="writeups-list">
   {% for post in site.posts %}
     {% if post.categories contains 'portswigger' or post.tags contains 'portswigger' %}
-      <div class="post-item" style="margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 20px;">
-        <h4 style="margin-bottom: 5px; font-size: 1.3em;">
-          <a href="{{ post.url | relative_url }}" style="color: #00adb5; font-weight: 600;">{{ post.title }}</a>
-        </h4>
-        <div class="post-meta" style="color: #888; font-size: 0.85em; margin-bottom: 10px;">
-          <span>Published on {{ post.date | date: "%B %d, %Y" }}</span>
+      {% assign os = post.box_os | downcase %}
+      {% assign diff = post.box_difficulty | downcase %}
+      <article class="writeup-card">
+        <div class="wc-body">
+          <h3 class="wc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <div class="wc-meta">
+            <span class="wc-chip date">{{ post.date | date: "%b %d, %Y" }}</span>
+            {% if post.box_difficulty %}<span class="wc-chip diff-{{ diff }}">{{ post.box_difficulty }}</span>{% endif %}
+          </div>
+          <div class="wc-excerpt">
+            {% if post.excerpt %}{{ post.excerpt | strip_html | truncatewords: 45 }}{% else %}Open this writeup to read the full walkthrough.{% endif %}
+          </div>
         </div>
-        <div class="post-excerpt" style="color: #ccc; line-height: 1.6; font-size: 0.95em;">
-          {% if post.excerpt %}
-            {{ post.excerpt | strip_html | truncatewords: 30 }}
-          {% else %}
-            Open this writeup to read the full walkthrough.
-          {% endif %}
-        </div>
-      </div>
+        <img class="wc-thumb" src="{{ post.box_image | default: '/assets/images/machines/default.png' | relative_url }}" alt="{{ post.title }} icon" loading="lazy">
+      </article>
     {% endif %}
   {% endfor %}
 </div>

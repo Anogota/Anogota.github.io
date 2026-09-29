@@ -31,6 +31,23 @@ vuln template / CA misconfig ──► request cert as (or SAN=) privileged user
         ──► PKINIT auth with cert ──► TGT + UnPAC NT hash ──► Domain Admin
 ```
 
+<div class="attack-diagram">
+  <div class="diag-title">ESC1 → Domain Admin — attack chain</div>
+  <div class="diag-flow">
+    <div class="diag-node start"><span class="n-step">STEP 1</span><span class="n-title">Low-priv creds</span><span class="n-tool">m.rossi</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 2</span><span class="n-title">Find vuln template</span><span class="n-tool">certipy find</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 3</span><span class="n-title">Request cert, SAN=admin</span><span class="n-tool">certipy req -upn</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 4</span><span class="n-title">PKINIT auth</span><span class="n-tool">certipy auth</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 5</span><span class="n-title">TGT + NT hash</span><span class="n-tool">UnPAC-the-hash</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node win"><span class="n-step">STEP 6</span><span class="n-title">Domain Admin</span><span class="n-tool">DCSync</span></div>
+  </div>
+</div>
+
 ### The ESC map
 
 | ESC | Root cause | Who fixes | Certipy path |

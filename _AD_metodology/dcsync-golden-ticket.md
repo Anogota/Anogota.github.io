@@ -13,6 +13,23 @@ summary: "Replicate every domain secret via DCSync, then forge Golden/Silver/Dia
 
 This is the finish line: extract the domain's master keys, then forge Kerberos tickets that grant permanent, self-issued access to anything in the domain.
 
+<div class="attack-diagram">
+  <div class="diag-title">DCSync → Golden Ticket — domain dominance</div>
+  <div class="diag-flow">
+    <div class="diag-node start"><span class="n-step">STEP 1</span><span class="n-title">Replication rights</span><span class="n-tool">DA / DCSync ACE</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 2</span><span class="n-title">Dump krbtgt</span><span class="n-tool">secretsdump</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 3</span><span class="n-title">Get Domain SID</span><span class="n-tool">lookupsid</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 4</span><span class="n-title">Forge TGT</span><span class="n-tool">ticketer / golden</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 5</span><span class="n-title">SYSTEM on DC</span><span class="n-tool">psexec -k</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node win"><span class="n-step">STEP 6</span><span class="n-title">Domain owned</span><span class="n-tool">persistence</span></div>
+  </div>
+</div>
+
 ## Pre-requisites
 
 <div class="badges">
