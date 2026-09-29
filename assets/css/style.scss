@@ -624,3 +624,92 @@ div.language-terminal pre code, div.language-terminal pre span {
   .diag-flow { flex-direction: column !important; align-items: center !important; }
   .diag-arrow { transform: rotate(90deg) !important; padding: 4px 0 !important; }
 }
+
+/* ==========================================================================
+   ADDITIONS: post header + tags, writeup filters, tag cloud, search
+   ========================================================================== */
+
+/* ---------- Post header (date + title + 0xdf-style tags) ---------- */
+.post-header { margin-bottom: 10px !important; }
+.post-header .post-date { font-family: "JetBrains Mono", monospace !important; font-size: 12px !important; color: #6b7688 !important; letter-spacing: 0.5px !important; }
+.post-header .post-h1 { margin: 4px 0 8px 0 !important; font-size: 2.1rem !important; font-weight: 800 !important; color: #00d3e0 !important; border-bottom: none !important; }
+.post-tags, .writeup-card .wc-tags { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px !important; margin: 10px 0 6px 0 !important; }
+.post-tags .tag-ico { color: #6b7688 !important; font-size: 13px !important; }
+.post-tag, .wc-tag {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 12px !important; font-weight: 600 !important;
+  color: #9fef00 !important; text-decoration: none !important;
+  padding: 2px 8px !important; border-radius: 5px !important;
+  background: rgba(159,239,0,0.07) !important; border: 1px solid #33450a !important;
+  transition: all 0.15s ease !important;
+}
+.post-tag:hover, .wc-tag:hover { background: rgba(159,239,0,0.15) !important; color: #c6ff4a !important; text-decoration: none !important; }
+
+/* ---------- Writeup filter toolbar (0xdf interactive style) ---------- */
+.wu-toolbar {
+  display: flex !important; flex-wrap: wrap !important; gap: 12px !important; align-items: center !important;
+  margin: 22px 0 8px 0 !important; padding: 16px !important;
+  background: rgba(18,21,27,0.7) !important; border: 1px solid #20242c !important; border-radius: 10px !important;
+}
+.wu-search {
+  flex: 1 1 260px !important; min-width: 200px !important;
+  background: #0a0c0f !important; border: 1px solid #2d3139 !important; border-radius: 8px !important;
+  color: #e6edf3 !important; padding: 10px 14px !important;
+  font-family: "JetBrains Mono", monospace !important; font-size: 14px !important;
+}
+.wu-search:focus { outline: none !important; border-color: #00e0d0 !important; box-shadow: 0 0 0 2px rgba(0,224,208,0.15) !important; }
+.wu-difficulties { display: flex !important; gap: 8px !important; flex-wrap: wrap !important; }
+.wu-btn {
+  cursor: pointer !important; font-family: "JetBrains Mono", monospace !important; font-size: 12px !important; font-weight: 700 !important;
+  text-transform: uppercase !important; letter-spacing: 0.4px !important;
+  padding: 8px 12px !important; border-radius: 20px !important; background: #0a0c0f !important;
+  border: 1px solid #2d3139 !important; color: #8b93a1 !important; transition: all 0.15s ease !important;
+}
+.wu-btn:hover { border-color: #00adb5 !important; color: #cdd6e2 !important; }
+.wu-btn.active { background: rgba(0,224,208,0.12) !important; border-color: #00e0d0 !important; color: #00e0d0 !important; }
+.wu-tagcloud { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; margin: 6px 0 10px 0 !important; }
+.wu-tagchip {
+  cursor: pointer !important; font-family: "JetBrains Mono", monospace !important; font-size: 12px !important;
+  padding: 4px 10px !important; border-radius: 20px !important; background: #0a0c0f !important;
+  border: 1px solid #2d3139 !important; color: #9aa3b0 !important; transition: all 0.15s ease !important;
+}
+.wu-tagchip:hover { border-color: #9fef00 !important; color: #c6ff4a !important; }
+.wu-tagchip.active { background: rgba(159,239,0,0.14) !important; border-color: #9fef00 !important; color: #9fef00 !important; }
+.wu-count { font-family: "JetBrains Mono", monospace !important; font-size: 12px !important; color: #6b7688 !important; margin: 8px 2px !important; }
+.wu-empty { color: #6b7688 !important; font-style: italic !important; padding: 20px 4px !important; }
+
+/* ---------- Tags page (cloud + sections) ---------- */
+.tags-cloud { display: flex !important; flex-wrap: wrap !important; gap: 10px !important; margin: 22px 0 !important; }
+.tags-cloud a {
+  font-family: "JetBrains Mono", monospace !important; text-decoration: none !important;
+  padding: 6px 12px !important; border-radius: 8px !important;
+  background: rgba(0,173,181,0.06) !important; border: 1px solid #223b3d !important; color: #00d3e0 !important;
+  transition: all 0.15s ease !important;
+}
+.tags-cloud a:hover { background: rgba(0,224,208,0.15) !important; border-color: #00e0d0 !important; text-decoration: none !important; }
+.tags-cloud a .cnt { color: #6b7688 !important; font-size: 11px !important; margin-left: 5px !important; }
+.tag-section { margin: 26px 0 !important; }
+.tag-section h3 { color: #9fef00 !important; font-family: "JetBrains Mono", monospace !important; border-bottom: 1px solid #20242c !important; padding-bottom: 6px !important; }
+.tag-section ul { list-style: none !important; padding-left: 0 !important; }
+.tag-section li { padding: 5px 0 !important; }
+.tag-section li a { color: #00d3e0 !important; text-decoration: none !important; }
+.tag-section li a:hover { text-decoration: underline !important; }
+.tag-section li .li-date { color: #6b7688 !important; font-family: "JetBrains Mono", monospace !important; font-size: 12px !important; margin-right: 10px !important; }
+
+/* ---------- Content search page ---------- */
+.search-box {
+  width: 100% !important; background: #0a0c0f !important; border: 1px solid #2d3139 !important; border-radius: 10px !important;
+  color: #e6edf3 !important; padding: 14px 18px !important; font-family: "JetBrains Mono", monospace !important; font-size: 15px !important;
+  margin: 18px 0 !important;
+}
+.search-box:focus { outline: none !important; border-color: #00e0d0 !important; box-shadow: 0 0 0 2px rgba(0,224,208,0.15) !important; }
+.search-result {
+  display: block !important; padding: 16px 18px !important; margin: 12px 0 !important; text-decoration: none !important;
+  background: rgba(18,21,27,0.8) !important; border: 1px solid #20242c !important; border-left: 3px solid #00e0d0 !important; border-radius: 8px !important;
+  transition: all 0.15s ease !important;
+}
+.search-result:hover { border-color: #00adb5 !important; border-left-color: #9fef00 !important; text-decoration: none !important; transform: translateX(3px) !important; }
+.search-result .sr-title { color: #00d3e0 !important; font-weight: 700 !important; font-size: 1.1rem !important; }
+.search-result .sr-type { font-family: "JetBrains Mono", monospace !important; font-size: 10px !important; text-transform: uppercase !important; color: #9fef00 !important; margin-left: 8px !important; }
+.search-result .sr-snippet { color: #aab3c1 !important; font-size: 0.9rem !important; line-height: 1.6 !important; margin-top: 6px !important; }
+.search-result .sr-snippet mark { background: rgba(159,239,0,0.25) !important; color: #eaffb0 !important; padding: 0 2px !important; border-radius: 2px !important; }

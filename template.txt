@@ -5,6 +5,9 @@ box: "Kupa"
 box_ip: "10.129.18.321"
 box_os: "Windows"
 box_difficulty: "Hard"
+box_image: /assets/images/machines/default.png
+categories: [hackthebox]
+tags: [hackthebox, htb-kupa, ctf, nmap]
 ---
 
 
