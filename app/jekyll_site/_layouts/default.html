@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/ad-metodology.css' | relative_url }}" />
+  {% seo %}
+</head>
+<body{% if page.slug %} data-vector-slug="{{ page.slug }}"{% endif %}>
+  <nav class="site-nav" data-testid="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="{{ '/' | relative_url }}" data-testid="nav-brand">
+        <span class="brand-prompt">anogota@ctf</span><span class="brand-sep">:</span><span class="brand-path">~/AD_metodology</span><span class="brand-caret">$</span>
+      </a>
+      <ul class="site-nav-links">
+        <li><a href="{{ '/AD_metodology/' | relative_url }}" data-testid="nav-hub">hub</a></li>
+        <li><a href="{{ '/AD_metodology/chain/' | relative_url }}" data-testid="nav-chain">attack chain</a></li>
+        <li><a href="https://github.com/Anogota/Anogota.github.io" rel="noopener" data-testid="nav-repo">github</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="site-main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>// AD_metodology — CPTS notes · {{ site.time | date: '%Y' }}</span>
+      <span class="footer-hint">wszystkie komendy renderowane z kontekstu w localStorage. eksport JSON dla przenoszenia między boxami.</span>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/ad-context.js' | relative_url }}"></script>
+  {% if page.chain_page %}<script src="{{ '/assets/js/cytoscape.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/chain-graph.js' | relative_url }}"></script>{% endif %}
+</body>
+</html>
