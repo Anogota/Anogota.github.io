@@ -1,0 +1,423 @@
+---
+---
+/* AD_metodology — minimal SCSS additions on top of jekyll-theme-console */
+
+$ad-accent: #7ee787;         /* muted green — terminal */
+$ad-accent-dim: #4d7c5a;
+$ad-warn: #f0b429;
+$ad-danger: #ff6b6b;
+$ad-info: #7dd3fc;
+$ad-purple: #c084fc;
+$ad-bg: #0d1117;
+$ad-bg-2: #161b22;
+$ad-bg-3: #1c2128;
+$ad-border: #30363d;
+$ad-text: #c9d1d9;
+$ad-text-dim: #8b949e;
+$ad-mono: "JetBrains Mono", "Fira Code", "IBM Plex Mono", "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+body {
+  font-family: $ad-mono;
+}
+
+/* ------------------------- Top bar ------------------------- */
+.ad-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: $ad-bg-2;
+  border-bottom: 1px solid $ad-border;
+  padding: 8px 12px;
+  font-family: $ad-mono;
+  font-size: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.ad-topbar-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.ad-topbar-title {
+  color: $ad-accent;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.ad-box-label {
+  color: $ad-text-dim;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ad-box-input {
+  background: $ad-bg;
+  border: 1px solid $ad-border;
+  color: $ad-text;
+  padding: 3px 6px;
+  font-family: $ad-mono;
+  font-size: 12px;
+  width: 140px;
+}
+.ad-btn {
+  background: $ad-bg;
+  color: $ad-text;
+  border: 1px solid $ad-border;
+  padding: 3px 10px;
+  font-family: $ad-mono;
+  font-size: 11px;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+}
+.ad-btn:hover { border-color: $ad-accent; color: $ad-accent; }
+.ad-btn-danger:hover { border-color: $ad-danger; color: $ad-danger; }
+
+.ad-topbar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 6px 12px;
+  max-height: 340px;
+  overflow: auto;
+  transition: max-height 180ms ease;
+}
+.ad-topbar-grid.collapsed { max-height: 0; overflow: hidden; }
+
+.ad-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.ad-field-key {
+  color: $ad-purple;
+  font-size: 11px;
+  min-width: 110px;
+  text-align: right;
+}
+.ad-field-input {
+  flex: 1;
+  min-width: 0;
+  background: $ad-bg;
+  border: 1px solid $ad-border;
+  color: $ad-text;
+  padding: 3px 6px;
+  font-family: $ad-mono;
+  font-size: 12px;
+}
+.ad-field-input:focus { outline: none; border-color: $ad-accent; }
+
+/* ------------------------- Vector page ------------------------- */
+.ad-vector {
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 0 16px;
+  color: $ad-text;
+}
+.ad-vector-header { margin-bottom: 20px; border-bottom: 1px dashed $ad-border; padding-bottom: 12px; }
+.ad-vector-crumbs {
+  font-size: 12px;
+  color: $ad-text-dim;
+  margin-bottom: 8px;
+}
+.ad-vector-crumbs a { color: $ad-accent; text-decoration: none; }
+.ad-vector-crumbs a:hover { text-decoration: underline; }
+.ad-vector-crumbs .sep { margin: 0 6px; color: $ad-border; }
+
+.ad-vector-title {
+  font-family: $ad-mono;
+  font-size: 22px;
+  color: $ad-accent;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.03em;
+}
+.ad-vector-title::before { content: "> "; color: $ad-accent-dim; }
+
+.ad-vector-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool-badge {
+  font-size: 10px;
+  background: $ad-bg-3;
+  border: 1px solid $ad-border;
+  color: $ad-info;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.ad-block { margin: 22px 0; }
+.ad-block h2 {
+  font-size: 13px;
+  color: $ad-warn;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+.prereq-list, .chain-io-col ul { list-style: none; padding-left: 0; }
+.prereq-list li, .chain-io-col li { padding: 2px 0; }
+.prereq-list code, .chain-io-col code {
+  background: $ad-bg-3;
+  color: $ad-text;
+  padding: 1px 6px;
+  border: 1px solid $ad-border;
+}
+.chain-io-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.io-label {
+  display: block;
+  font-size: 11px;
+  color: $ad-text-dim;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.ad-mechanism h2 { color: $ad-accent; font-size: 15px; margin-top: 26px; }
+.ad-mechanism h2::before { content: "## "; color: $ad-accent-dim; }
+.ad-mechanism h3 { color: $ad-info; font-size: 13px; margin-top: 20px; }
+.ad-mechanism h3::before { content: "### "; color: $ad-border; }
+.ad-mechanism p { line-height: 1.55; color: $ad-text; }
+.ad-mechanism a { color: $ad-accent; }
+.ad-mechanism code {
+  background: $ad-bg-3;
+  padding: 1px 5px;
+  color: $ad-purple;
+  border: 1px solid $ad-border;
+  border-radius: 2px;
+}
+
+.ad-mechanism details {
+  background: $ad-bg-2;
+  border: 1px solid $ad-border;
+  border-left: 3px solid $ad-warn;
+  padding: 8px 12px;
+  margin: 10px 0;
+}
+.ad-mechanism details summary {
+  cursor: pointer;
+  color: $ad-warn;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.ad-mechanism details[open] summary { margin-bottom: 8px; }
+
+/* Task lists (progress checkboxes) */
+.ad-mechanism ul li input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: $ad-accent;
+}
+
+.ad-vector-footer {
+  margin-top: 32px;
+  padding-top: 12px;
+  border-top: 1px dashed $ad-border;
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+}
+.ad-vector-footer a { color: $ad-accent; text-decoration: none; }
+.ad-vector-footer a:hover { text-decoration: underline; }
+
+/* ------------------------- Command blocks ------------------------- */
+.cmd-tabs { margin: 12px 0 18px 0; }
+.cmd-block {
+  background: $ad-bg-2;
+  border: 1px solid $ad-border;
+  border-left: 3px solid $ad-border;
+  margin: 8px 0;
+  overflow: hidden;
+}
+.cmd-block.env-kali    { border-left-color: $ad-accent; }
+.cmd-block.env-pwnbox  { border-left-color: $ad-info; }
+.cmd-block.env-windows { border-left-color: $ad-purple; }
+.cmd-block.env-target  { border-left-color: $ad-warn; }
+
+.cmd-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px;
+  background: $ad-bg-3;
+  border-bottom: 1px solid $ad-border;
+  font-size: 11px;
+}
+.cmd-badge {
+  color: $ad-text;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.cmd-note { color: $ad-text-dim; font-size: 11px; }
+.cmd-copy {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid $ad-border;
+  color: $ad-text-dim;
+  padding: 1px 8px;
+  font-family: $ad-mono;
+  font-size: 10px;
+  cursor: pointer;
+  transition: color 120ms, border-color 120ms;
+}
+.cmd-copy:hover { color: $ad-accent; border-color: $ad-accent; }
+.cmd-copy.copied { color: $ad-accent; border-color: $ad-accent; }
+
+.cmd-pre {
+  margin: 0;
+  padding: 10px 12px;
+  background: $ad-bg;
+  color: $ad-text;
+  font-family: $ad-mono;
+  font-size: 12.5px;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+}
+.cmd-pre code { background: transparent; border: none; color: inherit; padding: 0; }
+
+/* Highlight $VARS in cmd */
+.cmd-pre { position: relative; }
+
+/* ------------------------- Hub ------------------------- */
+.ad-hub {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+  color: $ad-text;
+}
+.ad-hub h1 {
+  color: $ad-accent;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+.ad-hub h1::before { content: "> "; color: $ad-accent-dim; }
+.ad-hub-intro { color: $ad-text-dim; margin-bottom: 24px; font-size: 13px; line-height: 1.6; }
+
+.hub-section {
+  margin: 24px 0;
+  padding: 16px;
+  background: $ad-bg-2;
+  border: 1px solid $ad-border;
+  border-left: 3px solid $ad-accent-dim;
+}
+.hub-section h2 {
+  font-size: 14px;
+  color: $ad-warn;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hub-section h2::before { content: "["; color: $ad-border; }
+.hub-section h2::after { content: "]"; color: $ad-border; }
+.hub-section-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+.hub-item {
+  padding: 8px 10px;
+  border: 1px solid $ad-border;
+  background: $ad-bg;
+  transition: border-color 120ms, transform 120ms;
+}
+.hub-item:hover { border-color: $ad-accent; transform: translateX(2px); }
+.hub-item a {
+  color: $ad-text;
+  text-decoration: none;
+  font-size: 13px;
+  display: block;
+}
+.hub-item a::before { content: "→ "; color: $ad-accent-dim; }
+.hub-item .hub-item-meta {
+  color: $ad-text-dim;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.progress-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: $ad-text-dim;
+}
+.progress-track {
+  width: 80px;
+  height: 6px;
+  background: $ad-bg;
+  border: 1px solid $ad-border;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: $ad-accent;
+  width: 0%;
+  transition: width 180ms ease;
+}
+.progress-label { color: $ad-text-dim; }
+
+/* ------------------------- Chain view ------------------------- */
+.chain-page {
+  max-width: 1400px;
+  margin: 12px auto;
+  padding: 0 16px;
+  color: $ad-text;
+}
+.chain-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  background: $ad-bg-2;
+  border: 1px solid $ad-border;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.chain-toolbar h1 { margin: 0; font-size: 14px; color: $ad-accent; }
+.chain-toolbar h1::before { content: "> "; color: $ad-accent-dim; }
+.chain-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 12px;
+  height: 70vh;
+}
+#chain-graph {
+  width: 100%;
+  height: 100%;
+  background: $ad-bg;
+  border: 1px solid $ad-border;
+}
+.chain-timeline {
+  background: $ad-bg-2;
+  border: 1px solid $ad-border;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+.chain-timeline h3 {
+  color: $ad-warn;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px 0;
+}
+.suggest-list { list-style: none; padding: 0; margin: 0; }
+.suggest-item {
+  padding: 6px 8px;
+  border: 1px solid $ad-border;
+  background: $ad-bg;
+  margin-bottom: 6px;
+  transition: border-color 120ms;
+}
+.suggest-item:hover { border-color: $ad-accent; }
+.suggest-item a { color: $ad-text; text-decoration: none; display: block; }
+.suggest-item a strong { color: $ad-accent; }
+.suggest-reason { color: $ad-text-dim; font-size: 10px; margin-top: 2px; }
+
+@media (max-width: 900px) {
+  .chain-layout { grid-template-columns: 1fr; height: auto; }
+  #chain-graph { height: 60vh; }
+  .chain-io-grid { grid-template-columns: 1fr; }
+}
