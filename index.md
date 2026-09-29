@@ -12,6 +12,7 @@ title: Home
         <a href="/" style="color: #00f2ff; text-decoration: none;">Home</a>
         <a href="/about/" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">About Me</a>
         <a href="/cheatsheets/" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">Cheatsheets</a>
+        <a href="/AD_metodology/" style="color: #9fef00; text-decoration: none; font-weight:700;" onmouseover="this.style.color='#c6ff4a'" onmouseout="this.style.color='#9fef00'">AD Methodology</a>
         <a href="https://linkedin.com" target="_blank" style="color: #ccc; text-decoration: none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ccc'">Linkedin</a>
     </nav>
 </header>

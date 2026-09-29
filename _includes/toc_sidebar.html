@@ -1,0 +1,58 @@
+<script>
+// Automatyczny, "przyklejony" spis treści (TOC) generowany z nagłówków H2.
+// Współpracuje z .blog-layout-wrapper / .dynamic-sidebar zdefiniowanymi w assets/css/style.scss
+document.addEventListener("DOMContentLoaded", function () {
+  const content = document.querySelector('.markdown-body');
+  if (!content) return;
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'blog-layout-wrapper';
+
+  const aside = document.createElement('aside');
+  aside.className = 'dynamic-sidebar';
+  aside.innerHTML = `<h3 class="sidebar-box-title">{{ include.title | default: page.title | default: "Contents" }}</h3>`;
+
+  const ul = document.createElement('ul');
+  ul.className = 'sidebar-menu';
+
+  const headings = content.querySelectorAll('h2');
+  if (headings.length > 0) {
+    headings.forEach((heading, index) => {
+      if (!heading.id) heading.id = 'section-' + index;
+      const li = document.createElement('li');
+      li.className = 'sidebar-item' + (index === 0 ? ' active' : '');
+      li.innerHTML = `<a href="#${heading.id}">${heading.innerText}</a>`;
+      ul.appendChild(li);
+    });
+  } else {
+    const li = document.createElement('li');
+    li.className = 'sidebar-item active';
+    li.innerHTML = `<a href="#">Overview</a>`;
+    ul.appendChild(li);
+  }
+  aside.appendChild(ul);
+
+  const articleContainer = document.createElement('div');
+  articleContainer.className = 'main-article-content';
+
+  content.parentNode.insertBefore(wrapper, content);
+  wrapper.appendChild(aside);
+  wrapper.appendChild(articleContainer);
+  articleContainer.appendChild(content);
+
+  // Scroll-spy: podświetlanie aktywnej sekcji
+  window.addEventListener('scroll', () => {
+    let current = '';
+    headings.forEach(heading => {
+      if (heading.getBoundingClientRect().top < 120) current = heading.id;
+    });
+    if (current) {
+      document.querySelectorAll('.sidebar-item').forEach(li => {
+        li.classList.remove('active');
+        const a = li.querySelector('a');
+        if (a && a.getAttribute('href') === `#${current}`) li.classList.add('active');
+      });
+    }
+  });
+});
+</script>
