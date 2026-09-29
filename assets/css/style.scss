@@ -244,3 +244,119 @@ div.language-terminal::after {
 .diff-text.easy { color: #27c93f !important; font-weight: bold !important; }
 .diff-text.medium { color: #ffbd2e !important; font-weight: bold !important; }
 .diff-text.hard { color: #ff5f56 !important; font-weight: bold !important; }
+
+/* ==========================================================================
+   AD METHODOLOGY - komponenty kompendium (placeholdery, callouty, karty)
+   ========================================================================== */
+
+/* --- Placeholder na zrzut ekranu --- */
+.img-placeholder {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  min-height: 150px !important;
+  margin: 22px 0 !important;
+  padding: 24px !important;
+  background:
+    repeating-linear-gradient(45deg, #1a1d24, #1a1d24 12px, #171a20 12px, #171a20 24px) !important;
+  border: 1px dashed #3a4150 !important;
+  border-radius: 8px !important;
+  color: #7d8695 !important;
+  font-family: "Ubuntu Mono", monospace !important;
+  font-size: 13px !important;
+  text-align: center !important;
+}
+.img-placeholder .ph-icon { font-size: 26px !important; opacity: 0.7 !important; }
+.img-placeholder .ph-label { color: #00adb5 !important; font-weight: bold !important; letter-spacing: 0.5px !important; }
+.img-placeholder .ph-desc  { color: #8b93a1 !important; }
+
+/* --- Callouty (info / tip / warning / danger) --- */
+.callout {
+  margin: 22px 0 !important;
+  padding: 14px 18px !important;
+  border-radius: 6px !important;
+  border-left: 4px solid #00adb5 !important;
+  background: rgba(0, 173, 181, 0.07) !important;
+  font-size: 14.5px !important;
+  line-height: 1.6 !important;
+}
+.callout p:last-child { margin-bottom: 0 !important; }
+.callout .callout-title { font-weight: bold !important; display: block !important; margin-bottom: 4px !important; }
+.callout.tip     { border-left-color: #27c93f !important; background: rgba(39, 201, 63, 0.07) !important; }
+.callout.tip .callout-title { color: #27c93f !important; }
+.callout.info    { border-left-color: #00adb5 !important; background: rgba(0, 173, 181, 0.07) !important; }
+.callout.info .callout-title { color: #00adb5 !important; }
+.callout.warning { border-left-color: #ffbd2e !important; background: rgba(255, 189, 46, 0.08) !important; }
+.callout.warning .callout-title { color: #ffbd2e !important; }
+.callout.danger  { border-left-color: #ff5f56 !important; background: rgba(255, 95, 86, 0.08) !important; }
+.callout.danger .callout-title { color: #ff5f56 !important; }
+.callout.opsec   { border-left-color: #c084fc !important; background: rgba(192, 132, 252, 0.08) !important; }
+.callout.opsec .callout-title { color: #c084fc !important; }
+
+/* --- Badge / pill (np. prerequisites, taktyki) --- */
+.badges { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; margin: 16px 0 !important; }
+.badge {
+  display: inline-block !important;
+  padding: 4px 11px !important;
+  font-size: 12px !important;
+  font-family: "Ubuntu Mono", monospace !important;
+  font-weight: bold !important;
+  border-radius: 20px !important;
+  border: 1px solid #00adb5 !important;
+  color: #00adb5 !important;
+  background: rgba(0, 173, 181, 0.08) !important;
+  white-space: nowrap !important;
+}
+.badge.req    { border-color: #ffbd2e !important; color: #ffbd2e !important; background: rgba(255, 189, 46, 0.08) !important; }
+.badge.tool   { border-color: #9fef00 !important; color: #9fef00 !important; background: rgba(159, 239, 0, 0.08) !important; }
+.badge.tactic { border-color: #c084fc !important; color: #c084fc !important; background: rgba(192, 132, 252, 0.08) !important; }
+.badge.win    { border-color: #4aa8ff !important; color: #4aa8ff !important; background: rgba(74, 168, 255, 0.08) !important; }
+
+/* --- Karty siatki metodologii (landing /AD_metodology/) --- */
+.ad-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 18px !important;
+  margin: 30px 0 !important;
+}
+.ad-card {
+  display: block !important;
+  background: rgba(20, 20, 20, 0.85) !important;
+  border: 1px solid rgba(0, 173, 181, 0.25) !important;
+  border-radius: 10px !important;
+  padding: 18px 20px !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+.ad-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: #00adb5 !important;
+  box-shadow: 0 0 18px rgba(0, 173, 181, 0.28) !important;
+  text-decoration: none !important;
+}
+.ad-card .ad-num   { font-family: "Ubuntu Mono", monospace !important; font-size: 12px !important; color: #57606a !important; }
+.ad-card .ad-title { display: block !important; color: #ffffff !important; font-size: 1.08rem !important; font-weight: 700 !important; margin: 4px 0 8px 0 !important; }
+.ad-card .ad-desc  { color: #9aa3b0 !important; font-size: 0.9rem !important; line-height: 1.5 !important; }
+.ad-card .ad-tag   { display: inline-block !important; margin-top: 12px !important; font-size: 11px !important; font-weight: bold !important; text-transform: uppercase !important; letter-spacing: 0.5px !important; color: #00adb5 !important; }
+
+/* --- Pasek nawigacji sekcji (reużywalny w kolekcji) --- */
+.ad-nav {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 20px 0 !important;
+  margin-bottom: 25px !important;
+  border-bottom: 1px solid #333 !important;
+  font-family: monospace !important;
+}
+.ad-nav .brand { font-size: 1.4rem !important; font-weight: bold !important; color: #00f2ff !important; letter-spacing: 1px !important; }
+.ad-nav nav { display: flex !important; gap: 22px !important; font-size: 1rem !important; }
+.ad-nav nav a { color: #ccc !important; text-decoration: none !important; }
+.ad-nav nav a.active, .ad-nav nav a:hover { color: #00f2ff !important; }
+
+/* --- Tabela referencyjna (mapy ataków / ESC) --- */
+.markdown-body table { display: table !important; width: 100% !important; }
+.markdown-body table th { background: #1a1d24 !important; color: #00adb5 !important; }
+.markdown-body table td, .markdown-body table th { border: 1px solid #2d3139 !important; }

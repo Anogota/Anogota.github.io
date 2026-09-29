@@ -5,3 +5,21 @@ theme: jekyll-theme-primer
 markdown: kramdown
 highlighter: rouge
 permalink: /:title/
+
+# Górne menu nawigacyjne (kompatybilne z motywami wspierającymi header_pages)
+header_pages:
+  - index.md
+  - AD_metodology/index.md
+
+# Kolekcja: AD Methodology - kompendium ataków na Active Directory
+collections:
+  AD_metodology:
+    output: true
+    permalink: /AD_metodology/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: AD_metodology
+    values:
+      layout: default
