@@ -57,10 +57,23 @@ sudo neo4j start        # legacy
 # Then drag-and-drop the *.zip / *.json into the BloodHound GUI
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">BloodHound "Shortest Path to Domain Admins" graph with highlighted edges</span>
+"Shortest Path to Domain Admins" — how the graph reads:
+
+```terminal
+ [ m.rossi ] *owned
+      |  CanPSRemote / AdminTo
+      v
+ [ FILES01 ] ----HasSession----> ( j.admin )
+      |                              |  MemberOf
+      |                              v
+      |                       << DOMAIN ADMINS >>
+      v
+  dump LSASS  =>  steal j.admin TGT  =>  Pass-the-Ticket  =>  DC = owned
+```
+
+<div class="callout tip">
+  <span class="callout-title">Reading the graph</span>
+  Solid arrows are rights/relations BloodHound found; the fastest route to <code>DOMAIN ADMINS</code> is the chain of edges from your owned node. Every edge maps to a technique in the other modules.
 </div>
 
 ### 4. High-value pre-built queries

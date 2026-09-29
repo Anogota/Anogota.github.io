@@ -40,6 +40,23 @@ AS-REQ (user=svc_backup)   ──►  KDC  ──►  AS-REP with no pre-auth   
   If enumeration returns an account whose reply is a full <strong>AS-REP</strong> instead of a pre-auth error, that account has "Do not require Kerberos pre-authentication" set — feed it straight into <a href="/AD_metodology/asrep-roasting/">AS-REP Roasting</a>.
 </div>
 
+<div class="attack-diagram">
+  <div class="diag-title">Kerbrute — enumeration to first credential</div>
+  <div class="diag-flow">
+    <div class="diag-node start"><span class="n-step">STEP 1</span><span class="n-title">Username wordlist</span><span class="n-tool">SecLists / OSINT</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 2</span><span class="n-title">Enumerate (no pw)</span><span class="n-tool">kerbrute userenum</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 3</span><span class="n-title">Valid users</span><span class="n-tool">valid_users.txt</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 4</span><span class="n-title">Check lockout</span><span class="n-tool">nxc --pass-pol</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node"><span class="n-step">STEP 5</span><span class="n-title">Password spray</span><span class="n-tool">1 pw / window</span></div>
+    <div class="diag-arrow">&rarr;</div>
+    <div class="diag-node win"><span class="n-step">STEP 6</span><span class="n-title">Valid credential</span><span class="n-tool">foothold</span></div>
+  </div>
+</div>
+
 ## Step-by-step
 
 ### 1. Install / build
@@ -83,11 +100,29 @@ $krb5asrep$23$svc_sql@CORP.LOCAL:2b8f...<snip>...9c1a
 2026/06/25 13:02:20 >  Done! Tested 10000 usernames (5 valid) in 8.44 seconds
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">kerbrute userenum output — list of VALID USERNAME lines</span>
-</div>
+Cleaned output, ready for spraying / roasting:
+
+```terminal
+$ grep 'VALID USERNAME' kerbrute_users.txt | awk '{print $NF}' | cut -d'@' -f1 | sort -u
+jsmith
+administrator
+svc_backup
+m.rossi
+svc_sql          # <- "no pre auth required" -> also AS-REP roastable
+```
+
+Enumeration funnel (how the wordlist collapses to a credential):
+
+```terminal
+   10,000 usernames  (wordlist)
+        |  kerbrute userenum   (passwordless, no lockouts)
+        v
+      5 VALID  ---------------------->  valid_users.txt
+        |                                    |
+        | 1 has "no pre-auth"                | password spray (1 pw / window)
+        v                                    v
+   AS-REP Roasting  (free hash)        m.rossi : Welcome2026!
+```
 
 ### 3. Turn hits into a clean userlist
 
