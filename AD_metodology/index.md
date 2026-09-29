@@ -40,7 +40,7 @@ A field-tested, exam-ready compendium of Active Directory attack vectors for **C
 
 ---
 
-## Domain Compromise Kill-Chain (Quick Map)
+ ### Domain Compromise Kill-Chain (Quick Map)
 
 | Phase | Technique | Primary Tools | Output |
 |-------|-----------|---------------|--------|
