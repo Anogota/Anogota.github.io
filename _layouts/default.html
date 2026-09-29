@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+  </head>
+  <body>
+    <!-- Jeden, czysty pasek nawigacyjny dla całej witryny (nazwa tylko raz) -->
+    <header class="site-topbar">
+      <a class="site-brand" href="{{ "/" | relative_url }}">
+        <span class="brand-prompt">anogota9@htb</span><span class="brand-sep">:</span><span class="brand-path">~</span><span class="brand-caret">#</span>
+      </a>
+      <nav class="site-nav">
+        <a href="{{ "/" | relative_url }}">Home</a>
+        <a href="{{ "/hackthebox/" | relative_url }}">HTB</a>
+        <a href="{{ "/tryhackme/" | relative_url }}">TryHackMe</a>
+        <a href="{{ "/portswigger/" | relative_url }}">PortSwigger</a>
+        <a class="nav-highlight" href="{{ "/AD_metodology/" | relative_url }}">AD Methodology</a>
+      </nav>
+    </header>
+
+    <div class="container-lg px-3 my-5 markdown-body">
+      {{ content }}
+
+      {% if site.github.private != true and site.github.license %}
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. {% github_edit_link "Improve this page" %}.
+      </div>
+      {% endif %}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

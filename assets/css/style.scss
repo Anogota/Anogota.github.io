@@ -358,5 +358,269 @@ div.language-terminal::after {
 
 /* --- Tabela referencyjna (mapy ataków / ESC) --- */
 .markdown-body table { display: table !important; width: 100% !important; }
-.markdown-body table th { background: #1a1d24 !important; color: #00adb5 !important; }
-.markdown-body table td, .markdown-body table th { border: 1px solid #2d3139 !important; }
+
+/* ==========================================================================
+   VISUAL FIXES (late overrides — equal specificity, wins by cascade order)
+   Code-block wrapping, table contrast, top bar, writeup cards, diagrams
+   ========================================================================== */
+
+/* ---------- 1. GLOBAL FONT / CODE = modern hacker terminal ---------- */
+body {
+  font-family: "Fira Code", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  background-color: #0d1014 !important;
+  color: #cdd6e2 !important;
+}
+
+/* Kill horizontal scrollbars everywhere in article */
+.markdown-body { overflow-x: hidden !important; }
+
+/* Code container: graphite window, soft glow, NO harsh light border */
+div.highlighter-rouge {
+  border: 1px solid #2b303b !important;
+  border-radius: 8px !important;
+  background: #161a21 !important;
+  box-shadow: 0 0 0 1px rgba(0,224,208,0.04), 0 8px 24px rgba(0,0,0,0.35) !important;
+  margin: 22px 0 !important;
+}
+div.highlighter-rouge,
+figure.highlight,
+pre.highlight,
+.highlight,
+.highlight pre,
+.highlight code,
+div.highlighter-rouge pre,
+div.highlighter-rouge code,
+div.highlighter-rouge .highlight,
+div.highlighter-rouge .highlight pre {
+  background: #161a21 !important;
+  background-color: #161a21 !important;
+}
+
+/* WRAP long commands instead of horizontal scroll */
+div.highlighter-rouge pre,
+div.highlighter-rouge pre code,
+div.highlighter-rouge code,
+.highlight pre,
+.highlight code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  overflow-x: hidden !important;
+}
+div.highlighter-rouge pre {
+  padding: 16px 18px !important;
+  border-left: 3px solid #00e0d0 !important;
+}
+
+/* Monospace + readable size/colour inside code */
+div.highlighter-rouge pre code,
+div.highlighter-rouge pre span,
+div.highlighter-rouge code,
+.markdown-body pre code {
+  font-family: "JetBrains Mono", "Fira Code", "Ubuntu Mono", "SFMono-Regular", Consolas, monospace !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+  color: #e6edf3 !important;
+}
+
+/* Black terminal window with mac dots: also wrap, keep top bar space */
+div.language-terminal,
+div.language-terminal pre,
+div.language-terminal code,
+div.language-terminal .highlight,
+div.language-terminal .highlight pre {
+  background: #0a0c0f !important;
+  background-color: #0a0c0f !important;
+}
+div.language-terminal { border: 1px solid #20242c !important; border-radius: 8px !important; padding-top: 42px !important; }
+div.language-terminal::before { background-color: #12151b !important; height: 34px !important; }
+div.language-terminal pre {
+  padding: 16px 18px !important;
+  border-left: none !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  overflow-x: hidden !important;
+}
+div.language-terminal pre code, div.language-terminal pre span {
+  color: #b7f7c0 !important;   /* soft green terminal text */
+}
+
+/* Inline code (outside tables) */
+.markdown-body :not(pre) > code {
+  background: #12151b !important;
+  color: #7ce7ff !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  border: 1px solid #232833 !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.88em !important;
+}
+
+/* ---------- 2. TABLES = high contrast terminal style ---------- */
+.markdown-body table {
+  display: table !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 24px 0 !important;
+  background: #12151b !important;
+  border: 1px solid #2d3139 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  font-size: 14px !important;
+}
+.markdown-body table tr { background: #12151b !important; border-top: 1px solid #262c36 !important; }
+.markdown-body table tr:nth-child(2n) { background: #171b22 !important; }
+.markdown-body table th,
+.markdown-body table td {
+  border: 1px solid #2d3139 !important;
+  padding: 11px 15px !important;
+  color: #e6edf3 !important;           /* bright, readable */
+  vertical-align: top !important;
+}
+.markdown-body table thead th,
+.markdown-body table th {
+  background: #0a0c0f !important;
+  color: #00e0d0 !important;           /* seledynowy nagłówek */
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+  border-bottom: 2px solid #00adb5 !important;
+}
+.markdown-body table td strong { color: #ffffff !important; }
+/* inline code inside cells must POP */
+.markdown-body table td code,
+.markdown-body table th code {
+  background: #05070a !important;
+  color: #9fef00 !important;
+  border: 1px solid #2d3139 !important;
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+}
+
+/* ---------- 3. GLOBAL TOP NAV BAR (single, clean) ---------- */
+.site-topbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 16px 28px !important;
+  background: rgba(10,12,15,0.92) !important;
+  border-bottom: 1px solid #1d2230 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  backdrop-filter: blur(10px) !important;
+  font-family: "JetBrains Mono", monospace !important;
+}
+.site-brand { text-decoration: none !important; font-size: 1.15rem !important; font-weight: 700 !important; white-space: nowrap !important; }
+.site-brand .brand-prompt { color: #00e0d0 !important; }
+.site-brand .brand-sep { color: #6b7688 !important; }
+.site-brand .brand-path { color: #9fef00 !important; }
+.site-brand .brand-caret { color: #6b7688 !important; margin-left: 2px !important; animation: caretBlink 1.1s steps(1) infinite !important; }
+@keyframes caretBlink { 50% { opacity: 0; } }
+.site-nav { display: flex !important; gap: 22px !important; flex-wrap: wrap !important; font-size: 0.95rem !important; }
+.site-nav a { color: #b3bccb !important; text-decoration: none !important; transition: color 0.18s ease !important; }
+.site-nav a:hover { color: #00e0d0 !important; }
+.site-nav a.nav-highlight { color: #9fef00 !important; font-weight: 700 !important; }
+.site-nav a.nav-highlight:hover { color: #c6ff4a !important; }
+@media (max-width: 700px) {
+  .site-topbar { flex-direction: column !important; align-items: flex-start !important; }
+}
+
+/* Breadcrumb inside AD collection pages */
+.ad-breadcrumb { margin: 4px 0 18px 0 !important; font-family: "JetBrains Mono", monospace !important; font-size: 13px !important; }
+.ad-breadcrumb a { color: #6b7688 !important; text-decoration: none !important; }
+.ad-breadcrumb a:hover { color: #00e0d0 !important; }
+
+/* ---------- 4. WRITEUP CARDS (0xdf-style: text left, machine icon right) ---------- */
+.writeups-list { display: flex !important; flex-direction: column !important; gap: 22px !important; margin-top: 24px !important; }
+.writeup-card {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 22px !important;
+  padding: 20px 22px !important;
+  background: rgba(18,21,27,0.85) !important;
+  border: 1px solid #20242c !important;
+  border-radius: 12px !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+.writeup-card:hover {
+  transform: translateY(-3px) !important;
+  border-color: #00adb5 !important;
+  box-shadow: 0 0 20px rgba(0,173,181,0.22) !important;
+}
+.writeup-card .wc-body { flex: 1 1 auto !important; min-width: 0 !important; }
+.writeup-card .wc-title { margin: 0 0 6px 0 !important; font-size: 1.35rem !important; font-weight: 700 !important; border-bottom: none !important; }
+.writeup-card .wc-title a { color: #00d3e0 !important; text-decoration: none !important; }
+.writeup-card .wc-title a:hover { text-decoration: underline !important; }
+.writeup-card .wc-meta { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; margin: 8px 0 12px 0 !important; }
+.wc-chip {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 11px !important; font-weight: 700 !important;
+  padding: 3px 9px !important; border-radius: 20px !important;
+  text-transform: uppercase !important; letter-spacing: 0.4px !important;
+}
+.wc-chip.date { background: rgba(107,118,136,0.12) !important; color: #8b93a1 !important; border: 1px solid #2d3139 !important; }
+.wc-chip.os-linux { background: rgba(159,239,0,0.10) !important; color: #9fef00 !important; border: 1px solid #4b6b00 !important; }
+.wc-chip.os-windows { background: rgba(74,168,255,0.12) !important; color: #4aa8ff !important; border: 1px solid #24507f !important; }
+.wc-chip.diff-easy { background: rgba(39,201,63,0.12) !important; color: #27c93f !important; border: 1px solid #1c6b28 !important; }
+.wc-chip.diff-medium { background: rgba(255,189,46,0.12) !important; color: #ffbd2e !important; border: 1px solid #7a5a12 !important; }
+.wc-chip.diff-hard { background: rgba(255,95,86,0.12) !important; color: #ff5f56 !important; border: 1px solid #7a2320 !important; }
+.wc-chip.diff-insane { background: rgba(192,132,252,0.12) !important; color: #c084fc !important; border: 1px solid #4a2a6b !important; }
+.writeup-card .wc-excerpt { color: #aab3c1 !important; line-height: 1.6 !important; font-size: 0.95rem !important; }
+.writeup-card .wc-thumb {
+  flex: 0 0 auto !important;
+  width: 116px !important; height: 116px !important;
+  border-radius: 14px !important;
+  object-fit: cover !important;
+  background: #0a0c0f !important;
+  border: 1px solid #262c36 !important;
+  box-shadow: 0 0 18px rgba(0,211,224,0.18) !important;
+}
+@media (max-width: 620px) {
+  .writeup-card { flex-direction: column-reverse !important; align-items: stretch !important; }
+  .writeup-card .wc-thumb { width: 84px !important; height: 84px !important; }
+}
+
+/* ---------- 5. ATTACK-CHAIN DIAGRAMS (CSS flowchart) ---------- */
+.attack-diagram {
+  margin: 28px 0 !important;
+  padding: 24px 20px !important;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(0,224,208,0.06), transparent 60%),
+    #0b0e12 !important;
+  border: 1px solid #20242c !important;
+  border-radius: 12px !important;
+}
+.attack-diagram .diag-title {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 12px !important; text-transform: uppercase !important; letter-spacing: 1px !important;
+  color: #6b7688 !important; margin-bottom: 18px !important; text-align: center !important;
+}
+.diag-flow { display: flex !important; flex-wrap: wrap !important; align-items: stretch !important; justify-content: center !important; gap: 0 !important; }
+.diag-node {
+  display: flex !important; flex-direction: column !important; justify-content: center !important;
+  min-width: 130px !important; max-width: 190px !important;
+  padding: 12px 14px !important; margin: 6px 0 !important;
+  background: #12151b !important;
+  border: 1px solid #2d3139 !important;
+  border-top: 3px solid #00adb5 !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+}
+.diag-node .n-step { font-family: "JetBrains Mono", monospace !important; font-size: 10px !important; color: #6b7688 !important; letter-spacing: 0.5px !important; }
+.diag-node .n-title { color: #ffffff !important; font-weight: 700 !important; font-size: 0.92rem !important; margin: 3px 0 !important; }
+.diag-node .n-tool { font-family: "JetBrains Mono", monospace !important; font-size: 11px !important; color: #9fef00 !important; }
+.diag-node.start { border-top-color: #4aa8ff !important; }
+.diag-node.win   { border-top-color: #ff5f56 !important; }
+.diag-node.win .n-title { color: #ff8a84 !important; }
+.diag-arrow { display: flex !important; align-items: center !important; padding: 0 6px !important; color: #00e0d0 !important; font-size: 22px !important; font-weight: 700 !important; }
+@media (max-width: 780px) {
+  .diag-flow { flex-direction: column !important; align-items: center !important; }
+  .diag-arrow { transform: rotate(90deg) !important; padding: 4px 0 !important; }
+}

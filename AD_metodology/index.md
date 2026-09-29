@@ -4,17 +4,6 @@ title: AD Methodology
 permalink: /AD_metodology/
 ---
 
-<header class="ad-nav">
-  <div class="brand">Anogota9 <span style="color:#888;font-weight:normal;font-size:1.1rem;">// AD Methodology</span></div>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/hackthebox/">HTB</a>
-    <a href="/portswigger/">PortSwigger</a>
-    <a href="/tryhackme/">TryHackMe</a>
-    <a href="/AD_metodology/" class="active">AD Methodology</a>
-  </nav>
-</header>
-
 # Active Directory Attack Methodology
 
 A field-tested, exam-ready compendium of Active Directory attack vectors for **CPTS (HackTheBox)** and **OSCP** preparation. Every module follows the same rigorous structure: **pre-requisites → theory & mechanics → exact step-by-step commands → complete attack chain** from initial foothold to full domain compromise.
