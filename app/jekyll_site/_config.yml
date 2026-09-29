@@ -1,0 +1,42 @@
+title: AD_metodology
+description: CPTS Active Directory attack methodology — terminalowe kompendium
+baseurl: ""
+url: ""
+
+theme: jekyll-theme-console
+
+# Console theme customization
+style: dark
+header_pages:
+  - AD_metodology/index.md
+
+collections:
+  ad_vectors:
+    output: true
+    permalink: /AD_metodology/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "ad_vectors"
+    values:
+      layout: "ad_vector"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    block:
+      line_numbers: false
+
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md
