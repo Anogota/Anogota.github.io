@@ -714,3 +714,28 @@ div.language-terminal pre code, div.language-terminal pre span {
 .search-result .sr-type { font-family: "JetBrains Mono", monospace !important; font-size: 10px !important; text-transform: uppercase !important; color: #9fef00 !important; margin-left: 8px !important; }
 .search-result .sr-snippet { color: #aab3c1 !important; font-size: 0.9rem !important; line-height: 1.6 !important; margin-top: 6px !important; }
 .search-result .sr-snippet mark { background: rgba(159,239,0,0.25) !important; color: #eaffb0 !important; padding: 0 2px !important; border-radius: 2px !important; }
+
+/* ---------- Copy-to-clipboard button on code boxes ---------- */
+div.highlighter-rouge .copy-btn {
+  position: absolute !important; top: 8px !important; right: 8px !important; z-index: 6 !important;
+  font-family: "JetBrains Mono", monospace !important; font-size: 11px !important; font-weight: 700 !important;
+  padding: 4px 10px !important; border-radius: 6px !important;
+  background: #0d1014 !important; color: #00e0d0 !important; border: 1px solid #2d3139 !important;
+  cursor: pointer !important; opacity: 0.55 !important; transition: opacity 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+}
+div.highlighter-rouge:hover .copy-btn { opacity: 1 !important; }
+.copy-btn:hover { background: rgba(0,224,208,0.14) !important; border-color: #00e0d0 !important; }
+.copy-btn.copied { color: #9fef00 !important; border-color: #9fef00 !important; }
+div.language-terminal .copy-btn { top: 9px !important; }
+
+/* ---------- Per-command explanation box (cheatsheet) ---------- */
+.cmd-desc {
+  margin: -14px 0 22px 0 !important;
+  padding: 11px 16px !important;
+  background: rgba(18,21,27,0.55) !important;
+  border-left: 3px solid #2d3139 !important;
+  border-radius: 0 7px 7px 0 !important;
+  font-size: 14px !important; line-height: 1.65 !important; color: #b3bccb !important;
+}
+.cmd-desc b, .cmd-desc strong { color: #00e0d0 !important; }
+.cmd-desc code { background: #05070a !important; color: #9fef00 !important; }
