@@ -123,27 +123,22 @@ title: Home
 }
 </style>
 
-<section class="latest-posts-section">
-  <h2 style="color: #fff; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 16px;">Recent posts</h2>
-  
-  <div class="writeups-list">
-    {% for post in site.posts limit:5 %}
-      {% assign os = post.box_os | downcase %}
-      {% assign diff = post.box_difficulty | downcase %}
-      <article class="writeup-card">
-        <div class="wc-body">
-          <h3 class="wc-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <div class="wc-meta">
-            <span class="wc-chip date">{{ post.date | date: "%b %d, %Y" }}</span>
-            {% if post.box_os %}<span class="wc-chip os-{{ os }}">{{ post.box_os }}</span>{% endif %}
-            {% if post.box_difficulty %}<span class="wc-chip diff-{{ diff }}">{{ post.box_difficulty }}</span>{% endif %}
-          </div>
-          <div class="wc-excerpt">
-            {% if post.excerpt %}{{ post.excerpt | strip_html | truncatewords: 40 }}{% else %}Open this writeup to read the full walkthrough.{% endif %}
-          </div>
-        </div>
-        <img class="wc-thumb" src="{{ post.box_image | default: '/assets/images/machines/default.png' | relative_url }}" alt="{{ post.box | default: post.title }} icon" loading="lazy">
-      </article>
-    {% endfor %}
-  </div>
+<section class="posts-0xdf" data-testid="posts-list">
+  <h2 class="posts-0xdf-heading">Posts</h2>
+  {% for post in site.posts %}
+  <article class="p0-entry" data-testid="post-entry">
+    <div class="p0-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+    <h3 class="p0-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <div class="p0-tags">
+      <svg class="p0-tag-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M1 7.8V2.5A1.5 1.5 0 0 1 2.5 1h5.3c.4 0 .8.2 1.1.4l6.2 6.2c.6.6.6 1.5 0 2.1l-5.3 5.3c-.6.6-1.5.6-2.1 0L1.4 8.9A1.5 1.5 0 0 1 1 7.8zM4.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+      {% if post.box_os %}<a href="{{ '/tags/' | relative_url }}#tag-{{ post.box_os | slugify }}">{{ post.box_os | downcase }}</a>{% endif %}
+      {% if post.box_difficulty %}<a href="{{ '/tags/' | relative_url }}#tag-{{ post.box_difficulty | slugify }}">{{ post.box_difficulty | downcase }}</a>{% endif %}
+      {% for tag in post.tags %}<a href="{{ '/tags/' | relative_url }}#tag-{{ tag | slugify }}">{{ tag }}</a> {% endfor %}
+    </div>
+    <div class="p0-body">
+      <img class="p0-thumb" src="{{ post.box_image | default: '/assets/images/machines/default.png' | relative_url }}" alt="{{ post.box | default: post.title }} icon" loading="lazy">
+      <p class="p0-excerpt">{% if post.excerpt %}{{ post.excerpt | strip_html | truncatewords: 60 }}{% else %}Open this writeup to read the full walkthrough.{% endif %}</p>
+    </div>
+  </article>
+  {% endfor %}
 </section>

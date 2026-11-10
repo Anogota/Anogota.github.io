@@ -751,3 +751,22 @@ div.language-terminal .copy-btn { top: 9px !important; }
 .platform-links a.pl-htb:hover { text-shadow: 0 0 8px rgba(159, 239, 0, 0.6); }
 .platform-links a.pl-ps:hover { text-shadow: 0 0 8px rgba(255, 102, 51, 0.6); }
 .platform-links a.pl-thm:hover { text-shadow: 0 0 8px rgba(232, 51, 74, 0.6); }
+
+
+/* ---------- Phase 3: 0xdf-style homepage post list ---------- */
+.posts-0xdf h2.posts-0xdf-heading { color: #ffffff !important; border-bottom: none !important; padding-bottom: 0 !important; font-size: 1.6rem; font-weight: 400; margin: 0 0 24px; }
+.posts-0xdf .p0-entry { margin: 0 0 56px; padding: 0; background: none; border: none; box-shadow: none; }
+.posts-0xdf .p0-entry::after { content: ""; display: block; clear: both; }
+.posts-0xdf .p0-date { color: #8a8f98; font-size: 0.8rem; margin-bottom: 2px; }
+.posts-0xdf h3.p0-title { margin: 0 0 6px !important; font-size: 1.35rem; font-weight: 400 !important; border: none !important; }
+.posts-0xdf h3.p0-title a { color: #4A9EFF !important; text-decoration: none; }
+.posts-0xdf h3.p0-title a:hover { text-decoration: underline; }
+.posts-0xdf .p0-tags { color: #E8E4B0; font-size: 0.75rem; line-height: 1.4; margin-bottom: 12px; }
+.posts-0xdf .p0-tags a { color: #E8E4B0 !important; text-decoration: none; margin-right: 6px; }
+.posts-0xdf .p0-tags a:hover { text-decoration: underline; }
+.posts-0xdf .p0-tag-icon { vertical-align: -1px; margin-right: 4px; }
+.posts-0xdf .p0-thumb { float: right; width: 105px; height: 105px; object-fit: cover; border-radius: 10px; margin: 0 0 10px 20px; box-shadow: 0 0 14px rgba(255, 255, 255, 0.18); background: none; }
+.posts-0xdf .p0-excerpt { color: #e6e6e6; font-family: Georgia, "Times New Roman", serif; font-size: 0.98rem; line-height: 1.6; margin: 0; }
+@media (max-width: 600px) {
+  .posts-0xdf .p0-thumb { width: 80px; height: 80px; margin-left: 14px; }
+}
