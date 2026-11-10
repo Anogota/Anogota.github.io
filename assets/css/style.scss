@@ -740,17 +740,15 @@ div.language-terminal .copy-btn { top: 9px !important; }
 .cmd-desc b, .cmd-desc strong { color: #00e0d0 !important; }
 .cmd-desc code { background: #05070a !important; color: #9fef00 !important; }
 
-/* ---------- Phase 2: homepage platform links bar ---------- */
-.platform-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 28px; font-family: "JetBrains Mono", monospace; font-size: 1rem; font-weight: 700; }
-.platform-links a { text-decoration: none !important; transition: text-shadow 0.18s ease; }
-.platform-links a:hover { text-decoration: none !important; }
-.platform-links .pl-sep { color: #6b7688; font-weight: 400; }
-.platform-links a.pl-htb { color: #9FEF00 !important; }
-.platform-links a.pl-ps { color: #FF6633 !important; }
-.platform-links a.pl-thm { color: #E8334A !important; }
-.platform-links a.pl-htb:hover { text-shadow: 0 0 8px rgba(159, 239, 0, 0.6); }
-.platform-links a.pl-ps:hover { text-shadow: 0 0 8px rgba(255, 102, 51, 0.6); }
-.platform-links a.pl-thm:hover { text-shadow: 0 0 8px rgba(232, 51, 74, 0.6); }
+/* ---------- Platform links in navbar ---------- */
+.site-nav .nav-sep { color: #555 !important; }
+.site-nav a.pl-htb, .site-nav a.pl-htb:hover { color: #9FEF00 !important; }
+.site-nav a.pl-ps, .site-nav a.pl-ps:hover { color: #FF6633 !important; }
+.site-nav a.pl-thm, .site-nav a.pl-thm:hover { color: #E8334A !important; }
+.site-nav a.pl-htb, .site-nav a.pl-ps, .site-nav a.pl-thm { transition: text-shadow 0.18s ease !important; }
+.site-nav a.pl-htb:hover { text-shadow: 0 0 8px rgba(159, 239, 0, 0.6); }
+.site-nav a.pl-ps:hover { text-shadow: 0 0 8px rgba(255, 102, 51, 0.6); }
+.site-nav a.pl-thm:hover { text-shadow: 0 0 8px rgba(232, 51, 74, 0.6); }
 
 
 /* ---------- Phase 3: 0xdf-style homepage post list ---------- */
