@@ -742,6 +742,7 @@ div.language-terminal .copy-btn { top: 9px !important; }
 
 /* ---------- Platform links in navbar ---------- */
 .site-nav .nav-sep { color: #555 !important; }
+@media (max-width: 700px) { .site-nav .nav-sep { display: none !important; } }
 .site-nav a.pl-htb, .site-nav a.pl-htb:hover { color: #9FEF00 !important; }
 .site-nav a.pl-ps, .site-nav a.pl-ps:hover { color: #FF6633 !important; }
 .site-nav a.pl-thm, .site-nav a.pl-thm:hover { color: #E8334A !important; }
