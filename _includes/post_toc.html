@@ -78,6 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var header = content.querySelector('.post-header');
   if (header) header.insertAdjacentElement('afterend', details); else content.insertBefore(details, content.firstChild);
 
+  var clicked = null;
+  ['wheel', 'touchstart', 'keydown'].forEach(function (ev) { window.addEventListener(ev, function () { clicked = null; }, { passive: true }); });
+  document.querySelectorAll('.toc-item').forEach(function (li) {
+    li.addEventListener('click', function () { clicked = li.dataset.target; setActive(clicked); });
+  });
   function setActive(id) {
     document.querySelectorAll('.toc-item').forEach(function (li) {
       li.classList.toggle('active', li.dataset.target === id);
@@ -86,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function update() {
     var current = '';
     heads.forEach(function (h) { if (h.getBoundingClientRect().top <= 100) current = h.id; });
-    if (heads.length && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = heads[heads.length - 1].id;
+    if (heads.length && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = clicked !== null ? clicked : heads[heads.length - 1].id;
     setActive(current);
     var act = sideList.querySelector('.toc-item.active');
     if (act && aside.scrollHeight > aside.clientHeight) {
