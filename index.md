@@ -127,6 +127,7 @@ title: Home
   <h2 class="posts-0xdf-heading">Posts</h2>
   {% for post in site.posts %}
   <article class="p0-entry" data-testid="post-entry">
+      <img class="p0-thumb" src="{{ post.box_image | default: '/assets/images/machines/default.png' | relative_url }}" alt="{{ post.box | default: post.title }} icon" loading="lazy">
     <div class="p0-date">{{ post.date | date: "%b %-d, %Y" }}</div>
     <h3 class="p0-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
     <div class="p0-tags">
@@ -136,7 +137,6 @@ title: Home
       {% for tag in post.tags %}<a href="{{ '/tags/' | relative_url }}#tag-{{ tag | slugify }}">{{ tag }}</a> {% endfor %}
     </div>
     <div class="p0-body">
-      <img class="p0-thumb" src="{{ post.box_image | default: '/assets/images/machines/default.png' | relative_url }}" alt="{{ post.box | default: post.title }} icon" loading="lazy">
       <p class="p0-excerpt">{% if post.excerpt %}{{ post.excerpt | strip_html | truncatewords: 60 }}{% else %}Open this writeup to read the full walkthrough.{% endif %}</p>
     </div>
   </article>
