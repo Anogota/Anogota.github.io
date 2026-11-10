@@ -758,7 +758,7 @@ div.language-terminal .copy-btn { top: 9px !important; }
 .posts-0xdf .p0-entry { margin: 0 0 56px; padding: 0; background: none; border: none; box-shadow: none; }
 .posts-0xdf .p0-entry::after { content: ""; display: block; clear: both; }
 .posts-0xdf .p0-date { color: #8a8f98; font-size: 0.8rem; margin-bottom: 2px; }
-.posts-0xdf h3.p0-title { margin: 0 0 6px !important; font-size: 1.35rem; font-weight: 400 !important; border: none !important; }
+.posts-0xdf h3.p0-title { margin: 0 0 6px !important; font-size: 18px; font-weight: 400 !important; border: none !important; }
 .posts-0xdf h3.p0-title a { color: #4A9EFF !important; text-decoration: none; }
 .posts-0xdf h3.p0-title a:hover { text-decoration: underline; }
 .posts-0xdf .p0-tags { color: #E8E4B0; font-size: 0.75rem; line-height: 1.4; margin-bottom: 12px; }
@@ -766,7 +766,20 @@ div.language-terminal .copy-btn { top: 9px !important; }
 .posts-0xdf .p0-tags a:hover { text-decoration: underline; }
 .posts-0xdf .p0-tag-icon { vertical-align: -1px; margin-right: 4px; }
 .posts-0xdf .p0-thumb { float: right; width: 105px; height: 105px; object-fit: cover; border-radius: 10px; margin: 0 0 10px 20px; box-shadow: 0 0 14px rgba(255, 255, 255, 0.18); background: none; }
-.posts-0xdf .p0-excerpt { color: #e6e6e6; font-family: Georgia, "Times New Roman", serif; font-size: 0.98rem; line-height: 1.6; margin: 0; }
+.posts-0xdf .p0-excerpt { color: #e6e6e6; font-family: Georgia, "Times New Roman", serif; font-size: 14px; line-height: 1.5; margin: 0; }
 @media (max-width: 600px) {
   .posts-0xdf .p0-thumb { width: 80px; height: 80px; margin-left: 14px; }
 }
+
+
+/* ---------- Phase 4: global 0xdf-style theme ---------- */
+html, body { background: #1a1a1a !important; background-color: #1a1a1a !important; background-image: none !important; }
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  color: #dcdcdc !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+.container-lg.markdown-body { max-width: 740px !important; margin-left: auto !important; margin-right: auto !important; }
+.markdown-body { font-size: 14px !important; line-height: 1.5 !important; color: #dcdcdc !important; }
+.site-topbar { background: #1a1a1a !important; backdrop-filter: none !important; border-bottom: 1px solid #2a2a2a !important; }
