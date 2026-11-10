@@ -118,6 +118,11 @@ title: Home
 
 <section class="posts-0xdf" data-testid="posts-list">
   <h2 class="posts-0xdf-heading">Posts</h2>
+  {% assign htb_count = site.categories.hackthebox | size %}
+  {% assign ps_count = site.categories.portswigger | size %}
+  {% assign thm_count = site.categories.tryhackme | size %}
+  {% assign pwn_total = htb_count | plus: ps_count | plus: thm_count %}
+  <div class="pwn-counter" data-testid="pwned-counter"><span class="pc-total" data-testid="pwned-total">{{ pwn_total }}</span> boxes pwned (HTB <span class="pc-htb" data-testid="pwned-htb">{{ htb_count }}</span> · PortSwigger <span class="pc-ps" data-testid="pwned-portswigger">{{ ps_count }}</span> · THM <span class="pc-thm" data-testid="pwned-thm">{{ thm_count }}</span>)</div>
   {% for post in site.posts %}
   <article class="p0-entry" data-testid="post-entry">
       <img class="p0-thumb" src="{{ post.box_image | default: '/assets/images/machines/default.png' | relative_url }}" alt="{{ post.box | default: post.title }} icon" loading="lazy">

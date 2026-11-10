@@ -799,5 +799,11 @@ body {
 /* ---------- Homepage: wider content container ---------- */
 .container-lg.markdown-body:has(.posts-0xdf) { max-width: 960px !important; margin-left: auto !important; margin-right: auto !important; padding-left: 16px !important; padding-right: 16px !important; }
 .posts-0xdf .p0-entry { margin-bottom: 44px; }
+.posts-0xdf h2.posts-0xdf-heading { margin-bottom: 6px; }
+.posts-0xdf .pwn-counter { color: #888; font-size: 0.8rem; margin: 0 0 24px; }
+.posts-0xdf .pwn-counter .pc-total { color: #f0f0f0; }
+.posts-0xdf .pwn-counter .pc-htb { color: #9FEF00; }
+.posts-0xdf .pwn-counter .pc-ps { color: #FF6633; }
+.posts-0xdf .pwn-counter .pc-thm { color: #E8334A; }
 .posts-0xdf .p0-thumb { margin-bottom: 0 !important; }
 
