@@ -3,6 +3,15 @@ layout: default
 title: Home
 ---
 
+<nav class="platform-links" data-testid="platform-links-bar">
+  <a class="pl-htb" href="{{ '/hackthebox/' | relative_url }}" data-testid="platform-link-htb">HackTheBox</a>
+  <span class="pl-sep">|</span>
+  <a class="pl-ps" href="{{ '/portswigger/' | relative_url }}" data-testid="platform-link-portswigger">PortSwigger</a>
+  <span class="pl-sep">|</span>
+  <a class="pl-thm" href="{{ '/tryhackme/' | relative_url }}" data-testid="platform-link-tryhackme">TryHackMe</a>
+</nav>
+
+
 <style>
 .latest-posts-section {
   margin-top: 40px;
