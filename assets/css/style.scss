@@ -807,3 +807,19 @@ body {
 .posts-0xdf .pwn-counter .pc-thm { color: #E8334A; }
 .posts-0xdf .p0-thumb { margin-bottom: 0 !important; }
 
+
+/* ---------- HackTheBox page: flat filters, shared 0xdf list ---------- */
+.p0-entry.wu-hidden { display: none !important; }
+.htb-page .wu-toolbar { background: none !important; border: none !important; border-radius: 0 !important; padding: 0 !important; margin: 16px 0 10px !important; gap: 16px !important; }
+.htb-page .wu-search { background: transparent !important; border: none !important; border-bottom: 1px solid #444 !important; border-radius: 0 !important; box-shadow: none !important; padding: 6px 2px !important; font-size: 13px !important; color: #dcdcdc !important; }
+.htb-page .wu-search:focus { border-bottom-color: #888 !important; box-shadow: none !important; }
+.htb-page .wu-difficulties { gap: 14px !important; }
+.htb-page .wu-btn { background: none !important; border: none !important; border-radius: 0 !important; padding: 0 !important; font-weight: 400 !important; text-transform: none !important; letter-spacing: 0 !important; font-size: 13px !important; color: #888 !important; }
+.htb-page .wu-btn:hover { color: #dcdcdc !important; }
+.htb-page .wu-btn.active { color: #ffffff !important; text-decoration: underline !important; text-underline-offset: 4px !important; }
+.htb-page .wu-tagcloud { gap: 4px 12px !important; margin: 0 0 6px !important; }
+.htb-page .wu-tagchip { background: none !important; border: none !important; border-radius: 0 !important; padding: 0 !important; font-size: 12px !important; color: #8a8f98 !important; }
+.htb-page .wu-tagchip:hover { color: #E8E4B0 !important; }
+.htb-page .wu-tagchip.active { color: #E8E4B0 !important; text-decoration: underline !important; text-underline-offset: 3px !important; }
+.htb-page .wu-count { color: #888 !important; margin: 0 0 24px !important; }
+
