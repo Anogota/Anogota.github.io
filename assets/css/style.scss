@@ -783,3 +783,16 @@ body {
 .container-lg.markdown-body { max-width: 740px !important; margin-left: auto !important; margin-right: auto !important; }
 .markdown-body { font-size: 14px !important; line-height: 1.5 !important; color: #dcdcdc !important; }
 .site-topbar { background: #1a1a1a !important; backdrop-filter: none !important; border-bottom: 1px solid #2a2a2a !important; }
+
+/* ---------- Fix: natural image proportions in post content ---------- */
+.container-lg.markdown-body:has(.post-header) { max-width: 900px !important; }
+.markdown-body:has(.post-header) img {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: initial !important;
+  aspect-ratio: auto !important;
+  display: block !important;
+  margin: 1em auto !important;
+}
+
