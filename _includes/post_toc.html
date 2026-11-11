@@ -1,8 +1,15 @@
+{%- if page.categories contains "hackthebox" -%}{%- assign toc_platform = "HTB" -%}
+{%- elsif page.categories contains "tryhackme" -%}{%- assign toc_platform = "THM" -%}
+{%- elsif page.categories contains "portswigger" -%}{%- assign toc_platform = "PortSwigger" -%}
+{%- else -%}{%- assign toc_platform = "" -%}{%- endif -%}
+{%- if page.box -%}{%- if toc_platform != "" -%}{%- assign toc_title = toc_platform | append: ": " | append: page.box -%}{%- else -%}{%- assign toc_title = page.box -%}{%- endif -%}
+{%- else -%}{%- assign toc_title = page.title -%}{%- endif -%}
 <script>
 // Auto-generated post TOC: rebuilds the sidebar list from h2/h3 headings of the post
 document.addEventListener('DOMContentLoaded', function () {
   var content = document.querySelector('.markdown-body');
   if (!content) return;
+  var tocTitle = {{ toc_title | jsonify }};
 
   var aside = document.querySelector('.dynamic-sidebar');
   if (!aside) {
@@ -10,13 +17,31 @@ document.addEventListener('DOMContentLoaded', function () {
     wrapper.className = 'blog-layout-wrapper';
     aside = document.createElement('aside');
     aside.className = 'dynamic-sidebar';
-    aside.innerHTML = '<h3 class="sidebar-box-title">{% if page.box %}HTB: {{ page.box | escape }}{% else %}{{ page.title | escape }}{% endif %}</h3>';
+    aside.innerHTML = '<h3 class="sidebar-box-title"></h3>';
     var main = document.createElement('div');
     main.className = 'main-article-content';
     content.parentNode.insertBefore(wrapper, content);
     wrapper.appendChild(aside);
     wrapper.appendChild(main);
     main.appendChild(content);
+  }
+  var titleEl = aside.querySelector('.sidebar-box-title');
+  if (titleEl) titleEl.textContent = tocTitle;
+
+  // Metadata bar (TARGET IP / OS / DIFFICULTY) for posts that do not create it themselves
+  var boxIp = {{ page.box_ip | default: "" | jsonify }}, boxOs = {{ page.box_os | default: "" | jsonify }}, boxDiff = {{ page.box_difficulty | default: "" | jsonify }};
+  if ({{ page.box | default: "" | jsonify }} && (boxIp || boxOs || boxDiff) && !content.querySelector('.post-htb-metadata-bar')) {
+    var metaBar = document.createElement('div');
+    metaBar.className = 'post-htb-metadata-bar';
+    metaBar.setAttribute('data-testid', 'post-metadata-bar');
+    var osIcon = boxOs && boxOs.toLowerCase() === 'linux' ? '🐧' : '🪟';
+    function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+    metaBar.innerHTML =
+      '<div class="meta-bar-item"><span class="meta-bar-label">TARGET IP:</span><span class="meta-bar-value target-ip">' + esc(boxIp || 'N/A') + '</span></div>' +
+      '<div class="meta-bar-item"><span class="meta-bar-label">OS:</span><span class="meta-bar-value">' + osIcon + ' ' + esc(boxOs || 'N/A') + '</span></div>' +
+      '<div class="meta-bar-item"><span class="meta-bar-label">DIFFICULTY:</span><span class="meta-bar-value diff-text ' + esc((boxDiff || '').toLowerCase()) + '">' + esc(boxDiff || 'N/A') + '</span></div>';
+    var mainTitle = content.querySelector('h1');
+    if (mainTitle) mainTitle.parentNode.insertBefore(metaBar, mainTitle.nextSibling); else content.insertBefore(metaBar, content.firstChild);
   }
   aside.classList.add('post-toc');
   aside.setAttribute('data-testid', 'post-toc-sidebar');

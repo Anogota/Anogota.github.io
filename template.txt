@@ -1,128 +1,73 @@
 ---
 layout: post
-title: "Hack The Box: Kupa"
-box: "Kupa"
-box_ip: "10.129.18.321"
-box_os: "Windows"
-box_difficulty: "Hard"
-box_image: /assets/images/machines/default.png
-categories: [hackthebox]
-tags: [hackthebox, htb-kupa, ctf, nmap]
+# Nazwa pliku: _posts/RRRR-MM-DD-NazwaMaszyny.md, a data posta bierze się z nazwy pliku (pola date nie ma w żadnym poście)
+title: "Hack The Box: MachineName"   # OBOWIĄZKOWE, tytuł na liście i w poście
+box: "MachineName"   # OBOWIĄZKOWE, nazwa maszyny: tytuł paska bocznego (platforma z categories, np. "HTB: MachineName") i pasek parametrów
+box_ip: "10.129.0.0"   # IP celu (TARGET IP)
+box_os: "Linux"   # Linux albo Windows, trafia też do tagów na liście
+box_difficulty: "Easy"   # Easy / Medium / Hard / Insane
+box_image: /assets/images/machines/machinename.png   # miniatura, kwadrat np. 512x512, plik wrzuć do assets/images/machines/
+categories: [hackthebox]   # OBOWIĄZKOWE, platforma do licznika "boxes pwned": hackthebox / portswigger / tryhackme
+tags: [hackthebox, htb-machinename, ctf, nmap]   # tagi na liście i na stronie Tags
+excerpt: "One or two sentences shown on the post list."   # opis na liście; usuń linię, żeby użyć pierwszego akapitu
 ---
 
+{% comment %}
+OVERVIEW (bez nagłówka): pierwszy akapit posta. Pozycję "Overview" w pasku bocznym dodaje layout i prowadzi ona tutaj.
+NIE dodawaj nagłówka "## Overview".
+Nagłówki: ## = sekcja główna, ### = podsekcja. Pisz KRÓTKIE nazwy (2-4 słowa), nie zdania. Trafiają do spisu treści w pasku bocznym.
+{% endcomment %}
 
+MachineName is an easy Linux box... Opisz w 2-3 zdaniach, co to za maszyna i jaka jest ścieżka ataku.
 
+## Recon
+{% comment %}Rozpoznanie: skan portów i enumeracja usług. Każde narzędzie/usługa jako osobna podsekcja ###.{% endcomment %}
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const content = document.querySelector('.markdown-body');
-  if (!content) return;
+### Nmap
+{% comment %}Polecenie w bloku ```terminal (z promptem kali), wynik w osobnym bloku ```text.{% endcomment %}
 
-  // Automatyczne dane z Front Matter na górze strony
-  const boxName = "{{ page.box }}";
-  const boxIp = "{{ page.box_ip }}";
-  const boxOs = "{{ page.box_os }}";
-  const boxDiff = "{{ page.box_difficulty }}";
+```terminal
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -sS -sV -sC -p- 10.129.0.0
+```
 
-  if (!boxName) return;
+```text
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1
+80/tcp open  http    Apache httpd 2.4.41
+```
 
-  // 1. Tworzymy kontener dwukolumnowy (Sidebar + Tekst)
-  const wrapper = document.createElement('div');
-  wrapper.className = 'blog-layout-wrapper';
+### Web Enumeration
+{% comment %}Screen: wklej obrazek do issue/komentarza na GitHubie i skopiuj wygenerowany tag <img>. Ta sama składnia co w istniejących postach. Podmień ID-SCREENA.{% endcomment %}
 
-  // 2. Tworzymy boczny panel (Sidebar)
-  const aside = document.createElement('aside');
-  aside.className = 'dynamic-sidebar';
-  aside.innerHTML = `<h3 class="sidebar-box-title">HTB: ${boxName}</h3>`;
-  
-  const ul = document.createElement('ul');
-  ul.className = 'sidebar-menu';
+<img width="800" height="450" alt="image" src="https://github.com/user-attachments/assets/ID-SCREENA" />
 
-  // AUTOMATYKA: Łapiemy wszystkie prawdziwe podrozdziały (h2) z Twojego tekstu
-  const headings = content.querySelectorAll('h2');
-  
-  if (headings.length > 0) {
-    headings.forEach((heading, index) => {
-      // Generujemy bezpieczne ID dla linku, jeśli nagłówek go nie ma
-      if (!heading.id) {
-        heading.id = 'section-' + index;
-      }
-      
-      const li = document.createElement('li');
-      // Pierwszy element dostaje klasę 'active' na start
-      li.className = 'sidebar-item' + (index === 0 ? ' active' : '');
-      li.innerHTML = `<a href="#${heading.id}">${heading.innerText}</a>`;
-      ul.appendChild(li);
-    });
-  } else {
-    // Rezerwowy punkt, gdyby w poście nie było jeszcze żadnych nagłówków h2
-    const li = document.createElement('li');
-    li.className = 'sidebar-item active';
-    li.innerHTML = `<a href="#">Overview</a>`;
-    ul.appendChild(li);
-  }
-  aside.appendChild(ul);
+## Initial Access
+{% comment %}Jak zdobyłeś pierwszy dostęp: podatność, exploit, payload. Polecenia w ```terminal, kod/skrypty w ```bash.{% endcomment %}
 
-  // 3. Kontener na właściwy tekst artykułu
-  const articleContainer = document.createElement('div');
-  articleContainer.className = 'main-article-content';
+```bash
+curl -s http://10.129.0.0/
+```
 
-  // Przebudowa struktury kodu na stronie
-  content.parentNode.insertBefore(wrapper, content);
-  wrapper.appendChild(aside);
-  wrapper.appendChild(articleContainer);
-  articleContainer.appendChild(content);
+## Shell as user
+{% comment %}Zamień "user" na nazwę użytkownika. Shell, stabilizacja, user.txt.{% endcomment %}
 
-  // 4. Generowanie paska parametrów pod głównym tytułem (h1)
-  const mainTitle = articleContainer.querySelector('h1');
-  if (boxIp || boxOs || boxDiff) {
-    const metaBar = document.createElement('div');
-    metaBar.className = 'post-htb-metadata-bar';
+> **Note:** wskazówka albo notatka dla czytelnika (zwykły cytat Markdown zaczynający się od ">").
 
-    const osIcon = boxOs && boxOs.toLowerCase() === 'linux' ? '🐧' : '🪟';
-    
-    metaBar.innerHTML = `
-      <div class="meta-bar-item">
-        <span class="meta-bar-label">TARGET IP:</span>
-        <span class="meta-bar-value target-ip">${boxIp ? boxIp : 'N/A'}</span>
-      </div>
-      <div class="meta-bar-item">
-        <span class="meta-bar-label">OS:</span>
-        <span class="meta-bar-value">${osIcon} ${boxOs ? boxOs : 'N/A'}</span>
-      </div>
-      <div class="meta-bar-item">
-        <span class="meta-bar-label">DIFFICULTY:</span>
-        <span class="meta-bar-value diff-text ${boxDiff ? boxDiff.toLowerCase() : ''}">${boxDiff ? boxDiff : 'N/A'}</span>
-      </div>
-    `;
+## Privilege Escalation
+{% comment %}Droga do root/SYSTEM i root.txt. Flagi maskuj gwiazdkami.{% endcomment %}
 
-    // Wstrzykujemy pasek idealnie pod główny nagłówek h1 (np. Anogota9)
-    if (mainTitle) {
-      mainTitle.parentNode.insertBefore(metaBar, mainTitle.nextSibling);
-    } else {
-      content.insertBefore(metaBar, content.firstChild);
-    }
-  }
+## Beyond Root
+{% comment %}OPCJONALNE: dodatkowe obserwacje, jak naprawić podatność. Usuń całą sekcję, jeśli jej nie ma.{% endcomment %}
 
-  // Automatyczne przełączanie podświetlenia menu podczas przewijania strony (Scroll Spy)
-  window.addEventListener('scroll', () => {
-    let current = '';
-    headings.forEach(heading => {
-      const headingTop = heading.getBoundingClientRect().top;
-      if (headingTop < 100) {
-        current = heading.id;
-      }
-    });
-
-    if (current) {
-      document.querySelectorAll('.sidebar-item').forEach(li => {
-        li.classList.remove('active');
-        const a = li.querySelector('a');
-        if (a && a.getAttribute('href') === `#${current}`) {
-          li.classList.add('active');
-        }
-      });
-    }
-  });
-});
-</script>
+{% comment %}
+CHECKLISTA PRZED PUBLIKACJĄ:
+[ ] Plik zapisany jako _posts/RRRR-MM-DD-NazwaMaszyny.md
+[ ] Miniatura (kwadrat, np. 512x512) wrzucona do assets/images/machines/ i ustawiona w box_image
+[ ] categories ustawione na platformę (hackthebox / portswigger / tryhackme), inaczej post nie wejdzie do licznika
+[ ] box, box_ip, box_os, box_difficulty uzupełnione
+[ ] Tagi dodane
+[ ] excerpt uzupełniony (albo linia usunięta)
+[ ] Nagłówki ## / ### to krótkie nazwy, nie zdania
+[ ] Puste sekcje usunięte, ID-SCREENA podmienione na prawdziwe screeny
+{% endcomment %}
