@@ -3,13 +3,6 @@ layout: default
 title: Home
 ---
 
-<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PVPZW2KX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
-
 
 <style>
 .latest-posts-section {
