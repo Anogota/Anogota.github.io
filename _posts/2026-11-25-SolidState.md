@@ -467,6 +467,7 @@ abf9d39c88f05bed891f561480abc967
 ```
 ### Summary
 The box was kind of tricky. The enumeration was a key for gaining access; the information about the software that was running was necessary to escalate privilege. That showed us how important it is to update our software; if the software is getting older is highly more risk that will be vulnerable. The box wasn't that easy it test my patient many times
+Attack chain: SMTP banner grab (James 2.3.2) → default creds on Remote Administration Tool (root/root) → password reset + POP3 mailbox read → SSH creds found → path traversal RCE via mail delivery → user shell → world-writable cron script → root shell.
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
